@@ -1,0 +1,64 @@
+{
+  "version": 1,
+  "status": "design_only",
+  "purpose": "Planned object-state contracts for future PISTE 0 interactions. Not runtime data in Sprint 5.",
+  "global_rules": {
+    "recorder_independent": true,
+    "interaction_context_independent": true,
+    "narrative_ids_outside_object_state": true,
+    "guidance_is_presentation_only": true,
+    "coexist_with_rec_where_applicable": true
+  },
+  "models": {
+    "fisher_price": {
+      "current_runtime_owner": "FisherPrice",
+      "status": "existing_core_states",
+      "states": ["PLACED", "EQUIPPED", "ACTIVE"],
+      "transitions": [
+        {"from": "PLACED", "event": "take", "to": "EQUIPPED", "feedback": ["pickup_visibility", "device_equipped"]},
+        {"from": "EQUIPPED", "event": "recorder_enters_rec_or_play", "to": "ACTIVE", "feedback": ["device_visual_state"]},
+        {"from": "ACTIVE", "event": "recorder_returns_stop", "to": "EQUIPPED", "feedback": ["device_visual_state"]}
+      ],
+      "notes": "Do not duplicate Recorder STOP/REC/PLAY state inside FisherPrice."
+    },
+    "garden_gate": {
+      "future_owner": "GateInteractionState",
+      "status": "future_candidate",
+      "states": ["CLOSED", "OPENING", "OPEN", "CLOSING"],
+      "transitions": [
+        {"from": "CLOSED", "event": "interact_open", "to": "OPENING", "prompt_after": "Close gate", "sound": ["latch_release", "hinge_squeak"]},
+        {"from": "OPENING", "event": "motion_complete", "to": "OPEN", "prompt_after": "Close gate", "sound": []},
+        {"from": "OPEN", "event": "interact_close", "to": "CLOSING", "prompt_after": "Open gate", "sound": ["hinge_squeak"]},
+        {"from": "CLOSING", "event": "motion_complete", "to": "CLOSED", "prompt_after": "Open gate", "sound": ["latch_settle"]}
+      ],
+      "recording_rule": "If REC is active, actual triggered gate audio belongs to temporal world capture. Gate never tells Recorder which clip to create.",
+      "retry_rule": "The gate may be operated again naturally; no mission-failed state."
+    },
+    "kitchen_fridge": {
+      "future_owner": "FridgeInteractionState",
+      "status": "future_candidate",
+      "orthogonal_state": {
+        "door": ["CLOSED", "OPEN"],
+        "compressor": ["IDLE", "RUNNING"]
+      },
+      "door_transitions": [
+        {"from": "CLOSED", "event": "interact_open", "to": "OPEN", "prompt_after": "Close fridge", "feedback": ["seal_release", "door_rotation", "interior_light_on"]},
+        {"from": "OPEN", "event": "interact_close", "to": "CLOSED", "prompt_after": "Open fridge", "feedback": ["door_rotation", "seal_close", "interior_light_off"]}
+      ],
+      "compressor_rule": "Compressor timing is independent of door verb and may create passive recordable hum.",
+      "family_reaction_rule": "Repeated-open reactions belong to family/narrative behaviour, not fridge state machine.",
+      "recording_rule": "Door transients and compressor hum are world audio; temporal capture records what actually overlaps REC."
+    },
+    "bathroom_tap": {
+      "future_owner": "TapInteractionState",
+      "status": "later_candidate",
+      "states": ["OFF", "RUNNING"],
+      "transitions": [
+        {"from": "OFF", "event": "interact_on", "to": "RUNNING", "prompt_after": "Turn tap off", "feedback": ["handle_motion", "water_start", "water_visible"]},
+        {"from": "RUNNING", "event": "interact_off", "to": "OFF", "prompt_after": "Turn tap on", "feedback": ["handle_motion", "water_stop", "water_hidden"]}
+      ],
+      "recording_rule": "RUNNING enables a sustained world source; Recorder remains generic and unaware of tap state.",
+      "scope_rule": "Do not build a generic held-interaction framework unless a later authored tap/toy use actually requires hold semantics."
+    }
+  }
+}
