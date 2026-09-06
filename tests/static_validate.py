@@ -1,5 +1,5 @@
 from pathlib import Path
-import re, wave, sys
+import re, wave, sys, struct
 root = Path(__file__).resolve().parents[1]
 errors=[]
 
@@ -108,6 +108,10 @@ for test in ['tests/test_recorder.gd','tests/test_gameplay_contract.gd','tests/t
 
 wav=root/'audio/ronan_test.wav'
 try:
+    wav_data = wav.read_bytes()
+    ok(wav_data[:4] == b'RIFF' and wav_data[8:12] == b'WAVE', 'RonanTest has a RIFF/WAVE container')
+    ok(struct.unpack_from('<I', wav_data, 4)[0] + 8 == len(wav_data),
+       'RonanTest RIFF size matches the actual file (no trailing invalid chunks)')
     with wave.open(str(wav),'rb') as w:
         duration=w.getnframes()/w.getframerate()
         ok(w.getnchannels()==1,'RonanTest placeholder audio is mono')

@@ -33,6 +33,9 @@ Do not claim acceptance until static + headless + live editor/runtime checks are
 
 # Current task priority — Sprint 5 live acceptance
 
+Latest checkpoint: [2026-09-06 validation report](SPRINT5_VALIDATION_REPORT_2026-09-06.md).
+All 23 static validators and 7 Godot headless suites pass after targeted fixes, including synthetic input-event routes in both scenes. Graphical/manual acceptance remains pending; resume with those checks. Sprint 5 is not accepted and Sprint 6 has not started.
+
 ## 1. Player Feel
 Read only if validating controls:
 - `docs/PLAYER_FEEL_INPUTS.md`

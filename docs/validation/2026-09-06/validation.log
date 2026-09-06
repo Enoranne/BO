@@ -1,0 +1,1564 @@
+
+=== BO Sprint 5 static validation ===
+PASS: project.godot exists
+PASS: Christmas1982 main scene exists
+PASS: project.godot has one input section
+PASS: main scene points to Christmas1982
+PASS: input action move_forward declared
+PASS: input action move_back declared
+PASS: input action move_left declared
+PASS: input action move_right declared
+PASS: input action interact declared
+PASS: input action record declared
+PASS: input action play_recording declared
+PASS: scene resource exists: characters/malo/malo.gd
+PASS: scene resource exists: recorder/fisher_price.gd
+PASS: scene resource exists: recorder/recorder.gd
+PASS: scene resource exists: interaction/recordable_source.gd
+PASS: scene resource exists: scenes/piste_0/christmas_1982/cinematic_camera.gd
+PASS: scene resource exists: ui/hud.gd
+PASS: scene resource exists: audio/ronan_test.wav
+PASS: scene resource exists: interaction/interaction_context.gd
+PASS: scene resource exists: characters/common/placeholder_humanoid.gd
+PASS: scene resource exists: recorder/fisher_price_visual.gd
+PASS: scene resource exists: scenes/piste_0/christmas_1982/christmas1982_director.gd
+PASS: ExtResource reference resolves: 11_director
+PASS: ExtResource reference resolves: 1_malo
+PASS: ExtResource reference resolves: 9_humanoid
+PASS: ExtResource reference resolves: 10_fisher_visual
+PASS: ExtResource reference resolves: 8_context
+PASS: ExtResource reference resolves: 2_fisher
+PASS: ExtResource reference resolves: 3_recorder
+PASS: ExtResource reference resolves: 4_source
+PASS: ExtResource reference resolves: 7_audio
+PASS: ExtResource reference resolves: 9_humanoid
+PASS: ExtResource reference resolves: 7_audio
+PASS: ExtResource reference resolves: 5_camera
+PASS: ExtResource reference resolves: 6_hud
+PASS: SubResource reference resolves: Mat_floor
+PASS: SubResource reference resolves: Mat_wall
+PASS: SubResource reference resolves: Mat_wall
+PASS: SubResource reference resolves: Mat_rug
+PASS: SubResource reference resolves: Mat_sofa
+PASS: SubResource reference resolves: Mat_sofa
+PASS: SubResource reference resolves: Mat_sofa
+PASS: SubResource reference resolves: Mat_fireplace
+PASS: SubResource reference resolves: Mat_fire
+PASS: SubResource reference resolves: Mat_fireplace
+PASS: SubResource reference resolves: Mat_wood
+PASS: SubResource reference resolves: Mat_wood
+PASS: SubResource reference resolves: Mat_tree
+PASS: SubResource reference resolves: Mat_tree
+PASS: SubResource reference resolves: Mat_tree
+PASS: SubResource reference resolves: Mat_wood
+PASS: SubResource reference resolves: Mat_gift_red
+PASS: SubResource reference resolves: Mat_gift_cream
+PASS: SubResource reference resolves: Mat_gift_red
+PASS: SubResource reference resolves: Mat_fisher
+PASS: SubResource reference resolves: BoxMesh_floor
+PASS: SubResource reference resolves: BoxShape_floor
+PASS: SubResource reference resolves: BoxMesh_wall_back
+PASS: SubResource reference resolves: BoxShape_wall_back
+PASS: SubResource reference resolves: BoxMesh_wall_side
+PASS: SubResource reference resolves: BoxShape_wall_side
+PASS: SubResource reference resolves: BoxMesh_wall_side
+PASS: SubResource reference resolves: BoxShape_wall_side
+PASS: SubResource reference resolves: BoxShape_wall_back
+PASS: SubResource reference resolves: BoxMesh_rug
+PASS: SubResource reference resolves: BoxMesh_sofa_seat
+PASS: SubResource reference resolves: BoxMesh_sofa_back
+PASS: SubResource reference resolves: BoxMesh_sofa_arm
+PASS: SubResource reference resolves: BoxMesh_sofa_arm
+PASS: SubResource reference resolves: BoxShape_sofa
+PASS: SubResource reference resolves: BoxMesh_fireplace
+PASS: SubResource reference resolves: BoxMesh_fire_opening
+PASS: SubResource reference resolves: BoxMesh_hearth
+PASS: SubResource reference resolves: BoxShape_fireplace
+PASS: SubResource reference resolves: BoxMesh_table_top
+PASS: SubResource reference resolves: BoxMesh_table_leg
+PASS: SubResource reference resolves: BoxMesh_table_leg
+PASS: SubResource reference resolves: BoxMesh_table_leg
+PASS: SubResource reference resolves: BoxMesh_table_leg
+PASS: SubResource reference resolves: BoxShape_table
+PASS: SubResource reference resolves: Cylinder_tree_trunk
+PASS: SubResource reference resolves: Cone_tree_low
+PASS: SubResource reference resolves: Cone_tree_mid
+PASS: SubResource reference resolves: Cone_tree_top
+PASS: SubResource reference resolves: BoxShape_tree
+PASS: SubResource reference resolves: BoxMesh_gift_large
+PASS: SubResource reference resolves: BoxMesh_gift_medium
+PASS: SubResource reference resolves: BoxMesh_gift_small
+PASS: SubResource reference resolves: CapsuleShape_malo
+PASS: SubResource reference resolves: SphereShape_sensor
+PASS: SubResource reference resolves: BoxMesh_fisher
+PASS: SubResource reference resolves: BoxShape_fisher
+PASS: SubResource reference resolves: SphereShape_ronan
+PASS: TSCN load_steps matches resources (56)
+PASS: class_name Interactable declared
+PASS: class_name RecordableSource declared
+PASS: class_name InteractionContext declared
+PASS: class_name RecordingClip declared
+PASS: class_name Recorder declared
+PASS: class_name FisherPrice declared
+PASS: class_name MaloController declared
+PASS: class_name PlaceholderHumanoid3D declared
+PASS: InteractionContext implements current_interactable
+PASS: InteractionContext implements current_recordable_source
+PASS: InteractionContext implements interact_current
+PASS: InteractionContext implements get_current_prompt
+PASS: Christmas1982 wires InteractionContext to Malo sensor
+PASS: Recorder contains STOP state
+PASS: Recorder contains REC state
+PASS: Recorder contains PLAY state
+PASS: Recorder implements start_recording()
+PASS: Recorder implements stop_recording()
+PASS: Recorder implements play_latest()
+PASS: Recorder implements play_clip()
+PASS: Recorder exposes future-safe capability track_count
+PASS: Recorder exposes future-safe capability supports_pitch
+PASS: Recorder exposes future-safe capability supports_sound_on_sound
+PASS: RecordingClip stores clip_name
+PASS: RecordingClip stores source_id
+PASS: RecordingClip stores source_title
+PASS: RecordingClip stores duration_seconds
+PASS: RecordingClip stores created_unix_time
+PASS: RecordingClip stores metadata
+PASS: RecordingClip stores stream
+PASS: Fisher Price contains PLACED device state
+PASS: Fisher Price contains EQUIPPED device state
+PASS: Fisher Price contains ACTIVE device state
+PASS: Malo implements equip_recorder()
+PASS: Malo implements try_begin_recording()
+PASS: Malo implements try_stop_recording()
+PASS: Malo implements try_play_latest()
+PASS: Malo delegates proximity selection to InteractionContext
+PASS: HUD renders ● REC
+PASS: HUD renders ▶ PLAY
+PASS: HUD renders ■ STOP
+PASS: Christmas1982 contains visual node Set
+PASS: Christmas1982 contains visual node BackWall
+PASS: Christmas1982 contains visual node LeftWall
+PASS: Christmas1982 contains visual node RightWall
+PASS: Christmas1982 contains visual node FrontBoundary
+PASS: Christmas1982 contains visual node RugPlaceholder
+PASS: Christmas1982 contains visual node SofaPlaceholder
+PASS: Christmas1982 contains visual node FireplacePlaceholder
+PASS: Christmas1982 contains visual node CoffeeTablePlaceholder
+PASS: Christmas1982 contains visual node TreePlaceholder
+PASS: Christmas1982 contains visual node GiftPile
+PASS: Christmas1982 contains visual node Lighting
+PASS: Christmas1982 contains visual node FireGlow
+PASS: Christmas1982 contains visual node TreeLamp
+PASS: Christmas1982 contains visual node CinematicCamera
+PASS: cinematic camera implements _camera_anchor
+PASS: cinematic camera implements _target_anchor
+PASS: cinematic camera implements displacement := target.global_position - _target_anchor
+PASS: cinematic camera implements focus_height
+PASS: Christmas1982 contains Sprint 3 node Blocking
+PASS: Christmas1982 contains Sprint 3 node MaloStart
+PASS: Christmas1982 contains Sprint 3 node FisherPickupBeat
+PASS: Christmas1982 contains Sprint 3 node RonanRecordBeat
+PASS: Christmas1982 contains Sprint 3 node RonanStand
+PASS: Christmas1982 contains Sprint 3 node CameraStart
+PASS: Christmas1982 contains Sprint 3 node VisualRig
+PASS: PlaceholderHumanoid3D implements stature
+PASS: PlaceholderHumanoid3D implements set_motion_amount
+PASS: PlaceholderHumanoid3D implements _build_placeholder
+PASS: PlaceholderHumanoid3D implements LeftArm
+PASS: PlaceholderHumanoid3D implements RightLeg
+PASS: PlaceholderHumanoid3D implements FacingMarker
+PASS: Malo drives placeholder gait from real movement speed
+PASS: tests/test_recorder.gd exists
+PASS: tests/test_gameplay_contract.gd exists
+PASS: tests/test_visual_contract.gd exists
+PASS: tests/test_blocking_contract.gd exists
+PASS: RonanTest has a RIFF/WAVE container
+PASS: RonanTest RIFF size matches the actual file (no trailing invalid chunks)
+PASS: RonanTest placeholder audio is mono
+PASS: RonanTest placeholder audio is ~5 seconds
+
+Static validation complete: 0 failure(s).
+PASS: Sprint 4 canonical Christmas1982 scene still exists
+PASS: Sprint 5 visual-slice wrapper scene exists
+PASS: Sprint 5 period visual pass exists
+PASS: Sprint 5.2 visual-only set dressing exists
+PASS: Sprint 5 cinematic HUD presentation pass exists
+PASS: Sprint 5 material exists: materials/period_1982/wallpaper_cream.tres
+PASS: Sprint 5 material exists: materials/period_1982/wood_dark_varnished.tres
+PASS: Sprint 5 material exists: materials/period_1982/upholstery_brown_orange.tres
+PASS: Sprint 5 material exists: materials/period_1982/carpet_muted_brown.tres
+PASS: Sprint 5 material exists: materials/period_1982/plastic_fisher_beige.tres
+PASS: Sprint 5 material exists: materials/period_1982/plastic_fisher_burgundy.tres
+PASS: Sprint 5 material exists: materials/period_1982/floor_dark_warm_brown.tres
+PASS: Sprint 5 material exists: materials/period_1982/fireplace_stone_warm.tres
+PASS: Sprint 5 material exists: materials/period_1982/painted_trim_cream.tres
+PASS: Sprint 5 material exists: materials/period_1982/ornament_muted_red.tres
+PASS: Sprint 5 material exists: materials/period_1982/plastic_fisher_window_dark.tres
+PASS: Sprint 5 material exists: materials/period_1982/plastic_rec_red.tres
+PASS: visual slice instances canonical Christmas1982
+PASS: visual slice loads Period1982VisualPass
+PASS: visual slice loads Period1982SetDressing
+PASS: visual slice loads Period1982HUDPass
+PASS: all three presentation passes target the wrapper Base instance
+PASS: wrapper itself does not override spatial blocking
+PASS: visual pass references material when expected: materials/period_1982/wallpaper_cream.tres
+PASS: visual pass references material when expected: materials/period_1982/wood_dark_varnished.tres
+PASS: visual pass references material when expected: materials/period_1982/upholstery_brown_orange.tres
+PASS: visual pass references material when expected: materials/period_1982/carpet_muted_brown.tres
+PASS: visual pass references material when expected: materials/period_1982/plastic_fisher_beige.tres
+PASS: visual pass references material when expected: materials/period_1982/plastic_fisher_burgundy.tres
+PASS: visual pass references material when expected: materials/period_1982/floor_dark_warm_brown.tres
+PASS: visual pass references material when expected: materials/period_1982/fireplace_stone_warm.tres
+PASS: visual pass references material when expected: materials/period_1982/plastic_fisher_window_dark.tres
+PASS: visual pass references material when expected: materials/period_1982/plastic_rec_red.tres
+PASS: visual pass contains expected target path: Set/Floor/Mesh
+PASS: visual pass contains expected target path: Set/BackWall/Mesh
+PASS: visual pass contains expected target path: Set/LeftWall/Mesh
+PASS: visual pass contains expected target path: Set/RightWall/Mesh
+PASS: visual pass contains expected target path: Set/RugPlaceholder
+PASS: visual pass contains expected target path: Set/SofaPlaceholder/Seat
+PASS: visual pass contains expected target path: Set/CoffeeTablePlaceholder/Top
+PASS: visual pass contains expected target path: Set/FireplacePlaceholder/Main
+PASS: visual pass contains expected target path: FisherPrice/Visual
+PASS: visual pass contains expected target path: Malo/HeldRecorderVisual/Body
+PASS: visual pass contains expected target path: Malo/HeldRecorderVisual/CassetteWindow
+PASS: visual pass contains expected target path: Lighting/FireGlow
+PASS: visual pass contains expected target path: Lighting/TreeLamp
+PASS: visual pass contains expected target path: Lighting/SoftFill
+PASS: world Fisher presentation includes detail: VisualDetails
+PASS: world Fisher presentation includes detail: CassettePanel
+PASS: world Fisher presentation includes detail: CassetteWindow
+PASS: world Fisher presentation includes detail: Handle
+PASS: world Fisher presentation includes detail: PlayButton
+PASS: world Fisher presentation includes detail: RecButton
+PASS: visual pass applies MeshInstance3D material overrides
+PASS: visual pass does not modify collision shapes
+PASS: visual pass does not contain gameplay token: start_recording(
+PASS: visual pass does not contain gameplay token: stop_recording(
+PASS: visual pass does not contain gameplay token: play_latest(
+PASS: visual pass does not contain gameplay token: RecordingClip
+PASS: visual pass does not contain gameplay token: Recorder.State
+PASS: visual pass does not contain gameplay token: equipped_recorder
+PASS: set dressing references materials/period_1982/painted_trim_cream.tres
+PASS: set dressing references materials/period_1982/wood_dark_varnished.tres
+PASS: set dressing references materials/period_1982/upholstery_brown_orange.tres
+PASS: set dressing references materials/period_1982/ornament_muted_red.tres
+PASS: set dressing remains presentation-only: no CollisionShape3D
+PASS: set dressing remains presentation-only: no CharacterBody3D
+PASS: set dressing remains presentation-only: no Area3D
+PASS: set dressing remains presentation-only: no Blocking/
+PASS: set dressing remains presentation-only: no start_recording(
+PASS: set dressing remains presentation-only: no stop_recording(
+PASS: set dressing is isolated under its own visual layer
+PASS: set dressing creates visual meshes only
+PASS: HUD pass styles expected label: HUD/Margin/VBox/Objective
+PASS: HUD pass styles expected label: HUD/Margin/VBox/State
+PASS: HUD pass styles expected label: HUD/Margin/VBox/Timer
+PASS: HUD pass styles expected label: HUD/Margin/VBox/Source
+PASS: HUD pass styles expected label: HUD/Margin/VBox/Hint
+PASS: HUD pass configures presentation setting: objective_prefix
+PASS: HUD pass configures presentation setting: compact_hints
+PASS: HUD pass configures presentation setting: teach_legacy_play_key
+PASS: HUD pass remains presentation-only: no start_recording(
+PASS: HUD pass remains presentation-only: no stop_recording(
+PASS: HUD pass remains presentation-only: no play_latest(
+PASS: HUD pass remains presentation-only: no InputMap
+PASS: HUD pass remains presentation-only: no InteractionContext
+PASS: HUD pass remains presentation-only: no RecordingClip
+
+Sprint 5 static validation complete: 0 failure(s).
+PASS: Malo movement still uses abstract input actions
+PASS: Malo interaction still uses the interact action
+PASS: Malo playback still uses the play_recording action
+PASS: REC remains hold-to-record / release-to-stop
+PASS: forward physical key remains declared
+PASS: back physical key remains declared
+PASS: left physical key remains declared
+PASS: right physical key remains declared
+PASS: left mouse button is an alternate interact binding
+PASS: Space is an alternate playback binding
+PASS: legacy P playback binding remains available
+PASS: HUD teaches mouse interaction
+PASS: HUD teaches Space playback while preserving P
+PASS: core controls do not depend on the numeric keypad
+
+Player-feel static validation complete: 0 failure(s).
+PASS: external asset slot exists
+PASS: asset preview camera helper exists
+PASS: isolated coffee-table preview exists
+PASS: Higgsfield import folder is documented
+PASS: 3D asset provenance manifest exists
+PASS: ExternalAssetSlot class declared
+PASS: asset scene remains optional
+PASS: target envelope supports floor alignment
+PASS: target envelope is positioned on the preview floor
+PASS: asset slot has no gameplay dependency
+PASS: asset slot creates no collision/gameplay area
+PASS: preview helper is camera-only
+PASS: preview camera targets the asset slot
+PASS: preview uses ExternalAssetSlot
+PASS: preview uses dedicated camera helper
+PASS: preview does not hard-reference an absent GLB
+PASS: preview keeps current coffee-table target envelope
+PASS: preview has a floor reference plane
+PASS: preview is directly runnable with an active camera
+PASS: preview provides neutral inspection lighting
+PASS: asset manifest schema version is 1
+PASS: only one 3D technical candidate is currently registered
+PASS: coffee-table candidate ID is stable
+PASS: coffee-table candidate is not production-approved
+PASS: coffee-table candidate is not falsely marked Godot-validated
+PASS: coffee-table candidate is not falsely marked visually approved
+PASS: catalog licence remains explicitly unverified
+PASS: manifest records intended GLB path
+PASS: unvalidated Higgsfield GLB is still absent from the repository
+
+Sprint 5.3 asset-pipeline static validation complete: 0 failure(s).
+PASS: house-zone planning contract exists
+PASS: sonic opportunity map exists
+PASS: Sprint 5.4 execution plan exists
+PASS: canonical Christmas1982 scene exists
+PASS: house-zone schema version is 1
+PASS: house-zone dimensions use metres
+PASS: salon remains canonical anchor
+PASS: planning contract preserves existing blocking
+PASS: house plan includes zone: salon
+PASS: house plan includes zone: corridor
+PASS: house plan includes zone: kitchen_glimpse
+PASS: house plan includes zone: kitchen
+PASS: house plan includes zone: bedroom_zone
+PASS: house plan includes zone: bathroom
+PASS: house plan includes zone: garden
+PASS: house plan includes zone: tree_cabin
+PASS: house plan includes zone: gate
+PASS: house plan includes zone: street_edge
+PASS: salon is locked in planning contract
+PASS: salon remains playable
+PASS: corridor belongs to Sprint 5.4
+PASS: corridor starts non-playable
+PASS: kitchen_glimpse belongs to Sprint 5.4
+PASS: kitchen_glimpse starts non-playable
+PASS: planning contract explicitly protects canonical blocking
+PASS: planning contract forbids new Sprint 5.4 objective
+PASS: sound map documents Salon
+PASS: sound map documents Corridor
+PASS: sound map documents Kitchen
+PASS: sound map documents Bathroom
+PASS: sound map documents Bedroom zone
+PASS: sound map documents Garden
+PASS: sound map documents Gate
+PASS: sound map documents Street edge
+PASS: sound map preserves Sprint 5 recording scope
+PASS: 5.4 execution plan contains guard: canonical A
+PASS: 5.4 execution plan contains guard: Visual Slice B
+PASS: 5.4 execution plan contains guard: Cyclops shell C
+PASS: 5.4 execution plan contains guard: Stop conditions
+PASS: 5.4 execution plan contains guard: canonical blocking markers are not adjustable
+
+House-plan static validation complete: 0 failure(s).
+PASS: character readability preview exists
+PASS: character readability review protocol exists
+PASS: placeholder humanoid source exists
+PASS: preview camera helper exists
+PASS: preview reuses canonical placeholder implementation
+PASS: preview contains both character candidates
+PASS: Malo preview keeps canonical stature
+PASS: Ronan preview keeps canonical stature
+PASS: character preview is directly runnable
+PASS: character preview is presentation-only
+PASS: character preview has no gameplay dependency
+PASS: readability review covers: Age / hierarchy read
+PASS: readability review covers: Silhouette read
+PASS: readability review covers: Colour separation
+PASS: readability review covers: Decision ladder
+PASS: review keeps final character art out of Sprint 5
+
+Character-preview static validation complete: 0 failure(s).
+PASS: scene exists: Christmas1982_VisualSlice.tscn
+PASS: Christmas1982_VisualSlice.tscn declares Godot format=3 and load_steps
+PASS: Christmas1982_VisualSlice.tscn load_steps matches resources (5)
+PASS: Christmas1982_VisualSlice.tscn ExtResource resolves: 1_base
+PASS: Christmas1982_VisualSlice.tscn ExtResource resolves: 2_visual
+PASS: Christmas1982_VisualSlice.tscn ExtResource resolves: 3_dressing
+PASS: Christmas1982_VisualSlice.tscn ExtResource resolves: 4_hud
+PASS: Christmas1982_VisualSlice.tscn resource path exists: scenes/piste_0/christmas_1982/Christmas1982.tscn
+PASS: Christmas1982_VisualSlice.tscn resource path exists: visual/period_1982_visual_pass.gd
+PASS: Christmas1982_VisualSlice.tscn resource path exists: visual/period_1982_set_dressing.gd
+PASS: Christmas1982_VisualSlice.tscn resource path exists: visual/period_1982_hud_pass.gd
+PASS: scene exists: CoffeeTableAssetPreview.tscn
+PASS: CoffeeTableAssetPreview.tscn declares Godot format=3 and load_steps
+PASS: CoffeeTableAssetPreview.tscn load_steps matches resources (5)
+PASS: CoffeeTableAssetPreview.tscn ExtResource resolves: 1_slot
+PASS: CoffeeTableAssetPreview.tscn ExtResource resolves: 2_camera
+PASS: CoffeeTableAssetPreview.tscn SubResource resolves: Mat_preview_floor
+PASS: CoffeeTableAssetPreview.tscn SubResource resolves: Plane_preview_floor
+PASS: CoffeeTableAssetPreview.tscn resource path exists: visual/external_asset_slot.gd
+PASS: CoffeeTableAssetPreview.tscn resource path exists: visual/asset_preview_camera.gd
+PASS: scene exists: CharacterReadabilityPreview.tscn
+PASS: CharacterReadabilityPreview.tscn declares Godot format=3 and load_steps
+PASS: CharacterReadabilityPreview.tscn load_steps matches resources (5)
+PASS: CharacterReadabilityPreview.tscn ExtResource resolves: 1_humanoid
+PASS: CharacterReadabilityPreview.tscn ExtResource resolves: 1_humanoid
+PASS: CharacterReadabilityPreview.tscn ExtResource resolves: 2_camera
+PASS: CharacterReadabilityPreview.tscn SubResource resolves: Mat_floor
+PASS: CharacterReadabilityPreview.tscn SubResource resolves: Plane_floor
+PASS: CharacterReadabilityPreview.tscn resource path exists: characters/common/placeholder_humanoid.gd
+PASS: CharacterReadabilityPreview.tscn resource path exists: visual/asset_preview_camera.gd
+
+Sprint 5 scene-resource validation complete: 0 failure(s).
+PASS: sound production catalog exists
+PASS: 1982 sound bible exists
+PASS: spatial sound opportunity map exists
+PASS: canonical required recording remains ronan_test
+PASS: catalog contains a useful first production backlog
+PASS: sound IDs are unique
+PASS: Sprint 5 still requires only the Ronan onboarding recording
+PASS: valid priority: ronan_test
+PASS: zone declared: ronan_test
+PASS: filename stem declared: ronan_test
+PASS: valid duration target: ronan_test
+PASS: valid priority: fisher_button_mechanics
+PASS: zone declared: fisher_button_mechanics
+PASS: filename stem declared: fisher_button_mechanics
+PASS: valid duration target: fisher_button_mechanics
+PASS: valid priority: fisher_transport_click
+PASS: zone declared: fisher_transport_click
+PASS: filename stem declared: fisher_transport_click
+PASS: valid duration target: fisher_transport_click
+PASS: valid priority: fireplace_crackle
+PASS: zone declared: fireplace_crackle
+PASS: filename stem declared: fireplace_crackle
+PASS: valid duration target: fireplace_crackle
+PASS: valid priority: wrapping_paper
+PASS: zone declared: wrapping_paper
+PASS: filename stem declared: wrapping_paper
+PASS: valid duration target: wrapping_paper
+PASS: valid priority: corridor_floor_creak
+PASS: zone declared: corridor_floor_creak
+PASS: filename stem declared: corridor_floor_creak
+PASS: valid duration target: corridor_floor_creak
+PASS: valid priority: kitchen_fridge_hum
+PASS: zone declared: kitchen_fridge_hum
+PASS: filename stem declared: kitchen_fridge_hum
+PASS: valid duration target: kitchen_fridge_hum
+PASS: valid priority: kitchen_cutlery
+PASS: zone declared: kitchen_cutlery
+PASS: filename stem declared: kitchen_cutlery
+PASS: valid duration target: kitchen_cutlery
+PASS: valid priority: bathroom_tap
+PASS: zone declared: bathroom_tap
+PASS: filename stem declared: bathroom_tap
+PASS: valid duration target: bathroom_tap
+PASS: valid priority: bedroom_cassette_cases
+PASS: zone declared: bedroom_cassette_cases
+PASS: filename stem declared: bedroom_cassette_cases
+PASS: valid duration target: bedroom_cassette_cases
+PASS: valid priority: garden_wind_tree
+PASS: zone declared: garden_wind_tree
+PASS: filename stem declared: garden_wind_tree
+PASS: valid duration target: garden_wind_tree
+PASS: valid priority: garden_swing_squeak
+PASS: zone declared: garden_swing_squeak
+PASS: filename stem declared: garden_swing_squeak
+PASS: valid duration target: garden_swing_squeak
+PASS: valid priority: gate_squeak
+PASS: zone declared: gate_squeak
+PASS: filename stem declared: gate_squeak
+PASS: valid duration target: gate_squeak
+PASS: valid priority: street_moped_pass
+PASS: zone declared: street_moped_pass
+PASS: filename stem declared: street_moped_pass
+PASS: valid duration target: street_moped_pass
+PASS: source master audio targets are documented
+PASS: sound bible preserves Sprint 5 scope
+PASS: future world/capture/playback distinction is documented without implementation
+
+Sprint 5 sound-catalog static validation complete: 0 failure(s).
+PASS: HUD script exists
+PASS: Visual Slice HUD pass exists
+PASS: Visual Slice scene exists
+PASS: HUD UX contract exists
+PASS: canonical objective prefix remains default
+PASS: canonical compact hints remain disabled
+PASS: canonical HUD still teaches legacy P
+PASS: canonical minimal hints remain disabled
+PASS: canonical state colour emphasis remains disabled
+PASS: context-first wording exists: Release R  Stop
+PASS: context-first wording exists: Playing…
+PASS: context-first wording exists: Space  Play
+PASS: context-first wording exists: Hold R  Record
+PASS: context-first wording exists: Find a sound
+PASS: HUD tracks presentation-only clip availability for hint priority
+PASS: HUD tracks presentation-only Recorder state for hint priority
+PASS: HUD exposes presentation refresh without gameplay ownership
+PASS: objective prefix removed
+PASS: compact hints enabled
+PASS: P hidden from Visual Slice teaching
+PASS: single context hint enabled
+PASS: state colour emphasis enabled
+PASS: HUD presentation is refreshed after wrapper preferences
+PASS: HUD pass has no gameplay ownership token: start_recording(
+PASS: HUD pass has no gameplay ownership token: stop_recording(
+PASS: HUD pass has no gameplay ownership token: play_latest(
+PASS: HUD pass has no gameplay ownership token: InputMap
+PASS: HUD pass has no gameplay ownership token: InteractionContext
+PASS: HUD pass has no gameplay ownership token: RecordingClip
+PASS: Visual Slice loads HUD presentation pass
+PASS: presentation passes target the canonical Base instance
+
+Sprint 5 HUD UX static validation complete: 0 failure(s).
+PASS: Interactable contract exists
+PASS: InteractionContext exists
+PASS: RecordableSource contract exists
+PASS: interaction taxonomy exists
+PASS: Interactable remains generic Area3D contract
+PASS: Interactable remains decoupled from Recorder
+PASS: Interactable remains decoupled from RecordingClip
+PASS: Interactable remains decoupled from RecordableSource
+PASS: Interactable remains decoupled from Inventory
+PASS: RecordableSource remains independent Area3D contract
+PASS: RecordableSource retains future-safe metadata
+PASS: RecordableSource does not absorb Interactable semantics
+PASS: InteractionContext selects interactables generically
+PASS: InteractionContext selects recordable sources independently
+PASS: interaction and recording priorities remain separate
+PASS: interaction planning covers: Toggle / hinge
+PASS: interaction planning covers: Momentary action
+PASS: interaction planning covers: Continuous / held action
+PASS: interaction planning covers: Passive source
+PASS: interaction planning covers: Triggered source
+PASS: interaction planning covers: Continuous source
+PASS: interaction planning covers: gate open/close + squeak
+PASS: interaction planning covers: fridge open/close + hum/seal
+PASS: interaction planning covers: tap on/off + running water
+PASS: planning explicitly blocks premature inventory
+
+Sprint 5 interaction-planning static validation complete: 0 failure(s).
+PASS: audio memory profile data exists
+PASS: P0 temporal sound-event map exists
+PASS: sound production catalog exists
+PASS: three-stage audio memory pipeline doc exists
+PASS: future temporal capture architecture doc exists
+PASS: P0 interaction/sound choreography doc exists
+PASS: temporal audio capture ADR exists
+PASS: sound catalog still has only ronan_test as required Sprint 5 recording
+PASS: audio memory profiles remain design-only
+PASS: WORLD / FISHER_CAPTURE / CASSETTE_PLAYBACK profiles exist
+PASS: ronan_test remains the only required recording
+PASS: DSP implementation is explicitly deferred
+PASS: audio design does not add Sprint 5 required recordings
+PASS: P0 memory treatment exists: gate_squeak
+PASS: P0 memory treatment maps to sound catalog id: gate_squeak
+PASS: P0 memory treatment exists: garden_wind_tree
+PASS: P0 memory treatment maps to sound catalog id: garden_wind_tree
+PASS: P0 memory treatment exists: kitchen_fridge_hum
+PASS: P0 memory treatment maps to sound catalog id: kitchen_fridge_hum
+PASS: P0 memory treatment exists: fisher_button_mechanics
+PASS: P0 memory treatment maps to sound catalog id: fisher_button_mechanics
+PASS: P0 memory treatment exists: fisher_transport_click
+PASS: P0 memory treatment maps to sound catalog id: fisher_transport_click
+PASS: P0 memory treatment exists: fireplace_crackle
+PASS: P0 memory treatment maps to sound catalog id: fireplace_crackle
+PASS: P0 memory treatment exists: street_moped_pass
+PASS: P0 memory treatment maps to sound catalog id: street_moped_pass
+PASS: P0 memory treatment exists: ronan_test
+PASS: P0 memory treatment maps to sound catalog id: ronan_test
+PASS: P0 event behavior map remains design-only
+PASS: P0 event map has no duplicate sound ids
+PASS: P0 event maps to production catalog id: ronan_test
+PASS: P0 event maps to production catalog id: fisher_button_mechanics
+PASS: P0 event maps to production catalog id: fisher_transport_click
+PASS: P0 event maps to production catalog id: fireplace_crackle
+PASS: P0 event maps to production catalog id: gate_squeak
+PASS: P0 event maps to production catalog id: garden_wind_tree
+PASS: P0 event maps to production catalog id: kitchen_fridge_hum
+PASS: P0 event maps to production catalog id: street_moped_pass
+PASS: valid temporal event type: ronan_test
+PASS: valid temporal event type: fisher_button_mechanics
+PASS: valid temporal event type: fisher_transport_click
+PASS: valid temporal event type: fireplace_crackle
+PASS: valid temporal event type: gate_squeak
+PASS: valid temporal event type: garden_wind_tree
+PASS: valid temporal event type: kitchen_fridge_hum
+PASS: valid temporal event type: street_moped_pass
+PASS: recordings are not numerically quality-scored
+PASS: partial recordings are not replaced by pristine full events
+PASS: partial recordings remain valid content
+PASS: playback feedback is disabled by default in future design
+PASS: pipeline doc defines all three perceptual stages
+PASS: creative tuning values are not misrepresented as measured hardware specs
+PASS: temporal capture remains future design
+PASS: future capture seam preserves Recorder decoupling
+PASS: future routing explicitly protects against accidental feedback
+PASS: temporal capture implementation is deferred beyond Sprint 5
+PASS: P0 choreography covers Fisher Price
+PASS: P0 choreography covers Gate
+PASS: P0 choreography covers Wind
+PASS: P0 choreography covers Fridge
+PASS: P0 choreography covers Fireplace
+PASS: P0 choreography covers Moped
+PASS: recording quality remains listen-first rather than scored
+PASS: interaction + recordability composition rule is documented
+PASS: temporal capture ADR is proposed rather than accepted/implemented
+PASS: ADR identifies bus-based temporal capture candidate
+PASS: ADR contains explicit Sprint 5 implementation stop gate
+PASS: Sprint 5 Recorder has not been prematurely rewritten for temporal capture
+
+Audio-memory design static validation complete: 0 failure(s).
+PASS: P0 sound production matrix exists
+PASS: sound catalog exists
+PASS: audio provenance manifest exists
+PASS: canonical Sprint 5 ronan_test.wav remains in place
+PASS: P0 sound production matrix documentation exists
+PASS: all identity-critical production families exist
+PASS: all production families map to the canonical sound catalog
+PASS: ronan_test remains the only required gameplay source
+PASS: matrix does not require new Sprint 5 audio files
+PASS: matrix does not require temporal capture in Sprint 5
+PASS: matrix does not require Higgsfield generation
+PASS: ronan_test: minimum variation count is positive
+PASS: ronan_test: ideal variation count is not below minimum
+PASS: ronan_test: at least one target filename is planned
+PASS: ronan_test: target masters are WAV
+PASS: ronan_test: WORLD/CAPTURE/PLAYBACK production intent is explicit
+PASS: fisher_button_mechanics: minimum variation count is positive
+PASS: fisher_button_mechanics: ideal variation count is not below minimum
+PASS: fisher_button_mechanics: at least one target filename is planned
+PASS: fisher_button_mechanics: target masters are WAV
+PASS: fisher_button_mechanics: WORLD/CAPTURE/PLAYBACK production intent is explicit
+PASS: fisher_transport_click: minimum variation count is positive
+PASS: fisher_transport_click: ideal variation count is not below minimum
+PASS: fisher_transport_click: at least one target filename is planned
+PASS: fisher_transport_click: target masters are WAV
+PASS: fisher_transport_click: WORLD/CAPTURE/PLAYBACK production intent is explicit
+PASS: fireplace_crackle: minimum variation count is positive
+PASS: fireplace_crackle: ideal variation count is not below minimum
+PASS: fireplace_crackle: at least one target filename is planned
+PASS: fireplace_crackle: target masters are WAV
+PASS: fireplace_crackle: WORLD/CAPTURE/PLAYBACK production intent is explicit
+PASS: gate_squeak: minimum variation count is positive
+PASS: gate_squeak: ideal variation count is not below minimum
+PASS: gate_squeak: at least one target filename is planned
+PASS: gate_squeak: target masters are WAV
+PASS: gate_squeak: WORLD/CAPTURE/PLAYBACK production intent is explicit
+PASS: garden_wind_tree: minimum variation count is positive
+PASS: garden_wind_tree: ideal variation count is not below minimum
+PASS: garden_wind_tree: at least one target filename is planned
+PASS: garden_wind_tree: target masters are WAV
+PASS: garden_wind_tree: WORLD/CAPTURE/PLAYBACK production intent is explicit
+PASS: kitchen_fridge_hum: minimum variation count is positive
+PASS: kitchen_fridge_hum: ideal variation count is not below minimum
+PASS: kitchen_fridge_hum: at least one target filename is planned
+PASS: kitchen_fridge_hum: target masters are WAV
+PASS: kitchen_fridge_hum: WORLD/CAPTURE/PLAYBACK production intent is explicit
+PASS: street_moped_pass: minimum variation count is positive
+PASS: street_moped_pass: ideal variation count is not below minimum
+PASS: street_moped_pass: at least one target filename is planned
+PASS: street_moped_pass: target masters are WAV
+PASS: street_moped_pass: WORLD/CAPTURE/PLAYBACK production intent is explicit
+PASS: audio manifest contains one canonical ronan_test entry
+PASS: ronan manifest path remains canonical
+PASS: ronan manifest entry remains Sprint 5 required
+PASS: prototype Ronan audio is not mislabelled as final production audio
+PASS: documentation protects current Ronan dependency
+PASS: documentation preserves nondestructive WORLD/CAPTURE/PLAYBACK strategy
+PASS: documentation preserves credit discipline
+
+P0 sound production matrix validation complete: 0 failure(s).
+PASS: P0 sound acquisition queue exists
+PASS: P0 sound production matrix exists
+PASS: acquisition queue remains planning-only
+PASS: acquisition batches remain ordered A -> B -> C
+PASS: A_existing_salon: item order is contiguous
+PASS: A_existing_salon: fisher_button_mechanics exists in production matrix
+PASS: fisher_button_mechanics: generated fallback requires credit preapproval
+PASS: A_existing_salon: fisher_transport_click exists in production matrix
+PASS: fisher_transport_click: generated fallback requires credit preapproval
+PASS: A_existing_salon: ronan_test exists in production matrix
+PASS: A_existing_salon: fireplace_crackle exists in production matrix
+PASS: fireplace_crackle: generated fallback requires credit preapproval
+PASS: B_microhub_expansion: item order is contiguous
+PASS: B_microhub_expansion: gate_squeak exists in production matrix
+PASS: gate_squeak: generated fallback requires credit preapproval
+PASS: B_microhub_expansion: garden_wind_tree exists in production matrix
+PASS: garden_wind_tree: generated fallback requires credit preapproval
+PASS: B_microhub_expansion: kitchen_fridge_hum exists in production matrix
+PASS: kitchen_fridge_hum: generated fallback requires credit preapproval
+PASS: C_wider_world: item order is contiguous
+PASS: C_wider_world: street_moped_pass exists in production matrix
+PASS: street_moped_pass: generated fallback requires credit preapproval
+PASS: Batch A prioritises recorder feel before world expansion
+PASS: moped remains deferred to wider-world Batch C
+
+P0 sound acquisition validation complete: 0 failure(s).
+PASS: cassette memory schema exists
+PASS: child title rules exist
+PASS: cassette memory examples exist
+PASS: recording callback schema exists
+PASS: cassette library design doc exists
+PASS: physical cassette UX doc exists
+PASS: Sprint 6 recording-memory plan exists
+PASS: recording memory callback design exists
+PASS: recording evolution-by-era roadmap exists
+PASS: Sprint 6 persistence model exists
+PASS: cassette memory handoff status exists
+PASS: cassette schema remains design-only
+PASS: no recording quality score
+PASS: title not required before playback
+PASS: destructive deletion is not default
+PASS: favourite remains distinct from GOOD
+PASS: physical metaphor is preferred
+PASS: cassette library is not a Sprint 5 implementation
+PASS: memory keep state exists: UNREVIEWED
+PASS: memory keep state exists: GOOD
+PASS: memory keep state exists: FAILED_KEEP
+PASS: memory keep state exists: RETRY
+PASS: memory keep state exists: IMPORTANT
+PASS: core childhood boxes exist
+PASS: child title remains optional
+PASS: display title is separate from stable id
+PASS: child-title examples cover RONAN
+PASS: child-title examples cover PORTAIL
+PASS: child-title examples cover VENT
+PASS: examples include a GOOD take
+PASS: examples include RATÉ MAIS GARDER behavior
+PASS: examples include retry without deletion
+PASS: callback schema remains design-only
+PASS: later callbacks do not rewrite childhood annotation
+PASS: callbacks are not rarity collectibles
+PASS: one recording may gain multiple meanings over time
+PASS: callback discovery states are defined
+PASS: canonical failed-but-kept language is documented
+PASS: library design rejects global quality scoring
+PASS: modern media-library anti-pattern is documented
+PASS: physical cassette UX is world-first
+PASS: first review proof stays deliberately small
+PASS: physical failed-but-kept moment is represented
+PASS: Sprint 6 implementation is gated by Sprint 5 validation
+PASS: Sprint 6 plan requires stable recording identity
+PASS: Sprint 6 plan preserves no-score philosophy
+PASS: recordings may accumulate meaning across eras
+PASS: callback lifecycle preserves one raw source with multiple meanings
+PASS: callback design explicitly rejects gamey memory banners
+PASS: recording evolution roadmap covers Fisher Price
+PASS: recording evolution roadmap covers Philips D6920 MK2
+PASS: recording evolution roadmap covers Radio Malo
+PASS: complexity is gated by device and Malo's age
+PASS: failed-but-kept survives across eras
+PASS: persistence remains deferred during Sprint 5
+PASS: future save model is versioned from the start
+PASS: persistence rejects runtime node paths as durable identity
+PASS: Recorder stays decoupled from persistence
+PASS: future MK2 derivatives preserve lineage
+PASS: compact cassette status clearly states future scope
+PASS: compact handoff preserves implementation gate
+PASS: RecordingClip is not prematurely coupled to editorial field: keep_state
+PASS: RecordingClip is not prematurely coupled to editorial field: favourite
+PASS: RecordingClip is not prematurely coupled to editorial field: box_id
+PASS: RecordingClip is not prematurely coupled to editorial field: child_note
+PASS: RecordingClip is not prematurely coupled to editorial field: MemoryAnnotation
+PASS: Recorder is not prematurely coupled to cassette library/persistence: CassetteLibrary
+PASS: Recorder is not prematurely coupled to cassette library/persistence: MemoryAnnotation
+PASS: Recorder is not prematurely coupled to cassette library/persistence: FAILED_KEEP
+PASS: Recorder is not prematurely coupled to cassette library/persistence: favourite
+PASS: Recorder is not prematurely coupled to cassette library/persistence: save
+PASS: Recorder is not prematurely coupled to cassette library/persistence: schema_version
+
+Cassette memory design static validation complete: 0 failure(s).
+PASS: PISTE 0 narrative beat data exists
+PASS: PISTE 0 beat dependency map exists
+PASS: PISTE 0 narrative beat design doc exists
+PASS: PISTE 0 playable-structure doc exists
+PASS: PISTE 0 implementation-rollout doc exists
+PASS: PISTE 0 narrative beats remain design-only
+PASS: no quest-log design
+PASS: waypoints are not the default guidance
+PASS: recording quality is not scored
+PASS: no collect-all progression gate
+PASS: no mission-failed language
+PASS: sound-first guidance is preserved
+PASS: ronan_test remains the only current required recording
+PASS: known PISTE 0 signature beats are represented
+PASS: only one mandatory onboarding beat exists
+PASS: mandatory onboarding remains first Fisher/Ronan beat
+PASS: mandatory onboarding still records RonanTest
+PASS: only existing onboarding is marked as current implementation
+PASS: beat dependency map remains design-only
+PASS: dependency map covers exactly the narrative beat set
+PASS: only existing first-Fisher beat is safe to implement now
+PASS: gate beat dependency entry exists
+PASS: gate proof waits for temporal capture and garden access
+PASS: rollout rule limits simultaneous systemic risk
+PASS: narrative design covers signature PISTE 0 element: BONJOUR
+PASS: narrative design covers signature PISTE 0 element: MALO TU FAIS QUOI
+PASS: narrative design covers signature PISTE 0 element: Radio Malo est complètement génial
+PASS: narrative design covers signature PISTE 0 element: RATÉS MAIS GARDER
+PASS: narrative design covers signature PISTE 0 element: Toujours prendre le rire
+PASS: anti-quest marker rule is documented
+PASS: mission-language anti-pattern is documented
+PASS: playable structure includes phase: Christmas 1982 / Discovery
+PASS: playable structure includes phase: The house becomes audible
+PASS: playable structure includes phase: Garden / Sound hunting
+PASS: playable structure includes phase: Malo starts organising
+PASS: playable structure includes phase: Recording becomes storytelling
+PASS: playable structure includes phase: Persistence / Experimentation
+PASS: playable structure includes phase: MK2 transition
+PASS: playable structure includes phase: Radio Malo
+PASS: no sound-completion percentage
+PASS: rollout includes staged proof: Ronan archive
+PASS: rollout includes staged proof: physical review
+PASS: rollout includes staged proof: temporal capture test
+PASS: rollout includes staged proof: Gate
+PASS: rollout includes staged proof: Wind
+PASS: rollout includes staged proof: Fridge
+PASS: rollout includes staged proof: Radio Malo
+PASS: rollout includes staged proof: MK2
+PASS: gate is explicitly justified as first new signature beat
+PASS: early Radio Malo rollout explicitly avoids a DAW
+PASS: temporal capture is proven in isolation before world expansion
+PASS: Recorder has no premature narrative-beat coupling: Quest
+PASS: Recorder has no premature narrative-beat coupling: Mission
+PASS: Recorder has no premature narrative-beat coupling: MB02_gate_bonjour
+PASS: Recorder has no premature narrative-beat coupling: Radio Malo
+PASS: Recorder has no premature narrative-beat coupling: collect_all
+PASS: InteractionContext has no premature narrative-beat coupling: Quest
+PASS: InteractionContext has no premature narrative-beat coupling: Mission
+PASS: InteractionContext has no premature narrative-beat coupling: MB02_gate_bonjour
+PASS: InteractionContext has no premature narrative-beat coupling: Radio Malo
+PASS: InteractionContext has no premature narrative-beat coupling: collect_all
+
+PISTE 0 narrative design static validation complete: 0 failure(s).
+PASS: guidance profiles exist
+PASS: assistance recovery rules exist
+PASS: guidance modes doc exists
+PASS: failure/recovery doc exists
+PASS: guidance design remains design-only
+PASS: NATURAL is the default guidance profile
+PASS: guidance profiles share one campaign
+PASS: guidance can change during play
+PASS: all three guidance profiles exist
+PASS: guidance invariant holds: same_story
+PASS: guidance invariant holds: same_memory_beats
+PASS: guidance invariant holds: same_endings
+PASS: guidance invariant holds: same_rewards
+PASS: guidance invariant holds: no_progress_penalty_for_guidance
+PASS: recovery rules remain design-only
+PASS: no mission-failed language
+PASS: no frame-perfect timing requirement
+PASS: optional beats do not block progression
+PASS: poor recordings are not game failure
+PASS: Recorder does not own narrative failure
+PASS: hint ladder is ordered 0 through 4
+PASS: current mandatory beat remains Fisher/Ronan onboarding
+PASS: guidance document includes: GUIDED
+PASS: guidance document includes: NATURAL
+PASS: guidance document includes: FREE
+PASS: guidance document includes: ARCHIVE MODE
+PASS: guidance document includes: Default profile: `NATURAL`
+PASS: guidance doc preserves identical story content
+PASS: recovery document includes: interesting failure
+PASS: recovery document includes: soft retry
+PASS: recovery document includes: adaptive assistance
+PASS: recovery document includes: Hint 4
+PASS: recovery doc explicitly rejects mission-failed framing
+PASS: Recorder is not coupled to assistance logic: GUIDED
+PASS: Recorder is not coupled to assistance logic: NATURAL
+PASS: Recorder is not coupled to assistance logic: FREE
+PASS: Recorder is not coupled to assistance logic: Hint 4
+PASS: Recorder is not coupled to assistance logic: MISSION FAILED
+PASS: Recorder is not coupled to assistance logic: failed_attempts
+
+Guidance/recovery design static validation complete: 0 failure(s).
+PASS: PISTE 0 pacing model exists
+PASS: PISTE 0 pacing document exists
+PASS: pacing model remains design-only
+PASS: core rhythm unit is preserved
+PASS: all pacing bands exist
+PASS: similar beat run is limited
+PASS: classification is not forced after every recording
+PASS: silence remains allowed
+PASS: timing challenges are not stacked
+PASS: guidance does not rewrite pacing identity
+PASS: Recorder does not own pacing
+PASS: InteractionContext does not own pacing
+PASS: pacing document includes: NOTICE -> WANT -> TRY -> RESULT -> REPLAY/REACTION -> RELEASE
+PASS: pacing document includes: Anti-boredom rules
+PASS: pacing document includes: Anti-fatigue rules
+PASS: pacing document includes: Archive Mode
+PASS: pacing doc rejects passive repetition
+PASS: Recorder is not coupled to pacing metadata: CALM
+PASS: Recorder is not coupled to pacing metadata: PLAYFUL
+PASS: Recorder is not coupled to pacing metadata: FOCUSED
+PASS: Recorder is not coupled to pacing metadata: CHAOTIC
+PASS: Recorder is not coupled to pacing metadata: REFLECTIVE
+PASS: Recorder is not coupled to pacing metadata: NOTICE
+PASS: Recorder is not coupled to pacing metadata: WANT
+PASS: InteractionContext is not coupled to pacing metadata: CALM
+PASS: InteractionContext is not coupled to pacing metadata: PLAYFUL
+PASS: InteractionContext is not coupled to pacing metadata: FOCUSED
+PASS: InteractionContext is not coupled to pacing metadata: CHAOTIC
+PASS: InteractionContext is not coupled to pacing metadata: REFLECTIVE
+PASS: InteractionContext is not coupled to pacing metadata: NOTICE
+PASS: InteractionContext is not coupled to pacing metadata: WANT
+
+PISTE 0 pacing design static validation complete: 0 failure(s).
+PASS: family living-world design data exists
+PASS: family living-world design doc exists
+PASS: family behaviour remains design-only
+PASS: lightweight authored behaviour is preferred
+PASS: full NPC navigation is not required
+PASS: Ronan, Mother and Father behaviour roles exist
+PASS: all family behaviour categories exist
+PASS: family are not quest dispensers
+PASS: interruptions are not punishment
+PASS: Recorder does not own family behaviour
+PASS: family AI is not a Sprint 5 implementation
+PASS: family design document includes: Ronan
+PASS: family design document includes: Mother
+PASS: family design document includes: Father
+PASS: family design document includes: Interruptions as content
+PASS: family design document includes: Repeat-action design
+PASS: family design rejects premature roaming AI
+PASS: Recorder is not coupled to family behaviour: mother_fridge
+PASS: Recorder is not coupled to family behaviour: ronan_reacts
+PASS: Recorder is not coupled to family behaviour: family_behaviour
+PASS: Recorder is not coupled to family behaviour: INTERRUPTIVE
+PASS: Recorder is not coupled to family behaviour: CALLBACK
+PASS: InteractionContext is not coupled to family behaviour: mother_fridge
+PASS: InteractionContext is not coupled to family behaviour: ronan_reacts
+PASS: InteractionContext is not coupled to family behaviour: family_behaviour
+PASS: InteractionContext is not coupled to family behaviour: INTERRUPTIVE
+PASS: InteractionContext is not coupled to family behaviour: CALLBACK
+
+Family living-world design static validation complete: 0 failure(s).
+PASS: affordance catalog exists
+PASS: interaction state-model design exists
+PASS: physical affordance language exists
+PASS: interaction feedback contract exists
+PASS: interaction sequence cards exist
+PASS: Work affordance handoff exists
+PASS: interaction taxonomy exists
+PASS: affordance catalog remains design-only
+PASS: world cue precedes prompt
+PASS: persistent outlines are not default
+PASS: quest markers are not default
+PASS: recordability stays separate from interaction
+PASS: interaction does not imply inventory
+PASS: current required interaction stays Fisher pickup
+PASS: affordance object exists: fisher_price
+PASS: affordance object exists: garden_gate
+PASS: affordance object exists: kitchen_fridge
+PASS: affordance object exists: bathroom_tap
+PASS: affordance object exists: cassette_boxes
+PASS: affordance object exists: fireplace
+PASS: affordance object exists: moped_pass
+PASS: fireplace proves meaningful sources need not be interactable
+PASS: fireplace remains a passive source
+PASS: gate uses OPEN/CLOSE verbs
+PASS: gate remains temporal sound candidate
+PASS: gate implementation stays gated
+PASS: fridge combines passive and triggered audio
+PASS: tap is reserved for sustained-source experiment
+PASS: all guidance profiles specified for fisher_price
+PASS: all guidance profiles specified for garden_gate
+PASS: all guidance profiles specified for kitchen_fridge
+PASS: all guidance profiles specified for bathroom_tap
+PASS: all guidance profiles specified for cassette_boxes
+PASS: all guidance profiles specified for fireplace
+PASS: all guidance profiles specified for wrapping_paper
+PASS: all guidance profiles specified for garden_swing
+PASS: all guidance profiles specified for room_door
+PASS: all guidance profiles specified for moped_pass
+PASS: interaction state models remain design-only
+PASS: object state remains Recorder-independent
+PASS: object state remains InteractionContext-independent
+PASS: narrative IDs stay outside object state
+PASS: state model exists: fisher_price
+PASS: state model exists: garden_gate
+PASS: state model exists: kitchen_fridge
+PASS: state model exists: bathroom_tap
+PASS: Fisher state model documents existing ownership
+PASS: Fisher current state owner is explicit
+PASS: gate state model remains future candidate
+PASS: gate state does not own recording clip creation
+PASS: fridge separates door and compressor state
+PASS: fridge does not own family reaction logic
+PASS: tap sustained source preserves generic Recorder
+PASS: affordance language covers A0
+PASS: affordance language covers A1
+PASS: affordance language covers A2
+PASS: affordance language covers A3
+PASS: affordance language covers TAKE
+PASS: affordance language covers OPEN / CLOSE
+PASS: affordance language covers PRESS
+PASS: affordance language covers TURN ON / TURN OFF
+PASS: default outline/marker language is explicitly rejected
+PASS: world-first affordance thesis is explicit
+PASS: feedback contract covers stage: INVITATION
+PASS: feedback contract covers stage: COMMIT
+PASS: feedback contract covers stage: PHYSICAL RESULT
+PASS: feedback contract covers stage: MEMORY RESULT
+PASS: FREE guidance retains physical usability
+PASS: REC coexistence is an acceptance question
+PASS: sequence cards cover Fisher Price pickup
+PASS: sequence cards cover Garden gate / BONJOUR
+PASS: sequence cards cover Fridge / Mother
+PASS: sequence cards cover Bathroom tap
+PASS: sequence cards cover Cassette review surface
+PASS: sequence cards cover Fireplace
+PASS: fireplace sequence card preserves non-interactable sound-source lesson
+PASS: gate sequence preserves REC + world interaction
+PASS: Work is protected from catalog-as-scope expansion
+PASS: gate rollout recommendation is documented
+PASS: Interactable has no premature affordance-specific coupling: garden_gate
+PASS: Interactable has no premature affordance-specific coupling: kitchen_fridge
+PASS: Interactable has no premature affordance-specific coupling: bathroom_tap
+PASS: Interactable has no premature affordance-specific coupling: affordance_level
+PASS: Interactable has no premature affordance-specific coupling: GUIDED
+PASS: Interactable has no premature affordance-specific coupling: NATURAL
+PASS: Interactable has no premature affordance-specific coupling: FREE
+PASS: InteractionContext has no premature affordance-specific coupling: garden_gate
+PASS: InteractionContext has no premature affordance-specific coupling: kitchen_fridge
+PASS: InteractionContext has no premature affordance-specific coupling: bathroom_tap
+PASS: InteractionContext has no premature affordance-specific coupling: affordance_level
+PASS: InteractionContext has no premature affordance-specific coupling: GUIDED
+PASS: InteractionContext has no premature affordance-specific coupling: NATURAL
+PASS: InteractionContext has no premature affordance-specific coupling: FREE
+PASS: Recorder has no premature affordance-specific coupling: garden_gate
+PASS: Recorder has no premature affordance-specific coupling: kitchen_fridge
+PASS: Recorder has no premature affordance-specific coupling: bathroom_tap
+PASS: Recorder has no premature affordance-specific coupling: affordance_level
+PASS: Recorder has no premature affordance-specific coupling: GUIDED
+PASS: Recorder has no premature affordance-specific coupling: NATURAL
+PASS: Recorder has no premature affordance-specific coupling: FREE
+
+Physical affordance design static validation complete: 0 failure(s).
+PASS: character gesture catalog exists
+PASS: character rig requirements exist
+PASS: character gesture language exists
+PASS: character animation architecture exists
+PASS: character gesture sequence cards exist
+PASS: animation production backlog exists
+PASS: Work character animation handoff exists
+PASS: character gesture catalog remains design-only
+PASS: controller remains locomotion owner
+PASS: root motion is not required
+PASS: attention may not steal control
+PASS: contact gestures require audio sync
+PASS: placeholder remains temporary
+PASS: large AnimationTree is not required now
+PASS: Sprint 5 has no authorised new animation system
+PASS: gesture exists: malo_idle_listening
+PASS: gesture exists: malo_walk_child
+PASS: gesture exists: malo_pickup_fisher
+PASS: gesture exists: malo_carry_fisher
+PASS: gesture exists: malo_press_rec
+PASS: gesture exists: malo_recording_hold
+PASS: gesture exists: malo_stop_recording
+PASS: gesture exists: malo_press_play_listen
+PASS: gesture exists: ronan_notice_rec_glance
+PASS: gesture exists: mother_fridge_glance
+PASS: gesture exists: father_fireplace_adjust
+PASS: current recorder gesture is P0: malo_press_rec
+PASS: current recorder gesture is P0: malo_stop_recording
+PASS: current recorder gesture is P0: malo_press_play_listen
+PASS: rig requirements remain design-only
+PASS: rig target engine is explicit
+PASS: rig cannot impose vendor-specific gameplay coupling
+PASS: rig requires a retargeting path
+PASS: rig requires readable hands/fingers
+PASS: Malo rig target remains age six
+PASS: Malo rig target height stays within art-direction range
+PASS: Malo rig must support Fisher carry
+PASS: gesture language defines locomotion layer
+PASS: gesture language defines attention layer
+PASS: gesture language defines object-interaction layer
+PASS: Malo age-specific motion principle is explicit
+PASS: root-motion policy is explicit
+PASS: animation architecture keeps gameplay authoritative
+PASS: future presenter seam is documented
+PASS: animation anchors remain presentation-only
+PASS: animation failure cannot break recorder gameplay
+PASS: critical sequence card exists: Malo takes the Fisher Price
+PASS: critical sequence card exists: Malo presses REC
+PASS: critical sequence card exists: Malo releases REC / STOP
+PASS: critical sequence card exists: Malo presses PLAY and listens
+PASS: critical sequence card exists: Ronan notices he is being recorded
+PASS: REC sequence preserves Recorder authority
+PASS: Mother-call reaction preserves active recording
+PASS: Batch A backlog covers A1 — Malo locomotion
+PASS: Batch A backlog covers A2 — Fisher carry
+PASS: Batch A backlog covers A3 — Fisher interaction trio
+PASS: Batch A backlog covers A4 — Fisher pickup
+PASS: Batch A backlog covers A7 — Ronan notices REC
+PASS: animation backlog has an explicit Batch A stop gate
+PASS: Work handoff states ownership rule
+PASS: Work avoids overbuilding placeholder
+PASS: Work handoff keeps controller-authoritative locomotion
+PASS: placeholder has not been prematurely converted to production animation graph
+PASS: placeholder has no premature presenter coupling
+PASS: Recorder has no premature animation coupling: CharacterAnimationPresenter
+PASS: Recorder has no premature animation coupling: PRESS_REC
+PASS: Recorder has no premature animation coupling: PICKUP_FISHER
+PASS: Recorder has no premature animation coupling: AnimationTree
+PASS: Recorder has no premature animation coupling: animation_finished
+
+Character animation design static validation complete: 0 failure(s).
+PASS: family bark catalog exists
+PASS: family dialogue design exists
+PASS: family dialogue architecture exists
+PASS: Work dialogue handoff exists
+PASS: family bark catalog remains design-only
+PASS: French remains canonical source-writing language
+PASS: dialogue trees are not default
+PASS: localized text is never an identifier
+PASS: Recorder does not own barks
+PASS: InteractionContext does not own barks
+PASS: FREE guidance does not disable subtitles
+PASS: ordinary barks remain interruptible
+PASS: constant chatter is rejected
+PASS: bark localization/event keys are unique
+PASS: signature family bark cases are represented
+PASS: valid bark family: family.ronan.rec_notice.nonverbal.01
+PASS: valid bark intensity: family.ronan.rec_notice.nonverbal.01
+PASS: recording relation documented: family.ronan.rec_notice.nonverbal.01
+PASS: repeat policy documented: family.ronan.rec_notice.nonverbal.01
+PASS: valid bark family: family.ronan.rec_notice.01
+PASS: valid bark intensity: family.ronan.rec_notice.01
+PASS: recording relation documented: family.ronan.rec_notice.01
+PASS: repeat policy documented: family.ronan.rec_notice.01
+PASS: valid bark family: family.ronan.rec_notice.02
+PASS: valid bark intensity: family.ronan.rec_notice.02
+PASS: recording relation documented: family.ronan.rec_notice.02
+PASS: repeat policy documented: family.ronan.rec_notice.02
+PASS: valid bark family: family.mother.wind_call.01
+PASS: valid bark intensity: family.mother.wind_call.01
+PASS: recording relation documented: family.mother.wind_call.01
+PASS: repeat policy documented: family.mother.wind_call.01
+PASS: valid bark family: family.mother.fridge.glance.01
+PASS: valid bark intensity: family.mother.fridge.glance.01
+PASS: recording relation documented: family.mother.fridge.glance.01
+PASS: repeat policy documented: family.mother.fridge.glance.01
+PASS: valid bark family: family.mother.fridge.01
+PASS: valid bark intensity: family.mother.fridge.01
+PASS: recording relation documented: family.mother.fridge.01
+PASS: repeat policy documented: family.mother.fridge.01
+PASS: valid bark family: family.mother.fridge.02
+PASS: valid bark intensity: family.mother.fridge.02
+PASS: recording relation documented: family.mother.fridge.02
+PASS: repeat policy documented: family.mother.fridge.02
+PASS: valid bark family: family.father.fireplace.nonverbal.01
+PASS: valid bark intensity: family.father.fireplace.nonverbal.01
+PASS: recording relation documented: family.father.fireplace.nonverbal.01
+PASS: repeat policy documented: family.father.fireplace.nonverbal.01
+PASS: valid bark family: family.father.fireplace.01
+PASS: valid bark intensity: family.father.fireplace.01
+PASS: recording relation documented: family.father.fireplace.01
+PASS: repeat policy documented: family.father.fireplace.01
+PASS: valid bark family: radio_malo.ronan.praise.01
+PASS: valid bark intensity: radio_malo.ronan.praise.01
+PASS: recording relation documented: radio_malo.ronan.praise.01
+PASS: repeat policy documented: radio_malo.ronan.praise.01
+PASS: valid bark family: family.ronan.laugh.01
+PASS: valid bark intensity: family.ronan.laugh.01
+PASS: recording relation documented: family.ronan.laugh.01
+PASS: repeat policy documented: family.ronan.laugh.01
+PASS: valid bark family: family.mother.callback.fridge.01
+PASS: valid bark intensity: family.mother.callback.fridge.01
+PASS: recording relation documented: family.mother.callback.fridge.01
+PASS: repeat policy documented: family.mother.callback.fridge.01
+PASS: dialogue design documents: MALO, TU FAIS QUOI ?
+PASS: dialogue design documents: Radio Malo est complètement génial
+PASS: dialogue design documents: Canonical authored source
+PASS: dialogue design documents: constant chatter
+PASS: barks cannot block Recorder
+PASS: event ownership rule is explicit
+PASS: temporal capture remains natural
+PASS: subtitle accessibility stays independent
+PASS: Work is protected from dialogue overbuild
+PASS: Work handoff preserves capture architecture
+PASS: Recorder has no premature dialogue coupling: family_bark_catalog
+PASS: Recorder has no premature dialogue coupling: BarkSelector
+PASS: Recorder has no premature dialogue coupling: FamilyReactionDirector
+PASS: Recorder has no premature dialogue coupling: localization_key
+PASS: Recorder has no premature dialogue coupling: dialogue_tree
+PASS: InteractionContext has no premature dialogue coupling: family_bark_catalog
+PASS: InteractionContext has no premature dialogue coupling: BarkSelector
+PASS: InteractionContext has no premature dialogue coupling: FamilyReactionDirector
+PASS: InteractionContext has no premature dialogue coupling: localization_key
+PASS: InteractionContext has no premature dialogue coupling: dialogue_tree
+
+Family dialogue design static validation complete: 0 failure(s).
+PASS: accessibility settings contract exists
+PASS: accessibility/guidance separation doc exists
+PASS: Work accessibility handoff exists
+PASS: accessibility contract remains design-only
+PASS: accessibility is independent from guidance
+PASS: accessibility setting exists: subtitles
+PASS: accessibility setting exists: speaker_labels
+PASS: accessibility setting exists: subtitle_size
+PASS: accessibility setting exists: subtitle_background
+PASS: accessibility setting exists: ui_text_scale
+PASS: accessibility setting exists: rec_input_mode
+PASS: FREE can use subtitles
+PASS: FREE can use hearing support
+PASS: accessibility does not branch story
+PASS: accessibility does not change recording value
+PASS: Recorder does not own accessibility
+PASS: Interactable does not own accessibility
+PASS: separate-axis principle is explicit
+PASS: FREE hearing support is explicit
+PASS: sound captions remain selective
+PASS: REC state cannot rely on colour alone
+PASS: Work handoff states separation
+PASS: no accessibility penalty
+PASS: Recorder has no premature accessibility coupling: subtitle_size
+PASS: Recorder has no premature accessibility coupling: speaker_labels
+PASS: Recorder has no premature accessibility coupling: critical_sound_captions
+PASS: Recorder has no premature accessibility coupling: accessibility_settings_contract
+PASS: Interactable has no premature accessibility coupling: subtitle_size
+PASS: Interactable has no premature accessibility coupling: speaker_labels
+PASS: Interactable has no premature accessibility coupling: critical_sound_captions
+PASS: Interactable has no premature accessibility coupling: accessibility_settings_contract
+PASS: InteractionContext has no premature accessibility coupling: subtitle_size
+PASS: InteractionContext has no premature accessibility coupling: speaker_labels
+PASS: InteractionContext has no premature accessibility coupling: critical_sound_captions
+PASS: InteractionContext has no premature accessibility coupling: accessibility_settings_contract
+
+Accessibility design static validation complete: 0 failure(s).
+PASS: camera zone profile exists
+PASS: cinematic gameplay camera language exists
+PASS: Work camera handoff exists
+PASS: existing cinematic camera exists
+PASS: future camera zones remain design-only
+PASS: free mouse-look remains rejected
+PASS: Recorder does not own camera
+PASS: Malo controller does not own cinematic camera
+PASS: camera grammar includes C0
+PASS: camera grammar includes C1
+PASS: camera grammar includes C2
+PASS: camera grammar includes C3
+PASS: camera grammar includes C4
+PASS: camera grammar includes C5
+PASS: camera zone exists: salon
+PASS: camera zone exists: corridor
+PASS: camera zone exists: kitchen
+PASS: camera zone exists: garden
+PASS: camera zone exists: gate_street_edge
+PASS: camera transitions preserve player control
+PASS: REC may continue through camera transitions
+PASS: REC does not auto-zoom camera
+PASS: camera does not auto-center every interactable
+PASS: existing camera keeps bounded offset contract
+PASS: existing camera remains soft-follow based
+PASS: cinematic framing thesis is explicit
+PASS: REC/camera separation is explicit
+PASS: free camera anti-pattern is explicit
+PASS: reduced camera motion accessibility is documented
+PASS: Work handoff preserves authored camera
+PASS: Work proof includes REC continuity
+PASS: Recorder has no premature cinematic-camera coupling: camera_zone_profiles
+PASS: Recorder has no premature cinematic-camera coupling: CinematicCameraDirector
+PASS: Recorder has no premature cinematic-camera coupling: camera_anchor_id
+PASS: Recorder has no premature cinematic-camera coupling: PhantomCamera
+PASS: Malo has no premature cinematic-camera coupling: camera_zone_profiles
+PASS: Malo has no premature cinematic-camera coupling: CinematicCameraDirector
+PASS: Malo has no premature cinematic-camera coupling: camera_anchor_id
+PASS: Malo has no premature cinematic-camera coupling: PhantomCamera
+
+Camera design static validation complete: 0 failure(s).
+
+=== BO Sprint 5 Godot headless contracts ===
+Godot Engine v4.7.stable.official.5b4e0cb0f - https://godotengine.org
+
+[   0% ] first_scan_filesystem | Started Project initialization (5 steps)
+[   0% ] first_scan_filesystem | Scanning file structure...
+[  16% ] first_scan_filesystem | Loading global class names...
+[  33% ] first_scan_filesystem | Verifying GDExtensions...
+[  50% ] first_scan_filesystem | Creating autoload scripts...
+[  66% ] first_scan_filesystem | Initializing plugins...
+[  83% ] first_scan_filesystem | Starting file scan...
+[ DONE ] first_scan_filesystem
+
+[   0% ] update_scripts_classes | Started Registering global classes... (24 steps)
+[   0% ] update_scripts_classes | PlaceholderHumanoid3D
+[   4% ] update_scripts_classes | MaloController
+[   8% ] update_scripts_classes | Interactable
+[  12% ] update_scripts_classes | InteractionContext
+[  16% ] update_scripts_classes | RecordableSource
+[  20% ] update_scripts_classes | FisherPrice
+[  24% ] update_scripts_classes | FisherPriceVisual
+[  28% ] update_scripts_classes | Recorder
+[  32% ] update_scripts_classes | RecordingClip
+[  36% ] update_scripts_classes | Christmas1982Director
+[  40% ] update_scripts_classes |
+[  44% ] update_scripts_classes |
+[  48% ] update_scripts_classes |
+[  52% ] update_scripts_classes |
+[  56% ] update_scripts_classes |
+[  60% ] update_scripts_classes |
+[  64% ] update_scripts_classes |
+[  68% ] update_scripts_classes |
+[  72% ] update_scripts_classes | RecorderHUD
+[  76% ] update_scripts_classes | AssetPreviewCamera
+[  80% ] update_scripts_classes | ExternalAssetSlot
+[  84% ] update_scripts_classes | Period1982HUDPass
+[  88% ] update_scripts_classes | Period1982SetDressing
+[  92% ] update_scripts_classes | Period1982VisualPass
+[ DONE ] update_scripts_classes
+
+[   0% ] reimport | Started (Re)Importing Assets (1 steps)
+[   0% ] reimport | Preparing files to reimport...
+[   0% ] reimport | Executing pre-reimport operations...
+[   0% ] reimport | ronan_test.wav
+[  50% ] reimport | Finalizing Asset Import...
+[ DONE ] reimport
+
+[   0% ] reimport | Started (Re)Importing Assets (1 steps)
+[   0% ] reimport | Executing post-reimport operations...
+[ DONE ] reimport
+
+[   0% ] loading_editor_layout | Started Loading editor (5 steps)
+[   0% ] loading_editor_layout | Loading editor layout...
+[  16% ] loading_editor_layout | Loading docks...
+[ DONE ] loading_editor_layout
+
+Godot Engine v4.7.stable.official.5b4e0cb0f - https://godotengine.org
+
+PASS: PLAY fails cleanly when no clip exists
+PASS: REC rejects a missing source
+PASS: Recorder enters REC with a valid source
+PASS: A second REC cannot start while already recording
+PASS: Stopping REC creates a RecordingClip
+PASS: RecordingClip is stored independently
+PASS: RecordingClip preserves source id
+PASS: RecordingClip preserves source title
+PASS: RecordingClip stores duration
+PASS: RecordingClip stores creation timestamp
+PASS: RecordingClip preserves source metadata
+PASS: RecordingClip reports itself playable
+PASS: Latest RecordingClip can enter PLAY
+PASS: PLAY cannot start twice simultaneously
+PASS: Recorder returns to STOP
+Recorder tests complete. Failures: 0
+Godot Engine v4.7.stable.official.5b4e0cb0f - https://godotengine.org
+
+PASS: Christmas1982 loads as a PackedScene
+PASS: Malo exists
+PASS: Fisher Price exists
+PASS: RonanTest exists
+PASS: Malo starts without a recorder
+PASS: Malo cannot REC before taking the Fisher Price
+PASS: Taking Fisher Price equips its Recorder
+PASS: Fisher Price enters EQUIPPED state
+PASS: Malo can REC RonanTest after equipping Fisher Price
+PASS: Fisher Price enters ACTIVE state during REC
+PASS: Malo cannot start two recordings simultaneously
+PASS: STOP creates the first clip
+PASS: Fisher Price returns to EQUIPPED after STOP
+PASS: Exactly one clip exists after first STOP
+PASS: Malo can PLAY the latest clip
+PASS: Fisher Price enters ACTIVE state during PLAY
+PASS: Loop ends in STOP
+Gameplay contract tests complete. Failures: 0
+Godot Engine v4.7.stable.official.5b4e0cb0f - https://godotengine.org
+
+PASS: Christmas1982 loads for visual contract
+PASS: Visual contract node exists: Set/Floor
+PASS: Visual contract node exists: Set/BackWall
+PASS: Visual contract node exists: Set/LeftWall
+PASS: Visual contract node exists: Set/RightWall
+PASS: Visual contract node exists: Set/FrontBoundary
+PASS: Visual contract node exists: Set/SofaPlaceholder
+PASS: Visual contract node exists: Set/FireplacePlaceholder
+PASS: Visual contract node exists: Set/CoffeeTablePlaceholder
+PASS: Visual contract node exists: Set/TreePlaceholder
+PASS: Visual contract node exists: Set/GiftPile
+PASS: Visual contract node exists: Lighting/FireGlow
+PASS: Visual contract node exists: Lighting/TreeLamp
+PASS: Visual contract node exists: Malo
+PASS: Visual contract node exists: FisherPrice
+PASS: Visual contract node exists: RonanTest
+PASS: Visual contract node exists: CinematicCamera
+PASS: Fisher Price is within a short opening walk from Malo
+PASS: RonanTest is close enough to establish the first recording loop
+PASS: Cinematic camera starts current
+PASS: Opening camera keeps a cinematic field of view
+Visual contract tests complete. Failures: 0
+Godot Engine v4.7.stable.official.5b4e0cb0f - https://godotengine.org
+
+PASS: Christmas1982 loads for blocking contract
+PASS: Blocking contract node exists: Blocking/MaloStart
+PASS: Blocking contract node exists: Blocking/FisherPickupBeat
+PASS: Blocking contract node exists: Blocking/RonanRecordBeat
+PASS: Blocking contract node exists: Blocking/RonanStand
+PASS: Blocking contract node exists: Blocking/CameraStart
+PASS: Blocking contract node exists: Malo/VisualRig
+PASS: Blocking contract node exists: RonanTest/VisualRig
+PASS: Malo spawn matches blocking marker
+PASS: Fisher Price matches pickup blocking marker
+PASS: Ronan matches blocking marker
+PASS: RonanRecordBeat sits inside Malo interaction sensor range
+PASS: Camera starts at blocking anchor
+PASS: Malo procedural silhouette builds a head
+PASS: Malo procedural silhouette builds limbs
+PASS: Ronan placeholder is visibly taller than Malo
+Blocking contract tests complete. Failures: 0
+Godot Engine v4.7.stable.official.5b4e0cb0f - https://godotengine.org
+
+PASS: Christmas1982 loads for presentation contract
+PASS: Malo has carried Fisher Price placeholder visual
+PASS: Carried Fisher Price starts hidden
+PASS: Director starts at FIND_FISHER
+PASS: HUD initially directs player to Fisher Price
+PASS: Taking Fisher Price reveals carried device
+PASS: Carried visual binds to equipped Recorder
+PASS: Pickup advances presentation beat to RECORD_RONAN
+PASS: HUD objective advances to Ronan
+PASS: Presentation contract can start REC
+PASS: Carried Fisher Price REC light is visible during REC
+PASS: Presentation contract creates Ronan clip
+PASS: REC light switches off after STOP
+PASS: Recording advances presentation beat to PLAY_RECORDING
+PASS: HUD asks player to play recording
+PASS: Presentation contract can PLAY latest clip
+PASS: Completed playback closes the first-recording presentation beat
+PASS: HUD confirms first recording completion
+Presentation contract tests complete. Failures: 0
+Godot Engine v4.7.stable.official.5b4e0cb0f - https://godotengine.org
+
+PASS: Runtime scene loads: res://scenes/piste_0/christmas_1982/Christmas1982.tscn
+PASS: Materials remain scoped to the wrapper
+PASS: World label visibility remains scoped to the wrapper
+PASS: Context HUD remains scoped to the wrapper
+PASS: Runtime scene loads: res://scenes/piste_0/christmas_1982/Christmas1982_VisualSlice.tscn
+PASS: Materials remain scoped to the wrapper
+PASS: World label visibility remains scoped to the wrapper
+PASS: Context HUD remains scoped to the wrapper
+PASS: Visual Slice dressing builds in the engine
+PASS: Fisher presentation detail builds in the engine
+PASS: Dressing does not duplicate when reapplied
+PASS: A/B preserves collider shapes, layers, transforms, blocking and camera anchor/FOV
+PASS: CharacterReadabilityPreview loads in the engine
+PASS: Both procedural character rigs instantiate
+PASS: Preview labels coexist with character geometry
+PASS: Authored placeholder statures are preserved; likeness is not approved
+PASS: Ronan remains taller than Malo
+Sprint 5 scene contract tests complete. Failures: 0
+Godot Engine v4.7.stable.official.5b4e0cb0f - https://godotengine.org
+
+PASS: Input route scene loads: res://scenes/piste_0/christmas_1982/Christmas1982.tscn
+PASS: Input route starts at FIND_FISHER
+PASS: REC and distant E cannot bypass Fisher pickup
+PASS: REC-before-pickup stays in STOP
+PASS: Physical movement key works: 87 (AZERTY=false)
+PASS: Physical movement key works: 83 (AZERTY=false)
+PASS: Physical movement key works: 65 (AZERTY=false)
+PASS: Physical movement key works: 68 (AZERTY=false)
+PASS: Walking through real collisions reaches the route waypoint
+PASS: Walking through real collisions reaches the route waypoint
+PASS: Proximity selects Fisher after walking around the table
+PASS: Context pickup works via E
+PASS: Pickup swaps world and carried Fisher visuals
+PASS: Pickup advances to RECORD_RONAN
+PASS: Actual sensor overlaps select Ronan
+PASS: Holding R starts and sustains REC
+PASS: REC lamp and HUD follow the Recorder
+PASS: Space cannot interrupt an active REC
+PASS: Releasing R creates exactly one clip and stops REC
+PASS: Releasing R switches the REC lamp off
+PASS: STOP advances to PLAY_RECORDING
+PASS: Clip comes from the physically selected Ronan source
+PASS: Space starts PLAY and updates the HUD
+PASS: Playback naturally returns to STOP
+PASS: Natural playback completes the required beat order
+PASS: Legacy P still starts PLAY
+PASS: Playback naturally returns to STOP
+PASS: Front wall collision keeps Malo inside the salon
+PASS: Input route scene loads: res://scenes/piste_0/christmas_1982/Christmas1982.tscn
+PASS: Input route starts at FIND_FISHER
+PASS: REC and distant E cannot bypass Fisher pickup
+PASS: REC-before-pickup stays in STOP
+PASS: Physical movement key works: 87 (AZERTY=true)
+PASS: Physical movement key works: 83 (AZERTY=true)
+PASS: Physical movement key works: 65 (AZERTY=true)
+PASS: Physical movement key works: 68 (AZERTY=true)
+PASS: Walking through real collisions reaches the route waypoint
+PASS: Walking through real collisions reaches the route waypoint
+PASS: Proximity selects Fisher after walking around the table
+PASS: Context pickup works via left click
+PASS: Pickup swaps world and carried Fisher visuals
+PASS: Pickup advances to RECORD_RONAN
+PASS: Actual sensor overlaps select Ronan
+PASS: Holding R starts and sustains REC
+PASS: REC lamp and HUD follow the Recorder
+PASS: Space cannot interrupt an active REC
+PASS: Releasing R creates exactly one clip and stops REC
+PASS: Releasing R switches the REC lamp off
+PASS: STOP advances to PLAY_RECORDING
+PASS: Clip comes from the physically selected Ronan source
+PASS: Space starts PLAY and updates the HUD
+PASS: Playback naturally returns to STOP
+PASS: Natural playback completes the required beat order
+PASS: Legacy P still starts PLAY
+PASS: Playback naturally returns to STOP
+PASS: Front wall collision keeps Malo inside the salon
+PASS: Input route scene loads: res://scenes/piste_0/christmas_1982/Christmas1982_VisualSlice.tscn
+PASS: Input route starts at FIND_FISHER
+PASS: REC and distant E cannot bypass Fisher pickup
+PASS: REC-before-pickup stays in STOP
+PASS: Physical movement key works: 87 (AZERTY=false)
+PASS: Physical movement key works: 83 (AZERTY=false)
+PASS: Physical movement key works: 65 (AZERTY=false)
+PASS: Physical movement key works: 68 (AZERTY=false)
+PASS: Walking through real collisions reaches the route waypoint
+PASS: Walking through real collisions reaches the route waypoint
+PASS: Proximity selects Fisher after walking around the table
+PASS: Context pickup works via E
+PASS: Pickup swaps world and carried Fisher visuals
+PASS: Pickup advances to RECORD_RONAN
+PASS: Actual sensor overlaps select Ronan
+PASS: Holding R starts and sustains REC
+PASS: REC lamp and HUD follow the Recorder
+PASS: Space cannot interrupt an active REC
+PASS: Releasing R creates exactly one clip and stops REC
+PASS: Releasing R switches the REC lamp off
+PASS: STOP advances to PLAY_RECORDING
+PASS: Clip comes from the physically selected Ronan source
+PASS: Space starts PLAY and updates the HUD
+PASS: Playback naturally returns to STOP
+PASS: Natural playback completes the required beat order
+PASS: Legacy P still starts PLAY
+PASS: Playback naturally returns to STOP
+PASS: Front wall collision keeps Malo inside the salon
+PASS: Input route scene loads: res://scenes/piste_0/christmas_1982/Christmas1982_VisualSlice.tscn
+PASS: Input route starts at FIND_FISHER
+PASS: REC and distant E cannot bypass Fisher pickup
+PASS: REC-before-pickup stays in STOP
+PASS: Physical movement key works: 87 (AZERTY=true)
+PASS: Physical movement key works: 83 (AZERTY=true)
+PASS: Physical movement key works: 65 (AZERTY=true)
+PASS: Physical movement key works: 68 (AZERTY=true)
+PASS: Walking through real collisions reaches the route waypoint
+PASS: Walking through real collisions reaches the route waypoint
+PASS: Proximity selects Fisher after walking around the table
+PASS: Context pickup works via left click
+PASS: Pickup swaps world and carried Fisher visuals
+PASS: Pickup advances to RECORD_RONAN
+PASS: Actual sensor overlaps select Ronan
+PASS: Holding R starts and sustains REC
+PASS: REC lamp and HUD follow the Recorder
+PASS: Space cannot interrupt an active REC
+PASS: Releasing R creates exactly one clip and stops REC
+PASS: Releasing R switches the REC lamp off
+PASS: STOP advances to PLAY_RECORDING
+PASS: Clip comes from the physically selected Ronan source
+PASS: Space starts PLAY and updates the HUD
+PASS: Playback naturally returns to STOP
+PASS: Natural playback completes the required beat order
+PASS: Legacy P still starts PLAY
+PASS: Playback naturally returns to STOP
+PASS: Front wall collision keeps Malo inside the salon
+Player input contract tests complete. Failures: 0
+
+=== BO Sprint 5 validation complete ===

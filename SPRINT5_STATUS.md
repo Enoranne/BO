@@ -163,9 +163,13 @@ When Godot / Work is available:
 ## Current state
 - Branch: `sprint-5`.
 - Canonical gameplay architecture: preserved.
-- Player Feel 5.1 bindings: implemented, not yet engine-validated.
-- Visual Slice 5.2 implementation: materially expanded, not yet engine-validated.
+- Automated validation checkpoint (2026-09-06): 23 static validators and 7 Godot 4.7 headless suites pass from an empty engine cache; zero engine diagnostics in the final log.
+- Player Feel 5.1 bindings: four automated input-event routes pass in canonical and Visual Slice scenes; manual keyboard/mouse feel and listening still pending.
+- Visual Slice 5.2 implementation: runtime loading and structural separation pass; actual visual inspection and A/B captures still pending.
+- Character preview: fixed label children preventing procedural geometry; both placeholders instantiate, visual/age readability still pending.
 - Higgsfield 5.3 pipeline: Godot integration scaffold prepared; GLB still intentionally absent from the repository.
 - Sprint 5.4 architecture: planning/data/test contract prepared; no live geometry changes yet.
 - Gameplay mechanics added by 5.1/5.2/5.3/5.4 planning: none.
 - Visual/input acceptance: pending live Godot/MCP inspection.
+- `SPRINT 5 READY FOR ACCEPTANCE: NO` — graphical display/MCP unavailable in the validation session.
+- Results, observed fixes and remaining gates: [2026-09-06 validation report](docs/SPRINT5_VALIDATION_REPORT_2026-09-06.md).

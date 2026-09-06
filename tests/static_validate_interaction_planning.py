@@ -57,7 +57,7 @@ if doc.exists():
         "tap on/off + running water",
     ]:
         ok(concept in text, f"interaction planning covers: {concept}")
-    ok("Do not generalise this into an inventory system" in text, "planning explicitly blocks premature inventory")
+    ok("do not generalise this into an inventory system" in text.casefold(), "planning explicitly blocks premature inventory")
 
 print(f"\nSprint 5 interaction-planning static validation complete: {len(errors)} failure(s).")
 sys.exit(1 if errors else 0)

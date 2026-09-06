@@ -63,5 +63,9 @@ func _run() -> void:
     _check(director.beat == Christmas1982Director.Beat.COMPLETE, "Completed playback closes the first-recording presentation beat")
     _check("complete" in objective.text.to_lower(), "HUD confirms first recording completion")
 
+    clip = null
+    scene.queue_free()
+    await process_frame
+    await create_timer(0.1).timeout
     print("Presentation contract tests complete. Failures: ", failures)
-    quit(failures)
+    call_deferred("quit", failures)

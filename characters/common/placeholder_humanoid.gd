@@ -19,7 +19,8 @@ var _left_leg: Node3D
 var _right_leg: Node3D
 
 func _ready() -> void:
-    if get_child_count() == 0:
+    # Preview labels must not suppress the rig; preserve authored mesh overrides.
+    if find_children("*", "MeshInstance3D", true, false).is_empty():
         _build_placeholder()
     rotation_degrees.y = facing_offset_degrees
 

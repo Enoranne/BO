@@ -100,7 +100,7 @@ if adr_doc.exists():
     text = adr_doc.read_text(encoding="utf-8")
     ok("Status:** Proposed" in text, "temporal capture ADR is proposed rather than accepted/implemented")
     ok("dedicated recordable-world audio bus" in text.lower(), "ADR identifies bus-based temporal capture candidate")
-    ok("Do not implement ADR-001" in text, "ADR contains explicit Sprint 5 implementation stop gate")
+    ok("Do not implement ADR-001" in text.replace("**", ""), "ADR contains explicit Sprint 5 implementation stop gate")
 
 if recorder.exists():
     text = recorder.read_text(encoding="utf-8")

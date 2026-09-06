@@ -54,5 +54,9 @@ func _run() -> void:
     malo.equipped_recorder.stop()
     _check(malo.equipped_recorder.state == Recorder.State.STOP, "Loop ends in STOP")
 
+    clip = null
+    scene.queue_free()
+    await process_frame
+    await create_timer(0.1).timeout
     print("Gameplay contract tests complete. Failures: ", failures)
-    quit(failures)
+    call_deferred("quit", failures)

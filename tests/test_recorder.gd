@@ -50,5 +50,11 @@ func _run() -> void:
     recorder_scene.stop()
     _check(recorder_scene.state == Recorder.State.STOP, "Recorder returns to STOP")
 
+    clip = null
+    recorder_scene.queue_free()
+    source.queue_free()
+    await process_frame
+    # Let the audio server retire stopped playback references before shutdown.
+    await create_timer(0.1).timeout
     print("Recorder tests complete. Failures: ", failures)
-    quit(failures)
+    call_deferred("quit", failures)
