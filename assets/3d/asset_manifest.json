@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "assets": [
+    {
+      "id": "higgsfield_coffee_table_test_r1",
+      "display_name": "BO Coffee Table Test",
+      "role": "technical_pipeline_candidate",
+      "source_type": "higgsfield_3d_jutsu_catalog",
+      "source_project": "BO_Sprint5_3_AssetPipeline",
+      "source_project_id": "be670f5b-c348-42a3-b025-85e4054d0373",
+      "source_catalog_search": "coffee table",
+      "source_catalog_name": "Coffee Table",
+      "source_catalog_asset_id": "1e3a1161-ba81-4b72-a9fd-22ca654843a1",
+      "source_entity_id": "20f51259-b8db-4241-8a50-e4623b047d37",
+      "source_revision": 1,
+      "intended_repo_path": "assets/3d/higgsfield/coffee_table_test.glb",
+      "license_status": "unverified_catalog_terms",
+      "production_approved": false,
+      "godot_import_validated": false,
+      "visual_approved": false,
+      "notes": "Single-object round-trip test only. Do not use as production art until license/provenance and Godot visual acceptance are confirmed."
+    }
+  ]
+}
