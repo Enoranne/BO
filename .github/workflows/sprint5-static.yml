@@ -1,0 +1,36 @@
+name: Sprint 5 Static Validation
+
+on:
+  push:
+    branches:
+      - sprint-5
+  pull_request:
+    branches:
+      - sprint-5
+
+jobs:
+  static-validation:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Core static contract
+        run: python tests/static_validate.py
+
+      - name: Sprint 5 visual contract
+        run: python tests/static_validate_sprint5.py
+
+      - name: Player Feel contract
+        run: python tests/static_validate_player_feel.py
+
+      - name: External asset pipeline contract
+        run: python tests/static_validate_asset_pipeline.py
+
+      - name: House planning contract
+        run: python tests/static_validate_house_plan.py
