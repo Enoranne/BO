@@ -1,0 +1,249 @@
+{
+  "version": 1,
+  "status": "production_planning_only",
+  "principle": "Keep one high-quality WORLD master family per sound. Derive FISHER_CAPTURE and CASSETTE_PLAYBACK through the future recorder pipeline instead of baking three duplicate libraries unless a specific cinematic exception is approved.",
+  "master_format": {
+    "container": "wav",
+    "sample_rate_hz": 48000,
+    "bit_depth": 24,
+    "normalization": "none_destructive",
+    "preserve_raw_master": true
+  },
+  "source_preference_order": [
+    "original_field_recording",
+    "original_foley_recording",
+    "licensed_library_with_provenance",
+    "procedural_or_synthetic_for_nonliteral_layers",
+    "ai_generation_only_as_reviewed_fallback"
+  ],
+  "sprint5_rule": {
+    "required_gameplay_source": "ronan_test",
+    "new_audio_files_required_now": false,
+    "temporal_capture_required_now": false,
+    "higgsfield_generation_required_now": false
+  },
+  "families": [
+    {
+      "id": "ronan_test",
+      "priority": "P0",
+      "event_class": "character",
+      "production_method": "original_voice_or_controlled_recording",
+      "world_channels": "mono_source_spatialized_in_world",
+      "minimum_variations": 3,
+      "ideal_variations": 5,
+      "target_files": [
+        "audio/masters/characters/ronan/sfx_chr82_salon_ronan_test_01.wav",
+        "audio/masters/characters/ronan/sfx_chr82_salon_ronan_test_02.wav",
+        "audio/masters/characters/ronan/sfx_chr82_salon_ronan_test_03.wav"
+      ],
+      "variation_plan": [
+        "clear_short_phrase_or_laugh",
+        "more_spontaneous_off_axis_take",
+        "slightly_quieter_or_more_distant_take"
+      ],
+      "world_design": "Readable child voice with natural room placement, no cinematic reverb bed baked in.",
+      "capture_design": "Mono, narrower, proximity-sensitive, mild level riding, child-recorder character.",
+      "playback_design": "Capture result plus cassette hiss, transport identity and speaker coloration.",
+      "acceptance": "Onboarding take remains intelligible after Fisher and cassette coloration.",
+      "reuse_policy": "Use dry takes as WORLD masters; do not permanently bake Fisher coloration into source files."
+    },
+    {
+      "id": "fisher_button_mechanics",
+      "priority": "P0",
+      "event_class": "device",
+      "production_method": "original_foley_preferred",
+      "world_channels": "mono_non_spatial_or_close_spatial",
+      "minimum_variations": 8,
+      "ideal_variations": 12,
+      "target_files": [
+        "audio/masters/devices/fisher/sfx_chr82_fisher_rec_press_01.wav",
+        "audio/masters/devices/fisher/sfx_chr82_fisher_rec_press_02.wav",
+        "audio/masters/devices/fisher/sfx_chr82_fisher_stop_press_01.wav",
+        "audio/masters/devices/fisher/sfx_chr82_fisher_stop_press_02.wav",
+        "audio/masters/devices/fisher/sfx_chr82_fisher_play_press_01.wav",
+        "audio/masters/devices/fisher/sfx_chr82_fisher_play_press_02.wav",
+        "audio/masters/devices/fisher/sfx_chr82_fisher_button_release_01.wav",
+        "audio/masters/devices/fisher/sfx_chr82_fisher_button_release_02.wav"
+      ],
+      "variation_plan": [
+        "REC has the heaviest press identity",
+        "STOP is shorter and more final",
+        "PLAY is firm but lighter than REC",
+        "releases vary subtly to avoid repetition"
+      ],
+      "world_design": "Chunky spring-loaded child-recorder mechanics; no digital UI click.",
+      "capture_design": "Device self-noise and button transients may leak slightly into a recording when physically plausible.",
+      "playback_design": "PLAY begins with physical engagement before recorded content; STOP ends mechanically.",
+      "acceptance": "REC, STOP and PLAY can be distinguished by ear without looking at the HUD.",
+      "reuse_policy": "Small curated variation pools; do not randomize pitch aggressively."
+    },
+    {
+      "id": "fisher_transport_click",
+      "priority": "P0",
+      "event_class": "device",
+      "production_method": "original_foley_or_mechanical_library",
+      "world_channels": "mono",
+      "minimum_variations": 6,
+      "ideal_variations": 8,
+      "target_files": [
+        "audio/masters/devices/fisher/sfx_chr82_fisher_transport_rec_engage_01.wav",
+        "audio/masters/devices/fisher/sfx_chr82_fisher_transport_rec_disengage_01.wav",
+        "audio/masters/devices/fisher/sfx_chr82_fisher_transport_play_engage_01.wav",
+        "audio/masters/devices/fisher/sfx_chr82_fisher_transport_play_disengage_01.wav",
+        "audio/masters/devices/fisher/sfx_chr82_fisher_motor_start_01.wav",
+        "audio/masters/devices/fisher/sfx_chr82_fisher_motor_stop_01.wav"
+      ],
+      "variation_plan": [
+        "record engagement",
+        "record disengagement",
+        "play engagement",
+        "play disengagement",
+        "motor spin-up",
+        "motor spin-down"
+      ],
+      "world_design": "Mechanical transport feels slower and heavier than modern electronics.",
+      "capture_design": "A trace of transport/motor noise can contaminate the first/last moments of a recording.",
+      "playback_design": "Transport sound brackets playback and helps establish tape materiality.",
+      "acceptance": "The recorder feels like a physical machine rather than a software state machine.",
+      "reuse_policy": "Motor layers may loop very briefly; engagement transients remain one-shots."
+    },
+    {
+      "id": "fireplace_crackle",
+      "priority": "P0",
+      "event_class": "passive_ambient",
+      "production_method": "original_field_recording_or_licensed_library",
+      "world_channels": "stereo_bed_plus_optional_mono_sweeteners",
+      "minimum_variations": 2,
+      "ideal_variations": 4,
+      "target_files": [
+        "audio/masters/ambience/salon/amb_chr82_salon_fireplace_bed_01.wav",
+        "audio/masters/ambience/salon/amb_chr82_salon_fireplace_bed_02.wav",
+        "audio/masters/ambience/salon/sfx_chr82_salon_fireplace_pop_01.wav",
+        "audio/masters/ambience/salon/sfx_chr82_salon_fireplace_pop_02.wav"
+      ],
+      "variation_plan": [
+        "restrained continuous bed A",
+        "restrained continuous bed B",
+        "occasional small pop",
+        "occasional ember shift"
+      ],
+      "world_design": "Warm low-level domestic bed with breathing room and no oversized cinematic log explosions.",
+      "capture_design": "Close approach reveals more crackle; Fisher capture compresses peaks and loses some low/high extension.",
+      "playback_design": "Cassette reproduction turns fine crackle into a softer granular memory texture without masking it with hiss.",
+      "acceptance": "Supports silence and warmth; never dominates Ronan or the device mechanics.",
+      "reuse_policy": "Crossfade between long beds and random sparse sweeteners; avoid short obvious loops."
+    },
+    {
+      "id": "gate_squeak",
+      "priority": "P0",
+      "event_class": "triggered_landmark",
+      "production_method": "original_field_recording_strongly_preferred",
+      "world_channels": "mono_source_spatialized_in_world",
+      "minimum_variations": 6,
+      "ideal_variations": 10,
+      "target_files": [
+        "audio/masters/props/gate/sfx_chr82_gate_latch_open_01.wav",
+        "audio/masters/props/gate/sfx_chr82_gate_squeak_slow_01.wav",
+        "audio/masters/props/gate/sfx_chr82_gate_squeak_slow_02.wav",
+        "audio/masters/props/gate/sfx_chr82_gate_squeak_fast_01.wav",
+        "audio/masters/props/gate/sfx_chr82_gate_close_01.wav",
+        "audio/masters/props/gate/sfx_chr82_gate_latch_close_01.wav"
+      ],
+      "variation_plan": [
+        "latch open",
+        "slow opening squeak variants",
+        "faster opening squeak",
+        "controlled close",
+        "latch close",
+        "later optional wind-driven movement"
+      ],
+      "world_design": "Metal hinge has a recognisable tonal signature that can become an auditory landmark.",
+      "capture_design": "Distance and orientation matter strongly; off-axis capture may be thin but still identifiable.",
+      "playback_design": "The tonal squeak survives cassette bandwidth loss and becomes slightly more ghostly/fragile.",
+      "acceptance": "Player can recognise the gate from sound alone after hearing it a few times.",
+      "reuse_policy": "Do not pitch-shift one squeak into every variation; preserve physical speed differences."
+    },
+    {
+      "id": "garden_wind_tree",
+      "priority": "P1_identity",
+      "event_class": "passive_dynamic_ambient",
+      "production_method": "original_field_recording_or_high_quality_library",
+      "world_channels": "stereo",
+      "minimum_variations": 3,
+      "ideal_variations": 6,
+      "target_files": [
+        "audio/masters/ambience/garden/amb_chr82_garden_wind_calm_01.wav",
+        "audio/masters/ambience/garden/amb_chr82_garden_wind_medium_01.wav",
+        "audio/masters/ambience/garden/amb_chr82_garden_wind_gusty_01.wav"
+      ],
+      "variation_plan": [
+        "calm leaf movement",
+        "medium moving branches",
+        "gust sequence with natural rise/fall",
+        "later optional isolated gust sweeteners"
+      ],
+      "world_design": "Natural irregular movement with quiet gaps; never a constant storm bed.",
+      "capture_design": "Wind can overload or buff the Fisher microphone slightly at close/exposed angles; this imperfection is desirable in moderation.",
+      "playback_design": "High-frequency leaf detail collapses into soft broadband texture while gust envelopes remain recognisable.",
+      "acceptance": "Wind feels alive and variable; the famous Mother call can cut through without fighting a constant loud bed.",
+      "reuse_policy": "Use long beds or state blending; never tile a short loop."
+    },
+    {
+      "id": "kitchen_fridge_hum",
+      "priority": "P1_identity",
+      "event_class": "passive_machine_ambient",
+      "production_method": "original_appliance_recording_or_period_library",
+      "world_channels": "mono_source_spatialized_in_world",
+      "minimum_variations": 4,
+      "ideal_variations": 6,
+      "target_files": [
+        "audio/masters/appliances/kitchen/amb_chr82_kitchen_fridge_hum_01.wav",
+        "audio/masters/appliances/kitchen/amb_chr82_kitchen_fridge_hum_02.wav",
+        "audio/masters/appliances/kitchen/sfx_chr82_kitchen_fridge_compressor_start_01.wav",
+        "audio/masters/appliances/kitchen/sfx_chr82_kitchen_fridge_compressor_stop_01.wav"
+      ],
+      "variation_plan": [
+        "steady compressor cycle A",
+        "steady compressor cycle B",
+        "compressor start transient",
+        "compressor stop transient"
+      ],
+      "world_design": "Audible vintage domestic machine, not modern near-silence; low enough to live under conversation.",
+      "capture_design": "Low-mid drone survives well but becomes narrower and less deep; proximity should make the machine feel discoverable.",
+      "playback_design": "Cassette hiss partly merges with compressor texture, creating a useful ambiguity between machine and medium.",
+      "acceptance": "Player notices the fridge when listening deliberately, not because it dominates the kitchen.",
+      "reuse_policy": "Cycle statefully; do not crossfade randomly in ways that break compressor logic."
+    },
+    {
+      "id": "street_moped_pass",
+      "priority": "P1_identity",
+      "event_class": "moving_event",
+      "production_method": "original_field_recording_or_licensed_period_vehicle_library",
+      "world_channels": "stereo_or_mono_source_with_spatial_motion",
+      "minimum_variations": 3,
+      "ideal_variations": 6,
+      "target_files": [
+        "audio/masters/vehicles/street/sfx_chr82_street_moped_pass_close_01.wav",
+        "audio/masters/vehicles/street/sfx_chr82_street_moped_pass_mid_01.wav",
+        "audio/masters/vehicles/street/sfx_chr82_street_moped_pass_far_01.wav"
+      ],
+      "variation_plan": [
+        "closer pass-by",
+        "medium residential pass-by",
+        "distant pass-by"
+      ],
+      "world_design": "Small period-appropriate two-stroke moped, modest residential speed, convincing approach/pass/recede arc.",
+      "capture_design": "Timing is the gameplay: REC started late may catch only the tail; distance and occlusion must matter.",
+      "playback_design": "Cassette preserves the Doppler/motion envelope but loses low-end authority and fine engine detail.",
+      "acceptance": "Suggests a world beyond the property without implying a drivable vehicle system.",
+      "reuse_policy": "Prefer distinct recorded passes; do not mirror/reverse a single pass as fake variation."
+    }
+  ],
+  "derived_preview_policy": {
+    "offline_preview_renders_allowed": true,
+    "preview_suffixes": ["_fisher_preview", "_cassette_preview"],
+    "preview_location": "audio/previews/",
+    "preview_files_are_source_of_truth": false,
+    "runtime_or_nondestructive_derivation_preferred": true
+  }
+}
