@@ -1,0 +1,106 @@
+{
+  "version": 1,
+  "status": "design_only",
+  "purpose": "Acceptance contract for future authored Malo/Ronan character rigs before any production integration.",
+  "global": {
+    "engine": "Godot 4.7.x",
+    "unit_scale": "1 metre = 1 Godot unit",
+    "root_orientation_documented": true,
+    "clean_rest_pose_required": true,
+    "stable_skeleton_hierarchy_required": true,
+    "vendor_specific_gameplay_coupling_allowed": false,
+    "retargeting_path_required": true,
+    "separate_hair_allowed": true,
+    "cloth_sim_required": false,
+    "facial_rig_required_for_first_slice": false,
+    "finger_readability_required": true,
+    "head_neck_lookat_required": true
+  },
+  "required_functional_regions": [
+    {
+      "region": "root_pelvis",
+      "requirements": [
+        "stable root/pelvis hierarchy",
+        "clean locomotion deformation",
+        "no baked scene-scale offsets"
+      ]
+    },
+    {
+      "region": "spine_shoulders",
+      "requirements": [
+        "supports relaxed child posture",
+        "supports recorder carry without severe shoulder collapse",
+        "supports mild torso attention bias"
+      ]
+    },
+    {
+      "region": "arms_elbows",
+      "requirements": [
+        "sufficient bend for lower-torso Fisher carry",
+        "sufficient reach for gate/fridge handle",
+        "clean deformation at compact child proportions"
+      ]
+    },
+    {
+      "region": "hands_fingers",
+      "requirements": [
+        "hand readable at current camera distance",
+        "finger articulation sufficient for REC/STOP/PLAY contact",
+        "grip suitable for Fisher handle/body",
+        "no requirement for cinematic finger micro-detail"
+      ]
+    },
+    {
+      "region": "head_neck",
+      "requirements": [
+        "mild independent head look",
+        "no extreme neck twist needed",
+        "supports short attention gestures toward sound/family"
+      ]
+    },
+    {
+      "region": "legs_feet",
+      "requirements": [
+        "clean walk deformation",
+        "foot orientation consistent for anti-skate tuning",
+        "Malo can read as six-year-old gait without scaled-adult proportions"
+      ]
+    }
+  ],
+  "malo": {
+    "apparent_age": 6,
+    "target_height_m": [1.15, 1.22],
+    "must_support": [
+      "short-stride child walk",
+      "quiet listening idle",
+      "Fisher pickup",
+      "Fisher carry idle/walk",
+      "REC/STOP/PLAY upper-body gestures",
+      "head attention",
+      "later gate/fridge/cassette interaction"
+    ]
+  },
+  "ronan": {
+    "apparent_age_target": [9, 11],
+    "target_height_m": [1.35, 1.48],
+    "must_support": [
+      "older-sibling idle/walk",
+      "glance toward recorder",
+      "turn/lean toward Malo",
+      "short perform/spoil-take reaction",
+      "later household movement between authored anchors"
+    ]
+  },
+  "first_review_scene": "scenes/piste_0/christmas_1982/CharacterReadabilityPreview.tscn",
+  "production_integration_scene": "scenes/piste_0/christmas_1982/Christmas1982_VisualSlice.tscn",
+  "rejection_reasons": [
+    "wrong metre scale",
+    "adult body proportions for Malo",
+    "poor hand/arm deformation around Fisher",
+    "unusable skeleton hierarchy",
+    "no stable retarget path",
+    "visual quality depends on cloth/hair simulation unavailable in target",
+    "character only reads correctly in close-up but not game camera",
+    "requires gameplay scripts to reference vendor-specific bone/animation names"
+  ]
+}
