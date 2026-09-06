@@ -14,9 +14,11 @@ def ok(condition: bool, message: str) -> None:
         errors.append(message)
 
 catalog_path = root / "data/character_gesture_catalog_1982.json"
+rig_path = root / "data/character_rig_requirements.json"
 language_doc = root / "docs/CHARACTER_GESTURE_LANGUAGE.md"
 architecture_doc = root / "docs/CHARACTER_ANIMATION_ARCHITECTURE.md"
 sequence_doc = root / "docs/CHARACTER_GESTURE_SEQUENCE_CARDS.md"
+backlog_doc = root / "docs/ANIMATION_PRODUCTION_BACKLOG.md"
 handoff_doc = root / "docs/WORK_CHARACTER_ANIMATION_HANDOFF.md"
 placeholder_path = root / "characters/common/placeholder_humanoid.gd"
 controller_path = root / "player/malo_controller.gd"
@@ -24,9 +26,11 @@ recorder_path = root / "recorder/recorder.gd"
 
 for path, label in [
     (catalog_path, "character gesture catalog exists"),
+    (rig_path, "character rig requirements exist"),
     (language_doc, "character gesture language exists"),
     (architecture_doc, "character animation architecture exists"),
     (sequence_doc, "character gesture sequence cards exist"),
+    (backlog_doc, "animation production backlog exists"),
     (handoff_doc, "Work character animation handoff exists"),
 ]:
     ok(path.exists(), label)
@@ -63,6 +67,19 @@ if catalog_path.exists():
         if gesture_id in gestures:
             ok(gestures[gesture_id].get("priority") == "P0", f"current recorder gesture is P0: {gesture_id}")
 
+if rig_path.exists():
+    rig = json.loads(rig_path.read_text(encoding="utf-8"))
+    ok(rig.get("status") == "design_only", "rig requirements remain design-only")
+    global_rules = rig.get("global", {})
+    ok(global_rules.get("engine") == "Godot 4.7.x", "rig target engine is explicit")
+    ok(global_rules.get("vendor_specific_gameplay_coupling_allowed") is False, "rig cannot impose vendor-specific gameplay coupling")
+    ok(global_rules.get("retargeting_path_required") is True, "rig requires a retargeting path")
+    ok(global_rules.get("finger_readability_required") is True, "rig requires readable hands/fingers")
+    malo = rig.get("malo", {})
+    ok(malo.get("apparent_age") == 6, "Malo rig target remains age six")
+    ok(malo.get("target_height_m") == [1.15, 1.22], "Malo rig target height stays within art-direction range")
+    ok("Fisher carry idle/walk" in malo.get("must_support", []), "Malo rig must support Fisher carry")
+
 if language_doc.exists():
     text = language_doc.read_text(encoding="utf-8")
     ok("L0 — Locomotion" in text, "gesture language defines locomotion layer")
@@ -84,6 +101,12 @@ if sequence_doc.exists():
         ok(token in text, f"critical sequence card exists: {token}")
     ok("animation does not gate logical REC" in text, "REC sequence preserves Recorder authority")
     ok("no automatic STOP" in text, "Mother-call reaction preserves active recording")
+
+if backlog_doc.exists():
+    text = backlog_doc.read_text(encoding="utf-8")
+    for token in ["A1 — Malo locomotion", "A2 — Fisher carry", "A3 — Fisher interaction trio", "A4 — Fisher pickup", "A7 — Ronan notices REC"]:
+        ok(token in text, f"Batch A backlog covers {token}")
+    ok("Do not start Batch B until" in text, "animation backlog has an explicit Batch A stop gate")
 
 if handoff_doc.exists():
     text = handoff_doc.read_text(encoding="utf-8")
