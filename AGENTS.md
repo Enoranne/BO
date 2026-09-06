@@ -108,3 +108,15 @@ No visual improvement is more important than preserving this loop.
 - Before any image/video/audio/3D generation or any mutation with unclear billing behaviour, tell the user what is being submitted and that it may consume credits unless a reliable zero-cost guarantee exists.
 - Do not batch-generate BO assets before one candidate has completed the full asset → Godot → rights/performance review loop.
 - The existing coffee-table 3D Jutsu import is a technical candidate only; the user's observation that credits appeared unchanged does not establish that future operations are free.
+
+## Sprint 6 cassette-memory design lock
+- Sprint 6 cassette/memory documents on `sprint-5` are preparation only. Do not implement them before Sprint 5 live-engine acceptance.
+- Keep raw `RecordingClip` data separate from Malo's editorial/memory layer. Do not add `keep_state`, favourite, box assignment or child-title ownership directly to `Recorder`.
+- Stable recording identity must be independent from display titles such as `RONAN`, `PORTAIL` or `VENT FORT`.
+- No global recording-quality score, rarity system or collectible completion percentage.
+- `GOOD` and favourite are distinct; a failed take may be emotionally important or a favourite.
+- Preserve `FAILED_KEEP` / `RATÉ MAIS GARDER` as a first-class editorial state.
+- Retry does not imply deletion; early childhood gameplay should avoid a generic destructive Delete command.
+- Prefer a physical cassette/box review metaphor before a full-screen media-library UI.
+- Playback/listening is the primary review action; naming and classification remain secondary.
+- Read `docs/CASSETTE_MEMORY_STATUS.md` first for the compact handoff, then `docs/CASSETTE_LIBRARY_DESIGN.md`, `data/cassette_memory_schema.json`, `docs/CASSETTE_PHYSICAL_UX.md` and `docs/SPRINT6_RECORDING_MEMORY_PLAN.md` if implementation is explicitly authorised later.
