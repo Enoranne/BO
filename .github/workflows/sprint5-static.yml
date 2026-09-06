@@ -49,3 +49,6 @@ jobs:
 
       - name: Interaction planning contract
         run: python tests/static_validate_interaction_planning.py
+
+      - name: Audio memory design contract
+        run: python tests/static_validate_audio_memory_design.py
