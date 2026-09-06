@@ -50,7 +50,7 @@ func apply_set_dressing() -> void:
         Vector3(3.87, 2.02, -2.28),
         Vector3(4.36, 2.30, -2.27),
     ]
-    for i in ornaments.size():
+    for i in range(ornaments.size()):
         _add_sphere(layer, "TreeOrnament%02d" % i, 0.075, ornaments[i], ORNAMENT_RED)
 
 func _add_box(parent: Node3D, node_name: String, size: Vector3, position: Vector3, material: Material, rotation_degrees := Vector3.ZERO) -> void:
