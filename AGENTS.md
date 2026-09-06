@@ -101,3 +101,10 @@ No visual improvement is more important than preserving this loop.
 - REC may receive stronger visual emphasis; STOP should remain neutral and subordinate.
 - Prefer warm cream / analogue-compatible UI colours. Do not introduce cyan/teal or modern neon-gaming UI language.
 - Treat `docs/HUD_UX_SPRINT5.md` as the presentation contract and validate with `tests/static_validate_hud_ux.py`.
+
+## Higgsfield credit-safety lock
+- Follow `docs/HIGGSFIELD_CREDIT_POLICY.md` before submitting any new Higgsfield generation/import workflow.
+- Read-only inspection/search/retrieval of existing project state is preferred when it can answer the question.
+- Before any image/video/audio/3D generation or any mutation with unclear billing behaviour, tell the user what is being submitted and that it may consume credits unless a reliable zero-cost guarantee exists.
+- Do not batch-generate BO assets before one candidate has completed the full asset → Godot → rights/performance review loop.
+- The existing coffee-table 3D Jutsu import is a technical candidate only; the user's observation that credits appeared unchanged does not establish that future operations are free.
