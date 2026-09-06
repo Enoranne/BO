@@ -34,3 +34,6 @@ jobs:
 
       - name: House planning contract
         run: python tests/static_validate_house_plan.py
+
+      - name: Character readability preview contract
+        run: python tests/static_validate_character_preview.py
