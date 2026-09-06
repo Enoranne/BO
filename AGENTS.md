@@ -120,3 +120,15 @@ No visual improvement is more important than preserving this loop.
 - Prefer a physical cassette/box review metaphor before a full-screen media-library UI.
 - Playback/listening is the primary review action; naming and classification remain secondary.
 - Read `docs/CASSETTE_MEMORY_STATUS.md` first for the compact handoff, then `docs/CASSETTE_LIBRARY_DESIGN.md`, `data/cassette_memory_schema.json`, `docs/CASSETTE_PHYSICAL_UX.md` and `docs/SPRINT6_RECORDING_MEMORY_PLAN.md` if implementation is explicitly authorised later.
+
+## PISTE 0 narrative-beat design lock
+- `docs/PISTE0_NARRATIVE_GAMEPLAY_BEATS.md`, `docs/PISTE0_PLAYABLE_STRUCTURE.md` and `data/piste0_narrative_beats.json` are design preparation, not an implementation mandate during Sprint 5.
+- Keep the mandatory spine extremely small. The only currently implemented required recording remains `ronan_test`.
+- Do not add a quest log, minimap objectives, sound-collection percentage, XP, rarity or `MISSION PASSED/FAILED` language for PISTE 0 memory beats.
+- Prefer guidance through sound first, then character movement, composition/light, object animation and only then a contextual prompt.
+- Gate, wind, fridge, moped, gull and other memory beats should generally be optional or semi-optional and tolerate imperfect/missed recordings.
+- Do not make players collect a fixed number of sounds to unlock story progression.
+- A failed recording may remain valuable; do not automatically replace it when the player retries.
+- Do not couple `Recorder` or `InteractionContext` directly to narrative beat IDs. Future beat orchestration belongs in presentation/narrative layers above the domain contracts.
+- Radio Malo and MK2 beats are later evolution stages, not Sprint 5 feature requests.
+- Validate the planning boundary with `tests/static_validate_piste0_narrative_design.py`.
