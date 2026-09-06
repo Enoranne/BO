@@ -72,3 +72,12 @@ No visual improvement is more important than preserving this loop.
 - `Cyclops Level Builder` should be evaluated first as an editor productivity tool, not as a gameplay dependency.
 - `Phantom Camera` may be evaluated only behind the existing cinematic-camera contract; gameplay code must not depend directly on it.
 - Do not integrate Dialogue Manager, Godot State Charts, inventory, NPC navigation, Radio Malo, MK2, pitch, Sound-on-Sound or multitrack during Sprint 5 unless the sprint scope is explicitly changed.
+
+## Sprint 5.1 player-feel lock
+- Movement remains action-based and uses the physical WASD cluster, giving WASD on QWERTY and ZQSD on AZERTY.
+- The numeric keypad must not be required for core play.
+- `E` and left mouse button are equivalent context-interaction inputs; left click is not a raycast targeting system yet.
+- `R` remains hold-to-REC and release-to-STOP.
+- `Space` is the preferred PLAY-latest input while legacy `P` remains accepted during the prototype.
+- Do not add unrestricted mouse-look or a GTA-style free camera during Sprint 5.1.
+- Input changes must continue to route through Godot actions; do not hard-code keyboard or mouse events into `Recorder` or interaction domain logic.
