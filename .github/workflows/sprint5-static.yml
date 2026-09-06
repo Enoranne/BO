@@ -76,3 +76,6 @@ jobs:
 
       - name: Physical affordance design contract
         run: python tests/static_validate_affordance_design.py
+
+      - name: Character animation design contract
+        run: python tests/static_validate_character_animation_design.py
