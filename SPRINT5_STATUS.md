@@ -76,6 +76,19 @@ Started in parallel as a single-object technical proof, without changing the can
 
 The table is **not approved as production art** yet. It exists only to validate Higgsfield -> GLB -> Godot -> visual review. No batch import should happen before this single object passes the complete round trip.
 
+## Sprint 5.4 — Architecture / Cyclops planning
+Prepared offline so Work can execute it immediately after 5.2/5.3 validation.
+
+- `data/christmas1982_house_zones.json` defines the planning topology and indicative metre-scale dimensions for salon, corridor, kitchen glimpse, future kitchen, bedroom zone, bathroom, garden, tree cabin, gate and street edge.
+- The salon remains the locked canonical anchor.
+- Corridor and kitchen glimpse are explicitly non-playable in the first 5.4 pass.
+- `docs/CHRISTMAS1982_SOUND_MAP.md` ties every future zone to meaningful recording, memory and character opportunities so the house expands by density rather than empty floor area.
+- `docs/SPRINT5_4_ARCHITECTURE_EXECUTION.md` defines the exact Cyclops build order, A/B/C evidence, decision gate and stop conditions.
+- `tests/static_validate_house_plan.py` validates the planning contract and protects the canonical blocking scope.
+- `AGENTS.md` now contains a dedicated 5.4 architecture lock.
+
+No Cyclops addon has been installed and no canonical scene geometry has been changed yet. This is preparation only until live Godot/MCP review is available.
+
 ## Material targets currently prepared
 - warm cream wallpaper;
 - dark varnished wood;
@@ -101,7 +114,8 @@ The table is **not approved as production art** yet. It exists only to validate 
 - mouse raycast selection;
 - free 360-degree camera;
 - numeric-keypad dependency;
-- production-grade 3D prop replacement.
+- production-grade 3D prop replacement;
+- traversable expansion beyond the salon.
 
 ## Acceptance contract
 1. The Sprint 4 first-recording beat order remains FIND_FISHER -> RECORD_RONAN -> PLAY_RECORDING -> COMPLETE.
@@ -114,9 +128,11 @@ The table is **not approved as production art** yet. It exists only to validate 
 8. `tests/static_validate_sprint5.py` must report `0 failure(s)`.
 9. `tests/static_validate_player_feel.py` must report `0 failure(s)`.
 10. `tests/static_validate_asset_pipeline.py` must report `0 failure(s)`.
-11. Godot headless acceptance tests must still pass when the runtime is available.
-12. Real editor/MCP visual and input inspection is required before Sprint 5 can be considered accepted.
-13. The first Higgsfield GLB must be validated in isolation before any second production-prop import.
+11. `tests/static_validate_house_plan.py` must report `0 failure(s)`.
+12. Godot headless acceptance tests must still pass when the runtime is available.
+13. Real editor/MCP visual and input inspection is required before Sprint 5 can be considered accepted.
+14. The first Higgsfield GLB must be validated in isolation before any second production-prop import.
+15. Cyclops is adopted only if the A/B/C architecture spike improves iteration without adding runtime coupling.
 
 ## Next live-engine validation
 When Godot / Work is available:
@@ -125,21 +141,24 @@ When Godot / Work is available:
 2. run `tests/static_validate_sprint5.py`;
 3. run `tests/static_validate_player_feel.py`;
 4. run `tests/static_validate_asset_pipeline.py`;
-5. run the existing headless Godot suite;
-6. test movement on the available keyboard layout;
-7. verify `E` and left click both take the Fisher Price when in interaction range;
-8. verify hold/release `R` still creates the RonanTest clip;
-9. verify `Space` and `P` both play the latest clip;
-10. open canonical `Christmas1982.tscn` and capture the baseline camera view;
-11. open `Christmas1982_VisualSlice.tscn` and capture the same view;
-12. compare A/B using `docs/SPRINT5_2_VISUAL_REVIEW.md`;
-13. verify the hidden world labels do not make Fisher/Ronan interactions unclear;
-14. inspect skirting, mantel, cushions, ornaments and Fisher front panel for floating/intersection errors;
-15. verify the new light balance keeps Malo, Ronan and Fisher readable;
-16. if 5.2 passes, retrieve/import the revision-1 `BO_CoffeeTable_Test` GLB into `assets/3d/higgsfield/coffee_table_test.glb`;
-17. assign the imported PackedScene only in `CoffeeTableAssetPreview.tscn` first;
-18. compare the candidate against the target envelope for scale, orientation, materials and mesh complexity;
-19. only after the coffee-table round trip passes, decide whether Higgsfield becomes the preferred prop-production route for Sprint 5.
+5. run `tests/static_validate_house_plan.py`;
+6. run the existing headless Godot suite;
+7. test movement on the available keyboard layout;
+8. verify `E` and left click both take the Fisher Price when in interaction range;
+9. verify hold/release `R` still creates the RonanTest clip;
+10. verify `Space` and `P` both play the latest clip;
+11. open canonical `Christmas1982.tscn` and capture the baseline camera view;
+12. open `Christmas1982_VisualSlice.tscn` and capture the same view;
+13. compare A/B using `docs/SPRINT5_2_VISUAL_REVIEW.md`;
+14. verify the hidden world labels do not make Fisher/Ronan interactions unclear;
+15. inspect skirting, mantel, cushions, ornaments and Fisher front panel for floating/intersection errors;
+16. verify the new light balance keeps Malo, Ronan and Fisher readable;
+17. if 5.2 passes, retrieve/import the revision-1 `BO_CoffeeTable_Test` GLB into `assets/3d/higgsfield/coffee_table_test.glb`;
+18. assign the imported PackedScene only in `CoffeeTableAssetPreview.tscn` first;
+19. compare the candidate against the target envelope for scale, orientation, materials and mesh complexity;
+20. only after the coffee-table round trip passes, decide whether Higgsfield becomes the preferred prop-production route for Sprint 5;
+21. if the visual slice remains stable, execute `docs/SPRINT5_4_ARCHITECTURE_EXECUTION.md` as an isolated Cyclops spike;
+22. capture A/B/C evidence and make an explicit keep/discard decision for Cyclops.
 
 ## Current state
 - Branch: `sprint-5`.
@@ -147,5 +166,6 @@ When Godot / Work is available:
 - Player Feel 5.1 bindings: implemented, not yet engine-validated.
 - Visual Slice 5.2 implementation: materially expanded, not yet engine-validated.
 - Higgsfield 5.3 pipeline: Godot integration scaffold prepared; GLB still intentionally absent from the repository.
-- Gameplay mechanics added by 5.1/5.2/5.3: none.
+- Sprint 5.4 architecture: planning/data/test contract prepared; no live geometry changes yet.
+- Gameplay mechanics added by 5.1/5.2/5.3/5.4 planning: none.
 - Visual/input acceptance: pending live Godot/MCP inspection.
