@@ -1,0 +1,516 @@
+[gd_scene load_steps=54 format=3]
+
+[ext_resource type="Script" path="res://characters/malo/malo.gd" id="1_malo"]
+[ext_resource type="Script" path="res://recorder/fisher_price.gd" id="2_fisher"]
+[ext_resource type="Script" path="res://recorder/recorder.gd" id="3_recorder"]
+[ext_resource type="Script" path="res://interaction/recordable_source.gd" id="4_source"]
+[ext_resource type="Script" path="res://scenes/piste_0/christmas_1982/cinematic_camera.gd" id="5_camera"]
+[ext_resource type="Script" path="res://ui/hud.gd" id="6_hud"]
+[ext_resource type="AudioStream" path="res://audio/ronan_test.wav" id="7_audio"]
+[ext_resource type="Script" path="res://interaction/interaction_context.gd" id="8_context"]
+[ext_resource type="Script" path="res://characters/common/placeholder_humanoid.gd" id="9_humanoid"]
+
+[sub_resource type="StandardMaterial3D" id="Mat_floor"]
+albedo_color = Color(0.23, 0.14, 0.09, 1)
+roughness = 0.92
+
+[sub_resource type="StandardMaterial3D" id="Mat_wall"]
+albedo_color = Color(0.64, 0.48, 0.31, 1)
+roughness = 0.96
+
+[sub_resource type="StandardMaterial3D" id="Mat_wood"]
+albedo_color = Color(0.25, 0.10, 0.045, 1)
+roughness = 0.78
+
+[sub_resource type="StandardMaterial3D" id="Mat_rug"]
+albedo_color = Color(0.45, 0.16, 0.08, 1)
+roughness = 1.0
+
+[sub_resource type="StandardMaterial3D" id="Mat_sofa"]
+albedo_color = Color(0.34, 0.22, 0.12, 1)
+roughness = 0.94
+
+[sub_resource type="StandardMaterial3D" id="Mat_fireplace"]
+albedo_color = Color(0.31, 0.23, 0.17, 1)
+roughness = 0.97
+
+[sub_resource type="StandardMaterial3D" id="Mat_fire"]
+albedo_color = Color(0.92, 0.24, 0.035, 1)
+emission_enabled = true
+emission = Color(1, 0.15, 0.02, 1)
+emission_energy_multiplier = 3.0
+roughness = 0.7
+
+[sub_resource type="StandardMaterial3D" id="Mat_tree"]
+albedo_color = Color(0.10, 0.25, 0.095, 1)
+roughness = 0.92
+
+[sub_resource type="StandardMaterial3D" id="Mat_gift_red"]
+albedo_color = Color(0.49, 0.06, 0.04, 1)
+roughness = 0.82
+
+[sub_resource type="StandardMaterial3D" id="Mat_gift_cream"]
+albedo_color = Color(0.75, 0.62, 0.39, 1)
+roughness = 0.88
+
+[sub_resource type="StandardMaterial3D" id="Mat_malo"]
+albedo_color = Color(0.56, 0.31, 0.12, 1)
+roughness = 0.9
+
+[sub_resource type="StandardMaterial3D" id="Mat_ronan"]
+albedo_color = Color(0.19, 0.29, 0.36, 1)
+roughness = 0.9
+
+[sub_resource type="StandardMaterial3D" id="Mat_fisher"]
+albedo_color = Color(0.70, 0.60, 0.45, 1)
+roughness = 0.84
+
+[sub_resource type="BoxMesh" id="BoxMesh_floor"]
+material = SubResource("Mat_floor")
+size = Vector3(12, 0.2, 8)
+
+[sub_resource type="BoxShape3D" id="BoxShape_floor"]
+size = Vector3(12, 0.2, 8)
+
+[sub_resource type="BoxMesh" id="BoxMesh_wall_back"]
+material = SubResource("Mat_wall")
+size = Vector3(12, 3.6, 0.18)
+
+[sub_resource type="BoxShape3D" id="BoxShape_wall_back"]
+size = Vector3(12, 3.6, 0.18)
+
+[sub_resource type="BoxMesh" id="BoxMesh_wall_side"]
+material = SubResource("Mat_wall")
+size = Vector3(0.18, 3.6, 8)
+
+[sub_resource type="BoxShape3D" id="BoxShape_wall_side"]
+size = Vector3(0.18, 3.6, 8)
+
+[sub_resource type="BoxMesh" id="BoxMesh_rug"]
+material = SubResource("Mat_rug")
+size = Vector3(5.2, 0.04, 3.35)
+
+[sub_resource type="BoxMesh" id="BoxMesh_sofa_seat"]
+material = SubResource("Mat_sofa")
+size = Vector3(3.3, 0.55, 1.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_sofa_back"]
+material = SubResource("Mat_sofa")
+size = Vector3(3.3, 1.15, 0.34)
+
+[sub_resource type="BoxMesh" id="BoxMesh_sofa_arm"]
+material = SubResource("Mat_sofa")
+size = Vector3(0.38, 0.86, 1.15)
+
+[sub_resource type="BoxShape3D" id="BoxShape_sofa"]
+size = Vector3(3.45, 1.25, 1.25)
+
+[sub_resource type="BoxMesh" id="BoxMesh_fireplace"]
+material = SubResource("Mat_fireplace")
+size = Vector3(2.35, 2.25, 0.62)
+
+[sub_resource type="BoxShape3D" id="BoxShape_fireplace"]
+size = Vector3(2.35, 2.25, 0.62)
+
+[sub_resource type="BoxMesh" id="BoxMesh_fire_opening"]
+material = SubResource("Mat_fire")
+size = Vector3(1.18, 0.72, 0.08)
+
+[sub_resource type="BoxMesh" id="BoxMesh_hearth"]
+material = SubResource("Mat_fireplace")
+size = Vector3(2.8, 0.18, 0.86)
+
+[sub_resource type="BoxMesh" id="BoxMesh_table_top"]
+material = SubResource("Mat_wood")
+size = Vector3(2.15, 0.16, 1.08)
+
+[sub_resource type="BoxShape3D" id="BoxShape_table"]
+size = Vector3(2.15, 0.65, 1.08)
+
+[sub_resource type="BoxMesh" id="BoxMesh_table_leg"]
+material = SubResource("Mat_wood")
+size = Vector3(0.16, 0.52, 0.16)
+
+[sub_resource type="CylinderMesh" id="Cone_tree_low"]
+material = SubResource("Mat_tree")
+top_radius = 0.0
+bottom_radius = 1.18
+height = 1.5
+radial_segments = 16
+
+[sub_resource type="CylinderMesh" id="Cone_tree_mid"]
+material = SubResource("Mat_tree")
+top_radius = 0.0
+bottom_radius = 0.92
+height = 1.35
+radial_segments = 16
+
+[sub_resource type="CylinderMesh" id="Cone_tree_top"]
+material = SubResource("Mat_tree")
+top_radius = 0.0
+bottom_radius = 0.65
+height = 1.15
+radial_segments = 16
+
+[sub_resource type="CylinderMesh" id="Cylinder_tree_trunk"]
+material = SubResource("Mat_wood")
+top_radius = 0.16
+bottom_radius = 0.18
+height = 0.72
+radial_segments = 12
+
+[sub_resource type="BoxShape3D" id="BoxShape_tree"]
+size = Vector3(1.8, 2.9, 1.8)
+
+[sub_resource type="BoxMesh" id="BoxMesh_gift_small"]
+material = SubResource("Mat_gift_red")
+size = Vector3(0.58, 0.42, 0.48)
+
+[sub_resource type="BoxMesh" id="BoxMesh_gift_medium"]
+material = SubResource("Mat_gift_cream")
+size = Vector3(0.82, 0.50, 0.62)
+
+[sub_resource type="BoxMesh" id="BoxMesh_gift_large"]
+material = SubResource("Mat_gift_red")
+size = Vector3(1.05, 0.38, 0.76)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape_malo"]
+radius = 0.38
+height = 1.45
+
+[sub_resource type="SphereShape3D" id="SphereShape_sensor"]
+radius = 1.55
+
+[sub_resource type="BoxMesh" id="BoxMesh_fisher"]
+material = SubResource("Mat_fisher")
+size = Vector3(0.85, 0.48, 0.38)
+
+[sub_resource type="BoxShape3D" id="BoxShape_fisher"]
+size = Vector3(0.85, 0.48, 0.38)
+
+[sub_resource type="SphereShape3D" id="SphereShape_ronan"]
+radius = 0.7
+
+[node name="Christmas1982" type="Node3D"]
+
+[node name="Set" type="Node3D" parent="."]
+
+[node name="Floor" type="StaticBody3D" parent="Set"]
+
+[node name="Mesh" type="MeshInstance3D" parent="Set/Floor"]
+mesh = SubResource("BoxMesh_floor")
+
+[node name="Collision" type="CollisionShape3D" parent="Set/Floor"]
+shape = SubResource("BoxShape_floor")
+
+[node name="BackWall" type="StaticBody3D" parent="Set"]
+position = Vector3(0, 1.8, -4.0)
+
+[node name="Mesh" type="MeshInstance3D" parent="Set/BackWall"]
+mesh = SubResource("BoxMesh_wall_back")
+
+[node name="Collision" type="CollisionShape3D" parent="Set/BackWall"]
+shape = SubResource("BoxShape_wall_back")
+
+[node name="LeftWall" type="StaticBody3D" parent="Set"]
+position = Vector3(-6.0, 1.8, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="Set/LeftWall"]
+mesh = SubResource("BoxMesh_wall_side")
+
+[node name="Collision" type="CollisionShape3D" parent="Set/LeftWall"]
+shape = SubResource("BoxShape_wall_side")
+
+[node name="RightWall" type="StaticBody3D" parent="Set"]
+position = Vector3(6.0, 1.8, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="Set/RightWall"]
+mesh = SubResource("BoxMesh_wall_side")
+
+[node name="Collision" type="CollisionShape3D" parent="Set/RightWall"]
+shape = SubResource("BoxShape_wall_side")
+
+[node name="FrontBoundary" type="StaticBody3D" parent="Set"]
+position = Vector3(0, 1.8, 4.0)
+
+[node name="Collision" type="CollisionShape3D" parent="Set/FrontBoundary"]
+shape = SubResource("BoxShape_wall_back")
+
+[node name="RugPlaceholder" type="MeshInstance3D" parent="Set"]
+position = Vector3(0, 0.12, 0.35)
+mesh = SubResource("BoxMesh_rug")
+
+[node name="SofaPlaceholder" type="StaticBody3D" parent="Set"]
+position = Vector3(0.25, 0.62, -3.0)
+
+[node name="Seat" type="MeshInstance3D" parent="Set/SofaPlaceholder"]
+position = Vector3(0, -0.15, 0.18)
+mesh = SubResource("BoxMesh_sofa_seat")
+
+[node name="Back" type="MeshInstance3D" parent="Set/SofaPlaceholder"]
+position = Vector3(0, 0.38, -0.34)
+mesh = SubResource("BoxMesh_sofa_back")
+
+[node name="ArmLeft" type="MeshInstance3D" parent="Set/SofaPlaceholder"]
+position = Vector3(-1.48, 0.04, 0.18)
+mesh = SubResource("BoxMesh_sofa_arm")
+
+[node name="ArmRight" type="MeshInstance3D" parent="Set/SofaPlaceholder"]
+position = Vector3(1.48, 0.04, 0.18)
+mesh = SubResource("BoxMesh_sofa_arm")
+
+[node name="Collision" type="CollisionShape3D" parent="Set/SofaPlaceholder"]
+position = Vector3(0, 0.18, 0)
+shape = SubResource("BoxShape_sofa")
+
+[node name="FireplacePlaceholder" type="StaticBody3D" parent="Set"]
+position = Vector3(-4.55, 1.12, -3.48)
+
+[node name="Main" type="MeshInstance3D" parent="Set/FireplacePlaceholder"]
+mesh = SubResource("BoxMesh_fireplace")
+
+[node name="FireOpening" type="MeshInstance3D" parent="Set/FireplacePlaceholder"]
+position = Vector3(0, -0.37, 0.35)
+mesh = SubResource("BoxMesh_fire_opening")
+
+[node name="Hearth" type="MeshInstance3D" parent="Set/FireplacePlaceholder"]
+position = Vector3(0, -1.02, 0.30)
+mesh = SubResource("BoxMesh_hearth")
+
+[node name="Collision" type="CollisionShape3D" parent="Set/FireplacePlaceholder"]
+shape = SubResource("BoxShape_fireplace")
+
+[node name="CoffeeTablePlaceholder" type="StaticBody3D" parent="Set"]
+position = Vector3(0.20, 0.39, -1.0)
+
+[node name="Top" type="MeshInstance3D" parent="Set/CoffeeTablePlaceholder"]
+position = Vector3(0, 0.20, 0)
+mesh = SubResource("BoxMesh_table_top")
+
+[node name="LegFL" type="MeshInstance3D" parent="Set/CoffeeTablePlaceholder"]
+position = Vector3(-0.82, -0.04, 0.36)
+mesh = SubResource("BoxMesh_table_leg")
+
+[node name="LegFR" type="MeshInstance3D" parent="Set/CoffeeTablePlaceholder"]
+position = Vector3(0.82, -0.04, 0.36)
+mesh = SubResource("BoxMesh_table_leg")
+
+[node name="LegBL" type="MeshInstance3D" parent="Set/CoffeeTablePlaceholder"]
+position = Vector3(-0.82, -0.04, -0.36)
+mesh = SubResource("BoxMesh_table_leg")
+
+[node name="LegBR" type="MeshInstance3D" parent="Set/CoffeeTablePlaceholder"]
+position = Vector3(0.82, -0.04, -0.36)
+mesh = SubResource("BoxMesh_table_leg")
+
+[node name="Collision" type="CollisionShape3D" parent="Set/CoffeeTablePlaceholder"]
+position = Vector3(0, 0.02, 0)
+shape = SubResource("BoxShape_table")
+
+[node name="TreePlaceholder" type="StaticBody3D" parent="Set"]
+position = Vector3(4.25, 0.0, -2.6)
+
+[node name="Trunk" type="MeshInstance3D" parent="Set/TreePlaceholder"]
+position = Vector3(0, 0.42, 0)
+mesh = SubResource("Cylinder_tree_trunk")
+
+[node name="Low" type="MeshInstance3D" parent="Set/TreePlaceholder"]
+position = Vector3(0, 1.12, 0)
+mesh = SubResource("Cone_tree_low")
+
+[node name="Mid" type="MeshInstance3D" parent="Set/TreePlaceholder"]
+position = Vector3(0, 1.76, 0)
+mesh = SubResource("Cone_tree_mid")
+
+[node name="Top" type="MeshInstance3D" parent="Set/TreePlaceholder"]
+position = Vector3(0, 2.32, 0)
+mesh = SubResource("Cone_tree_top")
+
+[node name="Collision" type="CollisionShape3D" parent="Set/TreePlaceholder"]
+position = Vector3(0, 1.45, 0)
+shape = SubResource("BoxShape_tree")
+
+[node name="GiftPile" type="Node3D" parent="Set"]
+position = Vector3(3.15, 0.0, -1.85)
+
+[node name="Large" type="MeshInstance3D" parent="Set/GiftPile"]
+position = Vector3(0, 0.29, 0)
+rotation_degrees = Vector3(0, -8, 0)
+mesh = SubResource("BoxMesh_gift_large")
+
+[node name="Medium" type="MeshInstance3D" parent="Set/GiftPile"]
+position = Vector3(0.58, 0.25, 0.58)
+rotation_degrees = Vector3(0, 16, 0)
+mesh = SubResource("BoxMesh_gift_medium")
+
+[node name="Small" type="MeshInstance3D" parent="Set/GiftPile"]
+position = Vector3(-0.55, 0.21, 0.50)
+rotation_degrees = Vector3(0, -18, 0)
+mesh = SubResource("BoxMesh_gift_small")
+
+[node name="Blocking" type="Node3D" parent="."]
+
+[node name="MaloStart" type="Marker3D" parent="Blocking"]
+position = Vector3(-0.5, 0.0, 2.15)
+
+[node name="FisherPickupBeat" type="Marker3D" parent="Blocking"]
+position = Vector3(2.55, 0.0, -1.22)
+
+[node name="RonanRecordBeat" type="Marker3D" parent="Blocking"]
+position = Vector3(1.15, 0.0, 0.65)
+
+[node name="RonanStand" type="Marker3D" parent="Blocking"]
+position = Vector3(2.0, 0.0, 0.0)
+
+[node name="CameraStart" type="Marker3D" parent="Blocking"]
+position = Vector3(6.9, 5.1, 7.9)
+
+[node name="Lighting" type="Node3D" parent="."]
+
+[node name="FireGlow" type="OmniLight3D" parent="Lighting"]
+position = Vector3(-4.2, 1.35, -2.65)
+omni_range = 6.5
+light_energy = 4.8
+light_color = Color(1, 0.36, 0.12, 1)
+shadow_enabled = true
+
+[node name="TreeLamp" type="OmniLight3D" parent="Lighting"]
+position = Vector3(3.4, 2.4, -1.7)
+omni_range = 7.0
+light_energy = 2.0
+light_color = Color(1, 0.70, 0.44, 1)
+shadow_enabled = true
+
+[node name="SoftFill" type="DirectionalLight3D" parent="Lighting"]
+rotation_degrees = Vector3(-52, -28, 0)
+light_energy = 0.55
+light_color = Color(1, 0.78, 0.58, 1)
+shadow_enabled = true
+
+[node name="Malo" type="CharacterBody3D" parent="."]
+position = Vector3(-0.5, 0.83, 2.15)
+script = ExtResource("1_malo")
+
+[node name="VisualRig" type="Node3D" parent="Malo"]
+position = Vector3(0, -0.72, 0)
+script = ExtResource("9_humanoid")
+stature = 1.45
+shirt_color = Color(0.56, 0.31, 0.12, 1)
+trousers_color = Color(0.24, 0.17, 0.11, 1)
+skin_color = Color(0.74, 0.56, 0.40, 1)
+hair_color = Color(0.20, 0.11, 0.055, 1)
+gait_amplitude_degrees = 24.0
+
+[node name="Collision" type="CollisionShape3D" parent="Malo"]
+shape = SubResource("CapsuleShape_malo")
+
+[node name="InteractionSensor" type="Area3D" parent="Malo"]
+monitoring = true
+
+[node name="Collision" type="CollisionShape3D" parent="Malo/InteractionSensor"]
+shape = SubResource("SphereShape_sensor")
+
+[node name="InteractionContext" type="Node" parent="Malo"]
+script = ExtResource("8_context")
+sensor_path = NodePath("../InteractionSensor")
+actor_path = NodePath("..")
+
+[node name="FisherPrice" type="Area3D" parent="."]
+position = Vector3(2.55, 0.58, -1.22)
+rotation_degrees = Vector3(0, -10, 0)
+script = ExtResource("2_fisher")
+
+[node name="Visual" type="MeshInstance3D" parent="FisherPrice"]
+mesh = SubResource("BoxMesh_fisher")
+
+[node name="Label" type="Label3D" parent="FisherPrice"]
+position = Vector3(0, 0.55, 0)
+text = "FISHER PRICE\n[E]"
+font_size = 38
+billboard = 1
+
+[node name="Collision" type="CollisionShape3D" parent="FisherPrice"]
+shape = SubResource("BoxShape_fisher")
+
+[node name="Recorder" type="Node" parent="FisherPrice"]
+script = ExtResource("3_recorder")
+
+[node name="PlaybackPlayer" type="AudioStreamPlayer" parent="FisherPrice/Recorder"]
+
+[node name="RonanTest" type="Area3D" parent="."]
+position = Vector3(2.0, 0.9, 0.0)
+script = ExtResource("4_source")
+source_id = &"ronan_test"
+clip_title = "RonanTest"
+audio_stream = ExtResource("7_audio")
+
+[node name="VisualRig" type="Node3D" parent="RonanTest"]
+position = Vector3(0, -0.82, 0)
+script = ExtResource("9_humanoid")
+stature = 1.68
+shirt_color = Color(0.19, 0.29, 0.36, 1)
+trousers_color = Color(0.13, 0.16, 0.19, 1)
+skin_color = Color(0.74, 0.56, 0.40, 1)
+hair_color = Color(0.16, 0.09, 0.05, 1)
+facing_offset_degrees = -55.0
+idle_sway_degrees = 0.7
+gait_amplitude_degrees = 0.0
+
+[node name="Collision" type="CollisionShape3D" parent="RonanTest"]
+shape = SubResource("SphereShape_ronan")
+
+[node name="Label" type="Label3D" parent="RonanTest"]
+position = Vector3(0, 1.25, 0)
+text = "RONAN TEST\nHold [R] nearby"
+font_size = 34
+billboard = 1
+
+[node name="PreviewPlayer" type="AudioStreamPlayer3D" parent="RonanTest"]
+stream = ExtResource("7_audio")
+unit_size = 4.0
+max_distance = 14.0
+
+[node name="CinematicCamera" type="Camera3D" parent="."]
+position = Vector3(6.9, 5.1, 7.9)
+current = true
+fov = 46.0
+script = ExtResource("5_camera")
+target_path = NodePath("../Malo")
+follow_x = 0.18
+follow_z = 0.10
+max_offset = Vector2(0.95, 0.55)
+smoothing = 2.8
+
+[node name="HUD" type="CanvasLayer" parent="."]
+script = ExtResource("6_hud")
+player_path = NodePath("../Malo")
+
+[node name="Margin" type="MarginContainer" parent="HUD"]
+offset_left = 28.0
+offset_top = 26.0
+offset_right = 480.0
+offset_bottom = 220.0
+
+[node name="VBox" type="VBoxContainer" parent="HUD/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="State" type="Label" parent="HUD/Margin/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "■ STOP"
+
+[node name="Timer" type="Label" parent="HUD/Margin/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "00:00.0"
+
+[node name="Source" type="Label" parent="HUD/Margin/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Source: —"
+
+[node name="Hint" type="Label" parent="HUD/Margin/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "E  Take Fisher Price"
