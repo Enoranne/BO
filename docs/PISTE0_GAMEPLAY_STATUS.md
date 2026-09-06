@@ -118,6 +118,51 @@ This deliberately oscillates between action, humour, listening and reflection.
 
 See `docs/PISTE0_PACING_RHYTHM.md` and `data/piste0_pacing_model.json`.
 
+## Physical affordance contract
+The world should explain interactions before the HUD does.
+
+Affordance hierarchy:
+1. silhouette / handle / physical form;
+2. placement;
+3. motion/state;
+4. sound;
+5. character attention;
+6. framing/light;
+7. contextual prompt.
+
+Important consequences:
+- no default glowing-outline language;
+- a sound source does not automatically need an interaction verb;
+- an interactable does not automatically become an inventory pickup;
+- `Interactable` and `RecordableSource` remain separate by composition;
+- FREE guidance removes explanation, not physical feedback;
+- new interactions should remain usable while REC is active when temporal capture requires it.
+
+Priority planned objects:
+- Fisher Price — existing interaction, live affordance/feedback validation pending;
+- gate — first recommended true post-prototype temporal interaction;
+- fridge — passive hum + triggered door sounds + family reaction;
+- tap — later sustained-source state experiment;
+- cassette boxes — later physical review/archive surface;
+- fireplace — deliberately meaningful and recordable without default interaction.
+
+Read:
+- `docs/PHYSICAL_AFFORDANCE_LANGUAGE.md`
+- `data/p0_affordance_catalog.json`
+- `docs/OBJECT_INTERACTION_FEEDBACK.md`
+- `docs/WORK_AFFORDANCE_HANDOFF.md`
+
+## Living-family contract
+Family members should generate variations, interruptions and reactions rather than behave as quest dispensers.
+
+Prepared design includes:
+- Ronan reacting to REC / teasing / ruining or improving takes;
+- Mother contextual interruption and escalating fridge reaction;
+- Father as quieter domestic/technical presence;
+- authored anchors and short routine segments before any free-roaming NPC AI.
+
+See `docs/FAMILY_LIVING_WORLD_DESIGN.md`.
+
 ## Mandatory spine
 Keep minimal.
 
@@ -142,18 +187,21 @@ Do not implement it until:
 ## Start here for implementation planning
 1. `docs/PISTE0_GAMEPLAY_STATUS.md`
 2. `docs/WORK_GUIDANCE_HANDOFF.md`
-3. `data/piste0_beat_dependencies.json`
-4. `docs/PISTE0_IMPLEMENTATION_ROLLOUT.md`
-5. `docs/PISTE0_PACING_RHYTHM.md`
-6. only then the specific beat in `docs/PISTE0_NARRATIVE_GAMEPLAY_BEATS.md`
+3. `docs/WORK_AFFORDANCE_HANDOFF.md`
+4. `data/piste0_beat_dependencies.json`
+5. `docs/PISTE0_IMPLEMENTATION_ROLLOUT.md`
+6. `docs/PISTE0_PACING_RHYTHM.md`
+7. only then the specific beat in `docs/PISTE0_NARRATIVE_GAMEPLAY_BEATS.md`
 
 ## Deep references
 - `data/piste0_narrative_beats.json`
 - `data/guidance_profiles.json`
 - `data/assistance_recovery_rules.json`
 - `data/piste0_pacing_model.json`
+- `data/p0_affordance_catalog.json`
 - `docs/GUIDANCE_ASSISTANCE_MODES.md`
 - `docs/MICRO_QUEST_FAILURE_RECOVERY.md`
+- `docs/FAMILY_LIVING_WORLD_DESIGN.md`
 - `docs/PISTE0_PLAYABLE_STRUCTURE.md`
 - `docs/CHRISTMAS1982_SOUND_MAP.md`
 - `docs/AUDIO_MEMORY_STATUS.md`
@@ -165,6 +213,8 @@ Do not implement it until:
 python tests/static_validate_piste0_narrative_design.py
 python tests/static_validate_guidance_recovery_design.py
 python tests/static_validate_piste0_pacing_design.py
+python tests/static_validate_family_living_world_design.py
+python tests/static_validate_affordance_design.py
 ```
 
 Also included in:
