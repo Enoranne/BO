@@ -132,3 +132,17 @@ No visual improvement is more important than preserving this loop.
 - Do not couple `Recorder` or `InteractionContext` directly to narrative beat IDs. Future beat orchestration belongs in presentation/narrative layers above the domain contracts.
 - Radio Malo and MK2 beats are later evolution stages, not Sprint 5 feature requests.
 - Validate the planning boundary with `tests/static_validate_piste0_narrative_design.py`.
+
+## PISTE 0 physical-affordance design lock
+- `docs/PHYSICAL_AFFORDANCE_LANGUAGE.md`, `data/p0_affordance_catalog.json` and `docs/OBJECT_INTERACTION_FEEDBACK.md` are design/readability contracts, not permission to implement every listed prop.
+- World cue comes before prompt: physical shape, placement, motion/state and sound should make an action plausible before HUD explains it.
+- Do not default to glowing outlines, exclamation marks, minimap markers or permanent interaction dots.
+- Preserve a small verb vocabulary. Do not create a universal interaction wheel or generic inspect mode merely because several props are planned.
+- Keep `Interactable` and `RecordableSource` separate by composition. A meaningful sound source such as the fireplace may have no interaction verb at all.
+- Do not make every interactable a collectible and do not generalise Fisher pickup into inventory.
+- Guidance profiles change explanation/tolerance, not underlying object availability or physical feedback. FREE must not mean worse usability.
+- For new authored interactions, validate invitation -> commit -> physical result -> optional memory result.
+- New world interactions must coexist with active REC where the design calls for temporal capture; do not pause the world merely because Recorder is recording.
+- Prefer one object prototype at a time. Gate is the recommended first true post-prototype temporal interaction after Sprint 5 live acceptance and temporal-capture proof.
+- Read `docs/WORK_AFFORDANCE_HANDOFF.md` before implementing future household interactions.
+- Validate planning separation with `tests/static_validate_affordance_design.py`.
