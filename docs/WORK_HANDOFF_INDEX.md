@@ -125,6 +125,17 @@ Decision:
 - voice lives in world space and may be captured naturally when REC is active;
 - first later proof should be one Ronan reaction with cooldown/variation.
 
+## Cinematic gameplay camera
+Compact handoff:
+- `docs/WORK_CAMERA_HANDOFF.md`
+
+Decision:
+- preserve authored fixed/semi-fixed framing;
+- no unrestricted 360 mouse-look;
+- use a small camera grammar C0–C5;
+- first later proof is salon anchor A -> corridor anchor B only;
+- REC continues through camera handoff and never belongs to Recorder.
+
 ## Cassette-memory / Sprint 6
 Compact start:
 - `SPRINT6_STATUS.md`
@@ -178,6 +189,11 @@ Design thesis:
 ## Accessibility
 - `docs/ACCESSIBILITY_AND_GUIDANCE_SEPARATION.md`
 - `data/accessibility_settings_contract.json`
+
+## Camera
+- `docs/CINEMATIC_GAMEPLAY_CAMERA_LANGUAGE.md`
+- `data/camera_zone_profiles_1982.json`
+- `docs/PHANTOM_CAMERA_SPRINT5_SPIKE.md`
 
 ## Affordances
 - `docs/PHYSICAL_AFFORDANCE_LANGUAGE.md`
