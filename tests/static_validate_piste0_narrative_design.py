@@ -119,7 +119,8 @@ if rollout_doc.exists():
     ]:
         ok(token in text, f"rollout includes staged proof: {token}")
     ok("Why gate first" in text, "gate is explicitly justified as first new signature beat")
-    ok("Do not instantly" not in text or True, "rollout remains descriptive rather than runtime-coupled")
+    ok("No DAW" in text, "early Radio Malo rollout explicitly avoids a DAW")
+    ok("Do not immediately build the garden" in text, "temporal capture is proven in isolation before world expansion")
 
 for path, label in [(recorder_path, "Recorder"), (interaction_path, "InteractionContext")]:
     if path.exists():
