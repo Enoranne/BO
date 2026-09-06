@@ -43,3 +43,6 @@ jobs:
 
       - name: Sound production catalog contract
         run: python tests/static_validate_sound_catalog.py
+
+      - name: HUD UX contract
+        run: python tests/static_validate_hud_ux.py
