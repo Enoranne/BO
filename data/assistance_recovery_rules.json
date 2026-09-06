@@ -1,0 +1,55 @@
+{
+  "version": 1,
+  "status": "design_only",
+  "principles": {
+    "mission_failed_language": false,
+    "frame_perfect_timing_required": false,
+    "optional_beats_block_progression": false,
+    "poor_recording_equals_game_failure": false,
+    "free_profile_reduces_input_responsiveness": false,
+    "recorder_owns_story_failure": false
+  },
+  "failure_categories": {
+    "timing_miss": {
+      "default": "soft_retry",
+      "preserve_partial_capture": true,
+      "escalate_pre_event_cue": true
+    },
+    "wrong_distance": {
+      "default": "perceptual_feedback",
+      "use_world_audio_to_teach": true
+    },
+    "missed_opportunity": {
+      "default": "continue_world",
+      "optional_can_recur": true
+    },
+    "interaction_misunderstanding": {
+      "default": "hint_ladder"
+    },
+    "meaningful_imperfection": {
+      "default": "keepable_memory",
+      "allow_failed_keep": true
+    }
+  },
+  "hint_ladder": [
+    {"level": 0, "name": "environment", "examples": ["sound", "gaze", "composition"]},
+    {"level": 1, "name": "perceptual_nudge", "examples": ["repeat sound", "object motion"]},
+    {"level": 2, "name": "control_hint", "examples": ["Hold R to record"]},
+    {"level": 3, "name": "intention_hint", "examples": ["That gate makes a strange sound."]},
+    {"level": 4, "name": "explicit_action", "examples": ["Try recording the gate as you open it."]}
+  ],
+  "profile_starting_points": {
+    "GUIDED": [2, 3],
+    "NATURAL": [0, 1],
+    "FREE": [0]
+  },
+  "mandatory_beat_rules": {
+    "strong_affordance": true,
+    "generous_timing": true,
+    "automatic_retry_opportunity": true,
+    "escalating_hints": true,
+    "permanent_lockout": false,
+    "perfect_recording_quality_required": false
+  },
+  "current_mandatory_beat": "MB00_first_fisher"
+}
