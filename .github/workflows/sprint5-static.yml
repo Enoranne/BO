@@ -79,3 +79,6 @@ jobs:
 
       - name: Character animation design contract
         run: python tests/static_validate_character_animation_design.py
+
+      - name: Family dialogue design contract
+        run: python tests/static_validate_family_dialogue_design.py
