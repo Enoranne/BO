@@ -104,6 +104,17 @@ Decision:
 - do not build a giant animation graph now;
 - validate a small P0 gesture batch first.
 
+## Family dialogue / barks
+Compact handoff:
+- `docs/WORK_DIALOGUE_HANDOFF.md`
+
+Decision:
+- short contextual French-source barks + nonverbal reactions;
+- stable localization keys;
+- no dialogue tree for ordinary domestic life;
+- voice lives in world space and may be captured naturally when REC is active;
+- first later proof should be one Ronan reaction with cooldown/variation.
+
 ## Cassette-memory / Sprint 6
 Compact start:
 - `SPRINT6_STATUS.md`
@@ -151,6 +162,8 @@ Design thesis:
 - `docs/PISTE0_IMPLEMENTATION_ROLLOUT.md`
 - `docs/PISTE0_PACING_RHYTHM.md`
 - `docs/FAMILY_LIVING_WORLD_DESIGN.md`
+- `docs/FAMILY_DIALOGUE_BARKS_DESIGN.md`
+- `docs/FAMILY_DIALOGUE_EVENT_ARCHITECTURE.md`
 
 ## Affordances
 - `docs/PHYSICAL_AFFORDANCE_LANGUAGE.md`
