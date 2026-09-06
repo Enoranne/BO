@@ -1,10 +1,42 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene load_steps=5 format=3]
 
 [ext_resource type="Script" path="res://visual/external_asset_slot.gd" id="1_slot"]
+[ext_resource type="Script" path="res://visual/asset_preview_camera.gd" id="2_camera"]
+
+[sub_resource type="StandardMaterial3D" id="Mat_preview_floor"]
+albedo_color = Color(0.28, 0.25, 0.21, 1)
+roughness = 0.95
+
+[sub_resource type="PlaneMesh" id="Plane_preview_floor"]
+material = SubResource("Mat_preview_floor")
+size = Vector2(6, 6)
 
 [node name="CoffeeTableAssetPreview" type="Node3D"]
+
+[node name="Floor" type="MeshInstance3D" parent="."]
+mesh = SubResource("Plane_preview_floor")
 
 [node name="AssetSlot" type="Node3D" parent="."]
 script = ExtResource("1_slot")
 target_size = Vector3(2.15, 0.65, 1.08)
 show_envelope_when_empty = true
+envelope_floor_aligned = true
+
+[node name="KeyLight" type="DirectionalLight3D" parent="."]
+rotation_degrees = Vector3(-52, -32, 0)
+light_energy = 1.0
+shadow_enabled = true
+
+[node name="WarmFill" type="OmniLight3D" parent="."]
+position = Vector3(2.2, 2.6, 2.0)
+omni_range = 7.0
+light_energy = 1.7
+light_color = Color(1, 0.78, 0.58, 1)
+
+[node name="Camera" type="Camera3D" parent="."]
+position = Vector3(3.8, 2.3, 4.4)
+current = true
+fov = 42.0
+script = ExtResource("2_camera")
+target_path = NodePath("../AssetSlot")
+target_height = 0.40
