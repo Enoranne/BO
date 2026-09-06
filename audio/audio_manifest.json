@@ -1,0 +1,81 @@
+{
+  "version": 1,
+  "policy": "Every production audio asset must have provenance and approval status before it can be treated as final. Planned entries do not imply file existence.",
+  "assets": [
+    {
+      "id": "ronan_test_current",
+      "path": "audio/ronan_test.wav",
+      "family": "ronan_test",
+      "status": "prototype_canonical_dependency",
+      "exists_in_repo": true,
+      "provenance": "existing_project_placeholder_or_test_asset",
+      "license_status": "not_documented_in_manifest_yet",
+      "production_approved": false,
+      "sprint5_required": true,
+      "notes": "Do not move or rename before live Godot validation because Christmas1982.tscn references this path."
+    },
+    {
+      "id": "fisher_mechanics_family",
+      "family": "fisher_button_mechanics",
+      "status": "planned",
+      "exists_in_repo": false,
+      "preferred_source": "original_foley",
+      "production_approved": false,
+      "sprint5_required": false
+    },
+    {
+      "id": "fisher_transport_family",
+      "family": "fisher_transport_click",
+      "status": "planned",
+      "exists_in_repo": false,
+      "preferred_source": "original_foley_or_mechanical_library",
+      "production_approved": false,
+      "sprint5_required": false
+    },
+    {
+      "id": "fireplace_family",
+      "family": "fireplace_crackle",
+      "status": "planned",
+      "exists_in_repo": false,
+      "preferred_source": "field_recording_or_licensed_library",
+      "production_approved": false,
+      "sprint5_required": false
+    },
+    {
+      "id": "gate_family",
+      "family": "gate_squeak",
+      "status": "planned",
+      "exists_in_repo": false,
+      "preferred_source": "original_field_recording",
+      "production_approved": false,
+      "sprint5_required": false
+    },
+    {
+      "id": "garden_wind_family",
+      "family": "garden_wind_tree",
+      "status": "planned",
+      "exists_in_repo": false,
+      "preferred_source": "field_recording_or_high_quality_library",
+      "production_approved": false,
+      "sprint5_required": false
+    },
+    {
+      "id": "fridge_family",
+      "family": "kitchen_fridge_hum",
+      "status": "planned",
+      "exists_in_repo": false,
+      "preferred_source": "period_appliance_recording_or_library",
+      "production_approved": false,
+      "sprint5_required": false
+    },
+    {
+      "id": "moped_family",
+      "family": "street_moped_pass",
+      "status": "planned",
+      "exists_in_repo": false,
+      "preferred_source": "field_recording_or_licensed_period_vehicle_library",
+      "production_approved": false,
+      "sprint5_required": false
+    }
+  ]
+}
