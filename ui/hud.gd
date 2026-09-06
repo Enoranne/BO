@@ -2,6 +2,9 @@ extends CanvasLayer
 class_name RecorderHUD
 
 @export var player_path: NodePath
+@export var objective_prefix := "OBJECTIVE  "
+@export var compact_hints := false
+@export var teach_legacy_play_key := true
 
 var player: MaloController
 var recorder: Recorder
@@ -27,7 +30,7 @@ func _ready() -> void:
     _refresh_hint()
 
 func set_objective(text: String) -> void:
-    objective_label.text = "OBJECTIVE  %s" % text
+    objective_label.text = "%s%s" % [objective_prefix, text]
 
 func _process(delta: float) -> void:
     if _status_timeout <= 0.0:
@@ -83,12 +86,14 @@ func _refresh_hint() -> void:
         hint_label.text = _last_status
         return
     if not _interaction_prompt.is_empty():
-        hint_label.text = "E / Left click  %s" % _interaction_prompt
+        hint_label.text = ("E / click  %s" if compact_hints else "E / Left click  %s") % _interaction_prompt
         return
     if recorder == null:
         hint_label.text = "Find the Fisher Price"
         return
+
+    var play_hint := "Space / P  PLAY latest" if teach_legacy_play_key else "Space  Play"
     if player.nearby_source != null:
-        hint_label.text = "Hold R  REC    •    Space / P  PLAY latest"
+        hint_label.text = ("Hold R  Record    •    %s" if compact_hints else "Hold R  REC    •    %s") % play_hint
     else:
-        hint_label.text = "Approach a sound source    •    Space / P  PLAY latest"
+        hint_label.text = ("Find a sound    •    %s" if compact_hints else "Approach a sound source    •    %s") % play_hint
