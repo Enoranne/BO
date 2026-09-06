@@ -55,3 +55,6 @@ jobs:
 
       - name: P0 sound production matrix contract
         run: python tests/static_validate_p0_sound_matrix.py
+
+      - name: P0 sound acquisition order contract
+        run: python tests/static_validate_p0_sound_acquisition.py
