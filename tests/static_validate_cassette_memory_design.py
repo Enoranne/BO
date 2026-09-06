@@ -16,9 +16,14 @@ def ok(condition: bool, message: str) -> None:
 schema_path = root / "data/cassette_memory_schema.json"
 titles_path = root / "data/child_recording_title_rules.json"
 examples_path = root / "data/cassette_memory_examples.json"
+callback_schema_path = root / "data/recording_memory_callback_schema.json"
 design_doc = root / "docs/CASSETTE_LIBRARY_DESIGN.md"
 ux_doc = root / "docs/CASSETTE_PHYSICAL_UX.md"
 sprint6_doc = root / "docs/SPRINT6_RECORDING_MEMORY_PLAN.md"
+callback_doc = root / "docs/RECORDING_MEMORY_CALLBACKS.md"
+era_doc = root / "docs/RECORDING_EVOLUTION_BY_ERA.md"
+persistence_doc = root / "docs/SPRINT6_PERSISTENCE_MODEL.md"
+status_doc = root / "docs/CASSETTE_MEMORY_STATUS.md"
 clip_path = root / "recorder/recording_clip.gd"
 recorder_path = root / "recorder/recorder.gd"
 
@@ -26,9 +31,14 @@ for path, label in [
     (schema_path, "cassette memory schema exists"),
     (titles_path, "child title rules exist"),
     (examples_path, "cassette memory examples exist"),
+    (callback_schema_path, "recording callback schema exists"),
     (design_doc, "cassette library design doc exists"),
     (ux_doc, "physical cassette UX doc exists"),
     (sprint6_doc, "Sprint 6 recording-memory plan exists"),
+    (callback_doc, "recording memory callback design exists"),
+    (era_doc, "recording evolution-by-era roadmap exists"),
+    (persistence_doc, "Sprint 6 persistence model exists"),
+    (status_doc, "cassette memory handoff status exists"),
 ]:
     ok(path.exists(), label)
 
@@ -65,6 +75,16 @@ if examples_path.exists():
     ok("FAILED_KEEP" in states, "examples include RATÉ MAIS GARDER behavior")
     ok("RETRY" in states, "examples include retry without deletion")
 
+if callback_schema_path.exists():
+    data = json.loads(callback_schema_path.read_text(encoding="utf-8"))
+    ok(data.get("status") == "design_only", "callback schema remains design-only")
+    rules = data.get("rules", {})
+    ok(rules.get("mutate_original_child_annotation") is False, "later callbacks do not rewrite childhood annotation")
+    ok(rules.get("show_as_collectible_rarity") is False, "callbacks are not rarity collectibles")
+    ok(rules.get("allow_multiple_meanings_over_time") is True, "one recording may gain multiple meanings over time")
+    states = set(data.get("discovery_states", []))
+    ok({"DORMANT", "AVAILABLE", "DISCOVERED", "REVISITED"}.issubset(states), "callback discovery states are defined")
+
 if design_doc.exists():
     text = design_doc.read_text(encoding="utf-8")
     ok("RATÉS MAIS GARDER" in text, "canonical failed-but-kept language is documented")
@@ -83,15 +103,41 @@ if sprint6_doc.exists():
     ok("stable recording ids" in text, "Sprint 6 plan requires stable recording identity")
     ok("no quality score" in text.lower(), "Sprint 6 plan preserves no-score philosophy")
 
+if callback_doc.exists():
+    text = callback_doc.read_text(encoding="utf-8")
+    ok("accumulate meaning across time" in text, "recordings may accumulate meaning across eras")
+    ok("One raw clip, three meanings" in text, "callback lifecycle preserves one raw source with multiple meanings")
+    ok("NEW MEMORY UNLOCKED" in text, "callback design explicitly rejects gamey memory banners")
+
+if era_doc.exists():
+    text = era_doc.read_text(encoding="utf-8")
+    for token in ["Fisher Price", "Philips D6920 MK2", "Radio Malo"]:
+        ok(token in text, f"recording evolution roadmap covers {token}")
+    ok("Capability follows device + age" in text, "complexity is gated by device and Malo's age")
+    ok("RATÉ MAIS GARDER" in text, "failed-but-kept survives across eras")
+
+if persistence_doc.exists():
+    text = persistence_doc.read_text(encoding="utf-8")
+    ok("Do not add save/load code now" in text, "persistence remains deferred during Sprint 5")
+    ok("schema_version" in text, "future save model is versioned from the start")
+    ok("Do not use" in text and "scene node path" in text, "persistence rejects runtime node paths as durable identity")
+    ok("Recorder remains unaware of save-file mechanics" in text, "Recorder stays decoupled from persistence")
+    ok("derived recording" in text.lower(), "future MK2 derivatives preserve lineage")
+
+if status_doc.exists():
+    text = status_doc.read_text(encoding="utf-8")
+    ok("Sprint 6+ design preparation only" in text, "compact cassette status clearly states future scope")
+    ok("Do not begin Sprint 6" in text, "compact handoff preserves implementation gate")
+
 if clip_path.exists():
     text = clip_path.read_text(encoding="utf-8")
-    for forbidden in ["keep_state", "favourite", "box_id", "child_note"]:
+    for forbidden in ["keep_state", "favourite", "box_id", "child_note", "MemoryAnnotation"]:
         ok(forbidden not in text, f"RecordingClip is not prematurely coupled to editorial field: {forbidden}")
 
 if recorder_path.exists():
     text = recorder_path.read_text(encoding="utf-8")
-    for forbidden in ["CassetteLibrary", "MemoryAnnotation", "FAILED_KEEP", "favourite"]:
-        ok(forbidden not in text, f"Recorder is not prematurely coupled to cassette library: {forbidden}")
+    for forbidden in ["CassetteLibrary", "MemoryAnnotation", "FAILED_KEEP", "favourite", "save", "schema_version"]:
+        ok(forbidden not in text, f"Recorder is not prematurely coupled to cassette library/persistence: {forbidden}")
 
 print(f"\nCassette memory design static validation complete: {len(errors)} failure(s).")
 sys.exit(1 if errors else 0)
