@@ -83,12 +83,12 @@ func _refresh_hint() -> void:
         hint_label.text = _last_status
         return
     if not _interaction_prompt.is_empty():
-        hint_label.text = "E  %s" % _interaction_prompt
+        hint_label.text = "E / Left click  %s" % _interaction_prompt
         return
     if recorder == null:
         hint_label.text = "Find the Fisher Price"
         return
     if player.nearby_source != null:
-        hint_label.text = "Hold R  REC    •    P  PLAY latest"
+        hint_label.text = "Hold R  REC    •    Space / P  PLAY latest"
     else:
-        hint_label.text = "Approach a sound source    •    P  PLAY latest"
+        hint_label.text = "Approach a sound source    •    Space / P  PLAY latest"
