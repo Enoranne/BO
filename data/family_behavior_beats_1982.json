@@ -1,0 +1,75 @@
+{
+  "version": 1,
+  "status": "design_only",
+  "simulation_model": "lightweight_authored_behaviour",
+  "full_npc_navigation_required": false,
+  "characters": {
+    "ronan": {
+      "roles": ["brother", "moving_target", "comic_antagonist", "collaborator"],
+      "reaction_levels": ["ignore", "acknowledge", "intervene"],
+      "candidate_behaviours": [
+        "cross_room_talking",
+        "notice_recorder",
+        "perform_for_recorder",
+        "ruin_take_deliberately",
+        "suspect_being_followed",
+        "unexpected_laugh",
+        "radio_malo_collaboration"
+      ]
+    },
+    "mother": {
+      "roles": ["household_rhythm", "interruption", "grounding_reality"],
+      "reaction_levels": ["ignore", "acknowledge", "intervene"],
+      "candidate_behaviours": [
+        "call_from_other_room",
+        "fridge_or_cupboard_action",
+        "react_to_repeated_experiment",
+        "cross_recording",
+        "background_voice_memory",
+        "short_stop_or_move_request"
+      ]
+    },
+    "father": {
+      "roles": ["quiet_presence", "observer", "technical_support", "affectionate_support"],
+      "reaction_levels": ["ignore", "acknowledge", "intervene"],
+      "candidate_behaviours": [
+        "tend_fire",
+        "handle_tool_or_object",
+        "observe_malo",
+        "exchange_parent_glance",
+        "later_repair_support"
+      ]
+    }
+  },
+  "behaviour_categories": ["AMBIENT", "REACTIVE", "INTERRUPTIVE", "COLLABORATIVE", "CALLBACK"],
+  "authored_anchors": [
+    "salon_sofa",
+    "fireplace",
+    "kitchen_threshold",
+    "corridor_crossing",
+    "garden_doorway",
+    "ronan_stand"
+  ],
+  "repeat_action_example": {
+    "fridge": [
+      {"stage": 1, "reaction": "ignore"},
+      {"stage": 2, "reaction": "glance"},
+      {"stage": 3, "reaction": "comment"},
+      {"stage": 4, "reaction": "intervene_then_cooldown"}
+    ],
+    "visible_counter": false
+  },
+  "first_implementation_candidates": [
+    "ronan_reacts_once_to_recording",
+    "mother_wind_interruption",
+    "mother_fridge_escalation",
+    "father_fireplace_ambient_routine"
+  ],
+  "invariants": {
+    "family_are_quest_dispensers": false,
+    "interruptions_are_punishment": false,
+    "recorder_owns_family_behaviour": false,
+    "interaction_context_owns_family_behaviour": false,
+    "sprint5_implementation": false
+  }
+}
