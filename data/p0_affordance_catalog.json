@@ -1,0 +1,203 @@
+{
+  "version": 1,
+  "status": "design_only",
+  "purpose": "PISTE 0 physical interaction and affordance planning. Does not expand Sprint 5 gameplay.",
+  "design_rules": {
+    "world_cue_before_prompt": true,
+    "persistent_outline_default": false,
+    "quest_marker_default": false,
+    "prompt_is_last_layer": true,
+    "same_content_all_guidance_profiles": true,
+    "recordable_does_not_imply_interactable": true,
+    "interactable_does_not_imply_inventory": true,
+    "current_required_interaction": "take_fisher_price"
+  },
+  "affordance_levels": [
+    {"id": "A0", "meaning": "ambient_readability"},
+    {"id": "A1", "meaning": "suggestive"},
+    {"id": "A2", "meaning": "actionable"},
+    {"id": "A3", "meaning": "beat_relevant"}
+  ],
+  "objects": [
+    {
+      "id": "fisher_price",
+      "zone": "salon",
+      "implementation_phase": "sprint5_existing_plus_visual_validation",
+      "affordance_level": "A3",
+      "verbs": ["TAKE", "PRESS"],
+      "states": ["PLACED", "EQUIPPED", "ACTIVE"],
+      "visual_cues": ["beige_burgundy_body", "large_transport_buttons", "gift_area_placement", "rec_lamp"],
+      "sound_cues": ["button_clack", "transport_click", "mechanical_state_change"],
+      "feedback_channels": ["object_state", "sound", "rec_lamp", "compact_hud"],
+      "recordable_relationship": "device_not_world_source",
+      "guidance": {
+        "GUIDED": "early_context_prompt_and_clear_objective",
+        "NATURAL": "prompt_when_close",
+        "FREE": "world_readability_then_close_prompt"
+      },
+      "notes": "Pickup remains equipment acquisition, not generic inventory pickup."
+    },
+    {
+      "id": "garden_gate",
+      "zone": "gate",
+      "implementation_phase": "post_sprint5_after_temporal_capture",
+      "affordance_level": "A3",
+      "verbs": ["OPEN", "CLOSE"],
+      "states": ["CLOSED", "OPENING", "OPEN", "CLOSING"],
+      "visual_cues": ["handle", "latch", "hinge", "view_beyond_gate"],
+      "sound_cues": ["latch_click", "hinge_squeak"],
+      "feedback_channels": ["rotation", "latch_motion", "sound", "changed_path_silhouette"],
+      "recordable_relationship": "triggered_temporal_source",
+      "guidance": {
+        "GUIDED": "repeat_squeak_or_short_hint_if_missed",
+        "NATURAL": "sound_first_then_close_prompt",
+        "FREE": "sound_and_geometry_only_until_close"
+      },
+      "notes": "Recommended first true post-prototype memory beat."
+    },
+    {
+      "id": "kitchen_fridge",
+      "zone": "kitchen",
+      "implementation_phase": "post_gate_microhub",
+      "affordance_level": "A2",
+      "verbs": ["OPEN", "CLOSE"],
+      "states": ["CLOSED", "OPEN", "COMPRESSOR_RUNNING", "COMPRESSOR_IDLE"],
+      "visual_cues": ["handle", "door_seam", "interior_light_when_open"],
+      "sound_cues": ["compressor_hum", "seal_release", "door_close"],
+      "feedback_channels": ["door_rotation", "interior_light", "sound", "mother_reaction_later"],
+      "recordable_relationship": "passive_plus_triggered_source",
+      "guidance": {
+        "GUIDED": "earlier_prompt_and_clearer_hum_emphasis",
+        "NATURAL": "hum_then_prompt_when_close",
+        "FREE": "ordinary_hum_and_physical_handle"
+      },
+      "notes": "Supports repeat-action comedy without visible repetition counter."
+    },
+    {
+      "id": "bathroom_tap",
+      "zone": "bathroom",
+      "implementation_phase": "later_microhub",
+      "affordance_level": "A2",
+      "verbs": ["TURN_ON", "TURN_OFF"],
+      "states": ["OFF", "RUNNING"],
+      "visual_cues": ["tap_handle", "spout", "water_stream_when_running"],
+      "sound_cues": ["valve_click", "water_start", "steady_flow", "water_stop", "room_resonance"],
+      "feedback_channels": ["handle_motion", "water_mesh_or_particles", "sound"],
+      "recordable_relationship": "continuous_state_source",
+      "guidance": {
+        "GUIDED": "explicit_turn_on_hint_if_needed",
+        "NATURAL": "prompt_when_close",
+        "FREE": "physical_fixture_only_until_close"
+      },
+      "notes": "First sustained-source state experiment; do not implement generic hold framework unless needed."
+    },
+    {
+      "id": "cassette_boxes",
+      "zone": "bedroom_or_studio",
+      "implementation_phase": "sprint6_plus",
+      "affordance_level": "A3",
+      "verbs": ["REVIEW", "PLAY", "CLASSIFY"],
+      "states": ["CASSETTES", "GOOD", "FAILED_KEEP", "RETRY_OPTIONAL"],
+      "visual_cues": ["handwritten_labels", "physical_boxes", "cassette_edges", "placement_changes"],
+      "sound_cues": ["plastic_case", "cassette_handling", "playback_mechanics"],
+      "feedback_channels": ["physical_placement", "label_state", "sound", "playback"],
+      "recordable_relationship": "archive_surface_not_world_source",
+      "guidance": {
+        "GUIDED": "clear_first_review_instruction",
+        "NATURAL": "highlight_first_action_through_staging",
+        "FREE": "world_space_object_and_short_close_prompt"
+      },
+      "notes": "Do not turn every cassette into a collectible pickup or full-screen media item."
+    },
+    {
+      "id": "fireplace",
+      "zone": "salon",
+      "implementation_phase": "sprint5_visual_audio_density",
+      "affordance_level": "A1",
+      "verbs": [],
+      "states": ["AMBIENT"],
+      "visual_cues": ["firelight", "flicker", "father_presence_later"],
+      "sound_cues": ["restrained_crackle"],
+      "feedback_channels": ["light", "sound"],
+      "recordable_relationship": "passive_source",
+      "guidance": {
+        "GUIDED": "no_prompt_unless_future_authored_need",
+        "NATURAL": "no_prompt",
+        "FREE": "no_prompt"
+      },
+      "notes": "Important sound source that intentionally has no default interaction verb."
+    },
+    {
+      "id": "wrapping_paper",
+      "zone": "salon",
+      "implementation_phase": "later_density",
+      "affordance_level": "A1",
+      "verbs": ["TOUCH_OPTIONAL"],
+      "states": ["RESTING", "DISTURBED"],
+      "visual_cues": ["loose_edges", "crumpled_shape", "gift_context"],
+      "sound_cues": ["paper_crinkle"],
+      "feedback_channels": ["small_motion", "sound"],
+      "recordable_relationship": "triggered_optional_source",
+      "guidance": {
+        "GUIDED": "no_explicit_objective_by_default",
+        "NATURAL": "no_prompt_until_close_if_authored",
+        "FREE": "world_only"
+      },
+      "notes": "Optional tactile detail, not a required collectible."
+    },
+    {
+      "id": "garden_swing",
+      "zone": "garden",
+      "implementation_phase": "outdoor_ecology",
+      "affordance_level": "A1",
+      "verbs": ["PUSH_OR_USE_LATER"],
+      "states": ["STILL", "MOVING"],
+      "visual_cues": ["suspended_seat", "chain_or_joint", "natural_motion"],
+      "sound_cues": ["metal_joint_squeak"],
+      "feedback_channels": ["swing_motion", "rhythmic_sound"],
+      "recordable_relationship": "triggered_or_continuous_optional_source",
+      "guidance": {
+        "GUIDED": "sound_emphasis_if_relevant",
+        "NATURAL": "movement_and_sound",
+        "FREE": "movement_and_sound_only"
+      },
+      "notes": "Do not add a playground minigame unless later narrative value justifies it."
+    },
+    {
+      "id": "room_door",
+      "zone": "house_generic",
+      "implementation_phase": "architecture_after_validation",
+      "affordance_level": "A2",
+      "verbs": ["OPEN", "CLOSE"],
+      "states": ["CLOSED", "OPEN"],
+      "visual_cues": ["handle", "door_seam", "visible_room_beyond"],
+      "sound_cues": ["handle_click", "hinge", "room_tone_change"],
+      "feedback_channels": ["rotation", "sound", "changed_visibility"],
+      "recordable_relationship": "triggered_optional_source",
+      "guidance": {
+        "GUIDED": "prompt_when_contextually_relevant",
+        "NATURAL": "prompt_when_close",
+        "FREE": "physical_handle_and_close_prompt"
+      },
+      "notes": "Do not create a universal door framework before one authored door proves the need."
+    },
+    {
+      "id": "moped_pass",
+      "zone": "street_edge",
+      "implementation_phase": "outdoor_ecology",
+      "affordance_level": "A1",
+      "verbs": [],
+      "states": ["APPROACHING", "PASSING", "RECEDING"],
+      "visual_cues": ["optional_partial_street_glimpse"],
+      "sound_cues": ["two_stroke_approach", "passby", "recede"],
+      "feedback_channels": ["spatial_audio", "optional_distant_visual"],
+      "recordable_relationship": "moving_temporal_source",
+      "guidance": {
+        "GUIDED": "earlier_audio_warning",
+        "NATURAL": "natural_approach_audio",
+        "FREE": "natural_approach_audio_only"
+      },
+      "notes": "No vehicle interaction or controllable moped implied."
+    }
+  ]
+}
