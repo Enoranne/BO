@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "status": "design_only",
+  "independent_from_guidance": true,
+  "settings": {
+    "subtitles": {
+      "type": "boolean",
+      "default_proposal": true
+    },
+    "speaker_labels": {
+      "type": "boolean",
+      "default_proposal": true
+    },
+    "subtitle_size": {
+      "type": "enum",
+      "values": ["SMALL", "MEDIUM", "LARGE"],
+      "default_proposal": "MEDIUM"
+    },
+    "subtitle_background": {
+      "type": "enum",
+      "values": ["NONE", "SOFT", "STRONG"],
+      "default_proposal": "SOFT"
+    },
+    "offscreen_speaker_indicator": {
+      "type": "enum",
+      "values": ["OFF", "SUBTLE", "ON"],
+      "default_proposal": "SUBTLE"
+    },
+    "critical_sound_captions": {
+      "type": "boolean",
+      "default_proposal": false
+    },
+    "critical_sound_directional_cue": {
+      "type": "boolean",
+      "default_proposal": false
+    },
+    "strong_rec_state_feedback": {
+      "type": "boolean",
+      "default_proposal": false
+    },
+    "ui_text_scale": {
+      "type": "enum",
+      "values": ["NORMAL", "LARGE"],
+      "default_proposal": "NORMAL"
+    },
+    "reduced_camera_motion": {
+      "type": "boolean",
+      "default_proposal": false
+    },
+    "rec_input_mode": {
+      "type": "enum_future",
+      "values": ["HOLD", "TOGGLE"],
+      "default_proposal": "HOLD",
+      "implementation_note": "Do not implement until input/accessibility work is explicitly scoped."
+    }
+  },
+  "invariants": {
+    "free_guidance_can_use_subtitles": true,
+    "free_guidance_can_use_hearing_support": true,
+    "accessibility_changes_story_content": false,
+    "accessibility_changes_recording_value": false,
+    "accessibility_owned_by_recorder": false,
+    "accessibility_owned_by_interactable": false
+  }
+}
