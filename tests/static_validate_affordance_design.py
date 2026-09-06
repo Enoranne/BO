@@ -14,8 +14,10 @@ def ok(condition: bool, message: str) -> None:
         errors.append(message)
 
 catalog_path = root / "data/p0_affordance_catalog.json"
+state_models_path = root / "data/p0_interaction_state_models.json"
 language_doc = root / "docs/PHYSICAL_AFFORDANCE_LANGUAGE.md"
 feedback_doc = root / "docs/OBJECT_INTERACTION_FEEDBACK.md"
+sequence_doc = root / "docs/P0_INTERACTION_SEQUENCE_CARDS.md"
 handoff_doc = root / "docs/WORK_AFFORDANCE_HANDOFF.md"
 taxonomy_doc = root / "docs/INTERACTION_TAXONOMY.md"
 interactable_path = root / "interaction/interactable.gd"
@@ -24,8 +26,10 @@ recorder_path = root / "recorder/recorder.gd"
 
 for path, label in [
     (catalog_path, "affordance catalog exists"),
+    (state_models_path, "interaction state-model design exists"),
     (language_doc, "physical affordance language exists"),
     (feedback_doc, "interaction feedback contract exists"),
+    (sequence_doc, "interaction sequence cards exist"),
     (handoff_doc, "Work affordance handoff exists"),
     (taxonomy_doc, "interaction taxonomy exists"),
 ]:
@@ -76,6 +80,31 @@ if catalog_path.exists():
         guidance = item.get("guidance", {})
         ok(set(["GUIDED", "NATURAL", "FREE"]).issubset(guidance), f"all guidance profiles specified for {object_id}")
 
+if state_models_path.exists():
+    data = json.loads(state_models_path.read_text(encoding="utf-8"))
+    ok(data.get("status") == "design_only", "interaction state models remain design-only")
+    rules = data.get("global_rules", {})
+    ok(rules.get("recorder_independent") is True, "object state remains Recorder-independent")
+    ok(rules.get("interaction_context_independent") is True, "object state remains InteractionContext-independent")
+    ok(rules.get("narrative_ids_outside_object_state") is True, "narrative IDs stay outside object state")
+    models = data.get("models", {})
+    for object_id in ["fisher_price", "garden_gate", "kitchen_fridge", "bathroom_tap"]:
+        ok(object_id in models, f"state model exists: {object_id}")
+    if "fisher_price" in models:
+        ok(models["fisher_price"].get("status") == "existing_core_states", "Fisher state model documents existing ownership")
+        ok(models["fisher_price"].get("current_runtime_owner") == "FisherPrice", "Fisher current state owner is explicit")
+    if "garden_gate" in models:
+        gate = models["garden_gate"]
+        ok(gate.get("status") == "future_candidate", "gate state model remains future candidate")
+        ok("Gate never tells Recorder" in gate.get("recording_rule", ""), "gate state does not own recording clip creation")
+    if "kitchen_fridge" in models:
+        fridge = models["kitchen_fridge"]
+        orthogonal = fridge.get("orthogonal_state", {})
+        ok("door" in orthogonal and "compressor" in orthogonal, "fridge separates door and compressor state")
+        ok("family/narrative behaviour" in fridge.get("family_reaction_rule", ""), "fridge does not own family reaction logic")
+    if "bathroom_tap" in models:
+        ok("Recorder remains generic" in models["bathroom_tap"].get("recording_rule", ""), "tap sustained source preserves generic Recorder")
+
 if language_doc.exists():
     text = language_doc.read_text(encoding="utf-8")
     for token in ["A0", "A1", "A2", "A3", "TAKE", "OPEN / CLOSE", "PRESS", "TURN ON / TURN OFF"]:
@@ -89,6 +118,13 @@ if feedback_doc.exists():
         ok(token in text, f"feedback contract covers stage: {token}")
     ok("FREE means less explanation, not worse usability" in text, "FREE guidance retains physical usability")
     ok("Can the interaction coexist with REC?" in text, "REC coexistence is an acceptance question")
+
+if sequence_doc.exists():
+    text = sequence_doc.read_text(encoding="utf-8")
+    for token in ["Fisher Price pickup", "Garden gate / BONJOUR", "Fridge / Mother", "Bathroom tap", "Cassette review surface", "Fireplace"]:
+        ok(token in text, f"sequence cards cover {token}")
+    ok("No default `INTERACT` verb" in text, "fireplace sequence card preserves non-interactable sound-source lesson")
+    ok("recording while interacting remains possible" in text, "gate sequence preserves REC + world interaction")
 
 if handoff_doc.exists():
     text = handoff_doc.read_text(encoding="utf-8")
