@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene load_steps=5 format=3]
 
 [ext_resource type="PackedScene" path="res://scenes/piste_0/christmas_1982/Christmas1982.tscn" id="1_base"]
 [ext_resource type="Script" path="res://visual/period_1982_visual_pass.gd" id="2_visual"]
 [ext_resource type="Script" path="res://visual/period_1982_set_dressing.gd" id="3_dressing"]
+[ext_resource type="Script" path="res://visual/period_1982_hud_pass.gd" id="4_hud"]
 
 [node name="Christmas1982VisualSlice" type="Node3D"]
 
@@ -15,5 +16,10 @@ apply_on_ready = true
 
 [node name="Period1982SetDressing" type="Node" parent="."]
 script = ExtResource("3_dressing")
+root_path = NodePath("../Base")
+apply_on_ready = true
+
+[node name="Period1982HUDPass" type="Node" parent="."]
+script = ExtResource("4_hud")
 root_path = NodePath("../Base")
 apply_on_ready = true
