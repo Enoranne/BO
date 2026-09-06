@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3]
+[gd_scene load_steps=56 format=3]
 
 [ext_resource type="Script" path="res://characters/malo/malo.gd" id="1_malo"]
 [ext_resource type="Script" path="res://recorder/fisher_price.gd" id="2_fisher"]
@@ -9,6 +9,8 @@
 [ext_resource type="AudioStream" path="res://audio/ronan_test.wav" id="7_audio"]
 [ext_resource type="Script" path="res://interaction/interaction_context.gd" id="8_context"]
 [ext_resource type="Script" path="res://characters/common/placeholder_humanoid.gd" id="9_humanoid"]
+[ext_resource type="Script" path="res://recorder/fisher_price_visual.gd" id="10_fisher_visual"]
+[ext_resource type="Script" path="res://scenes/piste_0/christmas_1982/christmas1982_director.gd" id="11_director"]
 
 [sub_resource type="StandardMaterial3D" id="Mat_floor"]
 albedo_color = Color(0.23, 0.14, 0.09, 1)
@@ -174,6 +176,7 @@ size = Vector3(0.82, 0.50, 0.62)
 material = SubResource("Mat_gift_red")
 size = Vector3(1.05, 0.38, 0.76)
 
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape_malo"]
 radius = 0.38
 height = 1.45
@@ -188,10 +191,16 @@ size = Vector3(0.85, 0.48, 0.38)
 [sub_resource type="BoxShape3D" id="BoxShape_fisher"]
 size = Vector3(0.85, 0.48, 0.38)
 
+
 [sub_resource type="SphereShape3D" id="SphereShape_ronan"]
 radius = 0.7
 
 [node name="Christmas1982" type="Node3D"]
+
+[node name="Christmas1982Director" type="Node" parent="."]
+script = ExtResource("11_director")
+player_path = NodePath("../Malo")
+hud_path = NodePath("../HUD")
 
 [node name="Set" type="Node3D" parent="."]
 
@@ -401,6 +410,13 @@ skin_color = Color(0.74, 0.56, 0.40, 1)
 hair_color = Color(0.20, 0.11, 0.055, 1)
 gait_amplitude_degrees = 24.0
 
+[node name="HeldRecorderVisual" type="Node3D" parent="Malo"]
+position = Vector3(0.30, 0.10, 0.23)
+rotation_degrees = Vector3(-8, 12, -8)
+visible = false
+script = ExtResource("10_fisher_visual")
+visual_scale = 0.72
+
 [node name="Collision" type="CollisionShape3D" parent="Malo"]
 shape = SubResource("CapsuleShape_malo")
 
@@ -494,6 +510,11 @@ offset_bottom = 220.0
 [node name="VBox" type="VBoxContainer" parent="HUD/Margin"]
 layout_mode = 2
 theme_override_constants/separation = 6
+
+[node name="Objective" type="Label" parent="HUD/Margin/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "OBJECTIVE  Find the Fisher Price"
 
 [node name="State" type="Label" parent="HUD/Margin/VBox"]
 layout_mode = 2

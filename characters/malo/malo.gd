@@ -15,6 +15,7 @@ var _gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 @onready var interaction_context: InteractionContext = $InteractionContext
 @onready var visual_rig: PlaceholderHumanoid3D = get_node_or_null("VisualRig")
+@onready var held_recorder_visual: FisherPriceVisual = get_node_or_null("HeldRecorderVisual")
 
 func _ready() -> void:
     interaction_context.interactable_changed.connect(_on_interactable_changed)
@@ -58,6 +59,9 @@ func equip_recorder(recorder: Recorder) -> bool:
         return false
     equipped_recorder = recorder
     equipped_recorder.action_rejected.connect(_on_recorder_action_rejected)
+    if held_recorder_visual != null:
+        held_recorder_visual.visible = true
+        held_recorder_visual.bind_recorder(equipped_recorder)
     recorder_equipped.emit(recorder)
     return true
 

@@ -1,4 +1,4 @@
-# BO_Ta_Vie — Sprint 3
+# BO_Ta_Vie — Sprint 4
 
 Godot 4.7.x prototype for **PISTE 0 — Christmas1982**.
 
@@ -8,7 +8,7 @@ The only implemented gameplay loop remains:
 
 `Malo → Fisher Price → REC → capture RonanTest → STOP → PLAY`
 
-Sprint 3 adds **human-readable procedural placeholder characters and explicit cinematic blocking markers**. It does not add new gameplay.
+Sprint 4 adds **first-recording presentation feedback** on top of the Sprint 3 blocking: a carried Fisher Price visual, real REC lamp feedback, and a presentation-only objective beat. It does not add a new gameplay loop.
 
 No inventory, save system, dialogue tree, NPC navigation, Radio Malo, MK2 mechanics, pitch, Sound-on-Sound or multitrack is implemented.
 
@@ -30,6 +30,8 @@ No inventory, save system, dialogue tree, NPC navigation, Radio Malo, MK2 mechan
 - `FisherPrice` — first recorder device shell with PLACED / EQUIPPED / ACTIVE states.
 - `MaloController` — movement and player-intent orchestration; it does not scan the world itself.
 - `PlaceholderHumanoid3D` — procedural temporary character rig used by Malo and Ronan.
+- `FisherPriceVisual` — carried device placeholder observing the real Recorder state.
+- `Christmas1982Director` — presentation-only first-recording beat observer; it does not own Recorder logic.
 - `CinematicCamera` — fixed/semi-fixed framing with deliberately limited follow around Malo's spawn anchor.
 - `HUD` — signal-driven presentation only; it does not own gameplay state.
 
@@ -51,7 +53,8 @@ The scene establishes the first intended composition with placeholder-only geome
 - explicit blocking markers for Malo start, Fisher pickup, Ronan record position and camera start.
 
 Spatial lock: [`docs/CHRISTMAS1982_LAYOUT.md`](docs/CHRISTMAS1982_LAYOUT.md)  
-Blocking lock: [`docs/CHRISTMAS1982_BLOCKING.md`](docs/CHRISTMAS1982_BLOCKING.md)
+Blocking lock: [`docs/CHRISTMAS1982_BLOCKING.md`](docs/CHRISTMAS1982_BLOCKING.md)  
+Presentation lock: [`docs/FIRST_RECORDING_PRESENTATION.md`](docs/FIRST_RECORDING_PRESENTATION.md)
 
 ## Validation
 
@@ -73,7 +76,7 @@ Open the prototype:
 godot --path . --editor
 ```
 
-See [`SPRINT3_STATUS.md`](SPRINT3_STATUS.md) for the acceptance checklist.
+See [`SPRINT4_STATUS.md`](SPRINT4_STATUS.md) for the current acceptance checklist.
 
 ## Codex / Astra + yanhuifair Godot-MCP
 

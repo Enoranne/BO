@@ -55,3 +55,9 @@ No visual improvement is more important than preserving this loop.
 - Preserve the `Blocking/*` markers as staging contracts unless a task explicitly revises scene blocking.
 - Do not add NPC AI, navigation, dialogue trees or a full animation state machine while validating Sprint 3.
 - Malo's placeholder gait may be corrected for engine/runtime issues, but the gameplay loop and input contract must remain unchanged.
+
+## Sprint 4 lock
+- Preserve the first-recording beat order: FIND_FISHER → RECORD_RONAN → PLAY_RECORDING → COMPLETE.
+- `Christmas1982Director` is presentation-only; do not move Recorder logic into it.
+- `FisherPriceVisual` observes Recorder state; it must not become a second recorder implementation.
+- Do not add inventory, dialogue, save/load, Radio Malo or MK2 mechanics while validating Sprint 4.

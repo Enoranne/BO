@@ -1,4 +1,5 @@
 extends CanvasLayer
+class_name RecorderHUD
 
 @export var player_path: NodePath
 
@@ -8,6 +9,7 @@ var _interaction_prompt := ""
 var _last_status := ""
 var _status_timeout := 0.0
 
+@onready var objective_label: Label = $Margin/VBox/Objective
 @onready var state_label: Label = $Margin/VBox/State
 @onready var timer_label: Label = $Margin/VBox/Timer
 @onready var hint_label: Label = $Margin/VBox/Hint
@@ -23,6 +25,9 @@ func _ready() -> void:
     timer_label.text = "00:00.0"
     source_label.text = "Source: —"
     _refresh_hint()
+
+func set_objective(text: String) -> void:
+    objective_label.text = "OBJECTIVE  %s" % text
 
 func _process(delta: float) -> void:
     if _status_timeout <= 0.0:
