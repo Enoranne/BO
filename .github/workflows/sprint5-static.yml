@@ -64,3 +64,6 @@ jobs:
 
       - name: PISTE 0 narrative beat contract
         run: python tests/static_validate_piste0_narrative_design.py
+
+      - name: Guidance/recovery design contract
+        run: python tests/static_validate_guidance_recovery_design.py
