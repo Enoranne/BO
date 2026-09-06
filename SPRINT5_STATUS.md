@@ -16,7 +16,6 @@ A player should be able to launch `Christmas1982`, understand the salon as a bel
 - Branch `sprint-5` created directly from Sprint 4 commit `41e0cfd8ec1682a7b056c343828094405911e42d`.
 - Sprint 5 lock added to `AGENTS.md`.
 - Reusable period palette documented in `docs/MATERIAL_PALETTE_1982.md`.
-- Six external Godot material resources added under `materials/period_1982/`.
 - Presentation-only material override utility added at `visual/period_1982_visual_pass.gd`.
 - Reversible wrapper scene added at `scenes/piste_0/christmas_1982/Christmas1982_VisualSlice.tscn`.
 - Wrapper instances the canonical Sprint 4 scene rather than replacing it.
@@ -41,11 +40,31 @@ Implemented without changing `MaloController`, `Recorder` or `InteractionContext
 
 Left click currently acts on the interactable already selected by `InteractionContext`; it is deliberately not a point-and-click raycast yet. No unrestricted mouse-look has been added.
 
+## Sprint 5.2 — Visual Slice
+Implemented as a reversible presentation layer around the canonical Sprint 4 scene:
+
+- `Christmas1982_VisualSlice.tscn` still instances `Christmas1982.tscn`; the canonical gameplay scene is unchanged;
+- wall, floor, rug, sofa, wood, fireplace and Fisher Price materials are overridden only in the wrapper;
+- additional period materials now include dark warm flooring, warm fireplace stone, painted cream trim and muted-red Christmas ornaments;
+- fireplace, tree and fill lights receive a restrained presentation-only balance pass;
+- large in-world debug labels over Fisher Price and Ronan are hidden in the Visual Slice while the contextual HUD remains active;
+- the world Fisher Price receives a visual-only burgundy front panel so it reads closer to the intended beige/burgundy object language;
+- `visual/period_1982_set_dressing.gd` adds visual-only skirting boards, a fireplace mantel, three sofa cushions and sparse tree ornaments;
+- the set-dressing layer creates no collision shapes, Areas or CharacterBodies;
+- `tests/static_validate_sprint5.py` now validates the 5.2 separation contract;
+- `docs/SPRINT5_2_VISUAL_REVIEW.md` defines the mandatory A/B and gameplay regression review.
+
+Sprint 5.2 remains **pending live Godot/MCP visual acceptance**. No claim is made yet that the new lighting or detail placement looks correct in-engine.
+
 ## Material targets currently prepared
 - warm cream wallpaper;
 - dark varnished wood;
 - muted brown/orange upholstery;
 - muted brown carpet/rug;
+- dark warm floor;
+- warm fireplace stone;
+- painted cream trim;
+- muted-red tree ornaments;
 - aged Fisher Price beige plastic;
 - muted burgundy Fisher Price panel plastic.
 
@@ -61,7 +80,8 @@ Left click currently acts on the interactable already selected by `InteractionCo
 - final production character likenesses;
 - mouse raycast selection;
 - free 360-degree camera;
-- numeric-keypad dependency.
+- numeric-keypad dependency;
+- production-grade 3D prop replacement.
 
 ## Acceptance contract
 1. The Sprint 4 first-recording beat order remains FIND_FISHER -> RECORD_RONAN -> PLAY_RECORDING -> COMPLETE.
@@ -88,14 +108,18 @@ When Godot / Work is available:
 7. verify hold/release `R` still creates the RonanTest clip;
 8. verify `Space` and `P` both play the latest clip;
 9. open canonical `Christmas1982.tscn` and capture the baseline camera view;
-10. open `Christmas1982_VisualSlice.tscn` and compare the same view;
-11. verify held Fisher Price receives beige/burgundy presentation overrides after pickup;
-12. only after that begin the Cyclops architectural-shell spike.
+10. open `Christmas1982_VisualSlice.tscn` and capture the same view;
+11. compare A/B using `docs/SPRINT5_2_VISUAL_REVIEW.md`;
+12. verify the hidden world labels do not make Fisher/Ronan interactions unclear;
+13. inspect skirting, mantel, cushions, ornaments and Fisher front panel for floating/intersection errors;
+14. verify the new light balance keeps Malo, Ronan and Fisher readable;
+15. only after 5.2 acceptance begin Sprint 5.3 with one Higgsfield 3D prop pipeline test.
 
 ## Current state
 - Branch: `sprint-5`.
 - Canonical gameplay architecture: preserved.
-- Visual wrapper: created, not yet engine-validated.
 - Player Feel 5.1 bindings: implemented, not yet engine-validated.
-- Gameplay mechanics added in Sprint 5.1: none; only alternate input bindings and HUD guidance.
+- Visual Slice 5.2 implementation: materially expanded, not yet engine-validated.
+- Gameplay mechanics added by 5.1/5.2: none.
 - Visual/input acceptance: pending live Godot/MCP inspection.
+- Next planned stage after acceptance: Sprint 5.3 Higgsfield 3D asset pipeline.
