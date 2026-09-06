@@ -17,11 +17,13 @@ base_scene = root / "scenes/piste_0/christmas_1982/Christmas1982.tscn"
 visual_scene = root / "scenes/piste_0/christmas_1982/Christmas1982_VisualSlice.tscn"
 visual_pass = root / "visual/period_1982_visual_pass.gd"
 set_dressing = root / "visual/period_1982_set_dressing.gd"
+hud_pass = root / "visual/period_1982_hud_pass.gd"
 
 ok(base_scene.exists(), "Sprint 4 canonical Christmas1982 scene still exists")
 ok(visual_scene.exists(), "Sprint 5 visual-slice wrapper scene exists")
 ok(visual_pass.exists(), "Sprint 5 period visual pass exists")
 ok(set_dressing.exists(), "Sprint 5.2 visual-only set dressing exists")
+ok(hud_pass.exists(), "Sprint 5 cinematic HUD presentation pass exists")
 
 materials = [
     "materials/period_1982/wallpaper_cream.tres",
@@ -45,7 +47,8 @@ if visual_scene.exists():
     ok("Christmas1982.tscn" in text, "visual slice instances canonical Christmas1982")
     ok("period_1982_visual_pass.gd" in text, "visual slice loads Period1982VisualPass")
     ok("period_1982_set_dressing.gd" in text, "visual slice loads Period1982SetDressing")
-    ok(text.count('root_path = NodePath("../Base")') == 2, "both presentation passes target the wrapper Base instance")
+    ok("period_1982_hud_pass.gd" in text, "visual slice loads Period1982HUDPass")
+    ok(text.count('root_path = NodePath("../Base")') == 3, "all three presentation passes target the wrapper Base instance")
     ok("position =" not in text and "rotation" not in text, "wrapper itself does not override spatial blocking")
 
 if visual_pass.exists():
@@ -101,6 +104,21 @@ if set_dressing.exists():
         ok(token not in text, f"set dressing remains presentation-only: no {token}")
     ok('layer.name = "VisualSetDressing"' in text, "set dressing is isolated under its own visual layer")
     ok("BoxMesh.new()" in text and "SphereMesh.new()" in text, "set dressing creates visual meshes only")
+
+if hud_pass.exists():
+    text = hud_pass.read_text(encoding="utf-8")
+    for path in [
+        "HUD/Margin/VBox/Objective",
+        "HUD/Margin/VBox/State",
+        "HUD/Margin/VBox/Timer",
+        "HUD/Margin/VBox/Source",
+        "HUD/Margin/VBox/Hint",
+    ]:
+        ok(path in text, f"HUD pass styles expected label: {path}")
+    for setting in ["objective_prefix", "compact_hints", "teach_legacy_play_key"]:
+        ok(setting in text, f"HUD pass configures presentation setting: {setting}")
+    for forbidden in ["start_recording(", "stop_recording(", "play_latest(", "InputMap", "InteractionContext", "RecordingClip"]:
+        ok(forbidden not in text, f"HUD pass remains presentation-only: no {forbidden}")
 
 print(f"\nSprint 5 static validation complete: {len(errors)} failure(s).")
 sys.exit(1 if errors else 0)
