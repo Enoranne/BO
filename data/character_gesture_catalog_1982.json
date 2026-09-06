@@ -1,0 +1,241 @@
+{
+  "version": 1,
+  "status": "design_only",
+  "purpose": "Production-facing gesture backlog. Does not authorise a production animation state machine during Sprint 5.",
+  "design_rules": {
+    "controller_owns_locomotion": true,
+    "root_motion_required": false,
+    "attention_should_not_steal_control": true,
+    "sound_sync_required_for_contact_actions": true,
+    "placeholder_is_not_final_rig": true,
+    "animation_tree_required_now": false,
+    "sprint5_new_animation_system": false
+  },
+  "priority_bands": {
+    "P0": "Needed to make current vertical slice/first recording feel embodied.",
+    "P1": "First post-prototype family/interaction expansion.",
+    "P2": "Later narrative performance or advanced device era."
+  },
+  "gestures": [
+    {
+      "id": "malo_idle_listening",
+      "character": "Malo",
+      "priority": "P0",
+      "layer": "attention",
+      "target_duration_s": [1.5, 5.0],
+      "loopable": true,
+      "implementation_phase": "live_visual_validation_then_candidate",
+      "notes": "Reduced motion, small weight shift, occasional head attention. Stillness is allowed."
+    },
+    {
+      "id": "malo_walk_child",
+      "character": "Malo",
+      "priority": "P0",
+      "layer": "locomotion",
+      "target_duration_s": [0.7, 1.2],
+      "loopable": true,
+      "implementation_phase": "live_visual_validation_then_candidate",
+      "notes": "Shorter stride and quicker cadence than adult; no cartoon bounce."
+    },
+    {
+      "id": "malo_pickup_fisher",
+      "character": "Malo",
+      "priority": "P0",
+      "layer": "object_interaction",
+      "target_duration_s": [0.7, 1.4],
+      "loopable": false,
+      "implementation_phase": "after_live_fisher_validation",
+      "notes": "Reach, grasp, lift, settle. Must not alter pickup ownership or interaction contract."
+    },
+    {
+      "id": "malo_carry_fisher",
+      "character": "Malo",
+      "priority": "P0",
+      "layer": "object_pose",
+      "target_duration_s": [1.0, 5.0],
+      "loopable": true,
+      "implementation_phase": "after_authored_rig_or_safe_proxy",
+      "notes": "Device near lower torso/hip; weight readable; free arm available."
+    },
+    {
+      "id": "malo_press_rec",
+      "character": "Malo",
+      "priority": "P0",
+      "layer": "object_interaction",
+      "target_duration_s": [0.15, 0.35],
+      "loopable": false,
+      "implementation_phase": "after_safe_animation_seam",
+      "notes": "Hand/finger action syncs to mechanical REC click. Recorder FSM remains authoritative."
+    },
+    {
+      "id": "malo_recording_hold",
+      "character": "Malo",
+      "priority": "P0",
+      "layer": "object_pose",
+      "target_duration_s": [1.0, 10.0],
+      "loopable": true,
+      "implementation_phase": "after_safe_animation_seam",
+      "notes": "Attentive pose; player movement may continue according to gameplay rules."
+    },
+    {
+      "id": "malo_stop_recording",
+      "character": "Malo",
+      "priority": "P0",
+      "layer": "object_interaction",
+      "target_duration_s": [0.15, 0.35],
+      "loopable": false,
+      "implementation_phase": "after_safe_animation_seam",
+      "notes": "Quick release/STOP gesture followed by relaxation."
+    },
+    {
+      "id": "malo_press_play_listen",
+      "character": "Malo",
+      "priority": "P0",
+      "layer": "object_interaction_attention",
+      "target_duration_s": [0.3, 2.5],
+      "loopable": false,
+      "implementation_phase": "after_safe_animation_seam",
+      "notes": "Press then small listening stillness; no forced long lockout."
+    },
+    {
+      "id": "malo_notice_sound",
+      "character": "Malo",
+      "priority": "P1",
+      "layer": "attention",
+      "target_duration_s": [0.25, 0.8],
+      "loopable": false,
+      "implementation_phase": "post_sprint5_attention_system",
+      "notes": "Head/eyes first; upper torso only if source stays salient; no forced full-body turn."
+    },
+    {
+      "id": "malo_mother_call_reaction",
+      "character": "Malo",
+      "priority": "P1",
+      "layer": "character_reaction",
+      "target_duration_s": [0.3, 0.9],
+      "loopable": false,
+      "implementation_phase": "wind_beat",
+      "notes": "Brief head/shoulder reaction to MALO TU FAIS QUOI; recorder state preserved."
+    },
+    {
+      "id": "malo_caught_recording",
+      "character": "Malo",
+      "priority": "P1",
+      "layer": "character_reaction",
+      "target_duration_s": [0.4, 1.0],
+      "loopable": false,
+      "implementation_phase": "ronan_living_beat",
+      "notes": "Tiny freeze/hesitation, not slapstick guilt animation."
+    },
+    {
+      "id": "ronan_idle_older_sibling",
+      "character": "Ronan",
+      "priority": "P0",
+      "layer": "idle",
+      "target_duration_s": [2.0, 6.0],
+      "loopable": true,
+      "implementation_phase": "live_character_readability",
+      "notes": "More stable and physically assured than Malo."
+    },
+    {
+      "id": "ronan_notice_rec_glance",
+      "character": "Ronan",
+      "priority": "P1",
+      "layer": "character_reaction",
+      "target_duration_s": [0.3, 0.8],
+      "loopable": false,
+      "implementation_phase": "first_living_family_proof",
+      "notes": "Quick glance toward Fisher/REC state."
+    },
+    {
+      "id": "ronan_perform_for_recorder",
+      "character": "Ronan",
+      "priority": "P1",
+      "layer": "character_reaction",
+      "target_duration_s": [1.0, 4.0],
+      "loopable": false,
+      "implementation_phase": "ronan_living_beat",
+      "notes": "Optional playful lean/voice performance; one of several variants."
+    },
+    {
+      "id": "ronan_spoil_take",
+      "character": "Ronan",
+      "priority": "P1",
+      "layer": "character_reaction",
+      "target_duration_s": [0.7, 2.5],
+      "loopable": false,
+      "implementation_phase": "ronan_living_beat",
+      "notes": "Deliberate interruption that can create a better memory rather than pure punishment."
+    },
+    {
+      "id": "mother_fridge_glance",
+      "character": "Mother",
+      "priority": "P1",
+      "layer": "character_reaction",
+      "target_duration_s": [0.3, 0.8],
+      "loopable": false,
+      "implementation_phase": "fridge_beat",
+      "notes": "First escalation step before dialogue/intervention."
+    },
+    {
+      "id": "mother_fridge_intervene",
+      "character": "Mother",
+      "priority": "P1",
+      "layer": "character_reaction",
+      "target_duration_s": [1.0, 3.0],
+      "loopable": false,
+      "implementation_phase": "fridge_beat",
+      "notes": "Purposeful approach/gesture; not a generic NPC aggro response."
+    },
+    {
+      "id": "father_fireplace_adjust",
+      "character": "Father",
+      "priority": "P1",
+      "layer": "ambient_routine",
+      "target_duration_s": [1.5, 4.0],
+      "loopable": false,
+      "implementation_phase": "living_house_candidate",
+      "notes": "Quiet authored routine around fireplace; supports calm household life."
+    },
+    {
+      "id": "malo_gate_open",
+      "character": "Malo",
+      "priority": "P1",
+      "layer": "object_interaction",
+      "target_duration_s": [0.4, 0.9],
+      "loopable": false,
+      "implementation_phase": "gate_beat_after_temporal_capture",
+      "notes": "Hand-to-latch timing should align with transient audio; simple authored interaction anchor."
+    },
+    {
+      "id": "malo_cassette_review",
+      "character": "Malo",
+      "priority": "P1",
+      "layer": "object_interaction",
+      "target_duration_s": [1.0, 3.0],
+      "loopable": false,
+      "implementation_phase": "sprint6_physical_review",
+      "notes": "Pick/turn/place cassette; physical archive metaphor before full-screen UI."
+    },
+    {
+      "id": "malo_tape_repair_focus",
+      "character": "Malo",
+      "priority": "P2",
+      "layer": "narrative_performance",
+      "target_duration_s": [3.0, 10.0],
+      "loopable": false,
+      "implementation_phase": "later_piste0",
+      "notes": "Fine-motor concentration; authored performance, not generic interaction."
+    },
+    {
+      "id": "malo_radio_malo_perform",
+      "character": "Malo",
+      "priority": "P2",
+      "layer": "narrative_performance",
+      "target_duration_s": [3.0, 12.0],
+      "loopable": false,
+      "implementation_phase": "radio_malo",
+      "notes": "Confident creative performance showing evolution from listener to maker."
+    }
+  ]
+}
