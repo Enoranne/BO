@@ -57,7 +57,7 @@ Implemented as a reversible presentation layer around the canonical Sprint 4 sce
 Sprint 5.2 remains **pending live Godot/MCP visual acceptance**. No claim is made yet that the new lighting or detail placement looks correct in-engine.
 
 ## Sprint 5.3 — Higgsfield 3D Asset Pipeline
-Started in parallel as a single-object technical proof, without changing the Godot scene yet.
+Started in parallel as a single-object technical proof, without changing the canonical Godot scene.
 
 - Higgsfield / 3D Jutsu project created: `BO_Sprint5_3_AssetPipeline`.
 - Project ID: `be670f5b-c348-42a3-b025-85e4054d0373`.
@@ -68,6 +68,11 @@ Started in parallel as a single-object technical proof, without changing the God
 - Import settled at Higgsfield revision `1`, scene sequence `1`.
 - A GLB export exists for revision `1`.
 - `docs/HIGGSFIELD_3D_PIPELINE.md` records the round-trip acceptance contract.
+- Godot-side reversible slot added at `visual/external_asset_slot.gd`.
+- Isolated preview scene added at `scenes/piste_0/christmas_1982/CoffeeTableAssetPreview.tscn`.
+- The preview currently uses an empty target envelope matching the existing coffee-table footprint and does **not** hard-reference a missing GLB.
+- Reserved import path documented at `assets/3d/higgsfield/README.md`.
+- `tests/static_validate_asset_pipeline.py` validates that the asset slot has no Recorder, interaction or collision dependency.
 
 The table is **not approved as production art** yet. It exists only to validate Higgsfield -> GLB -> Godot -> visual review. No batch import should happen before this single object passes the complete round trip.
 
@@ -108,9 +113,10 @@ The table is **not approved as production art** yet. It exists only to validate 
 7. `tests/static_validate.py` must still report `0 failure(s)`.
 8. `tests/static_validate_sprint5.py` must report `0 failure(s)`.
 9. `tests/static_validate_player_feel.py` must report `0 failure(s)`.
-10. Godot headless acceptance tests must still pass when the runtime is available.
-11. Real editor/MCP visual and input inspection is required before Sprint 5 can be considered accepted.
-12. The first Higgsfield GLB must be validated in isolation before any second production-prop import.
+10. `tests/static_validate_asset_pipeline.py` must report `0 failure(s)`.
+11. Godot headless acceptance tests must still pass when the runtime is available.
+12. Real editor/MCP visual and input inspection is required before Sprint 5 can be considered accepted.
+13. The first Higgsfield GLB must be validated in isolation before any second production-prop import.
 
 ## Next live-engine validation
 When Godot / Work is available:
@@ -118,26 +124,28 @@ When Godot / Work is available:
 1. run `tests/static_validate.py`;
 2. run `tests/static_validate_sprint5.py`;
 3. run `tests/static_validate_player_feel.py`;
-4. run the existing headless Godot suite;
-5. test movement on the available keyboard layout;
-6. verify `E` and left click both take the Fisher Price when in interaction range;
-7. verify hold/release `R` still creates the RonanTest clip;
-8. verify `Space` and `P` both play the latest clip;
-9. open canonical `Christmas1982.tscn` and capture the baseline camera view;
-10. open `Christmas1982_VisualSlice.tscn` and capture the same view;
-11. compare A/B using `docs/SPRINT5_2_VISUAL_REVIEW.md`;
-12. verify the hidden world labels do not make Fisher/Ronan interactions unclear;
-13. inspect skirting, mantel, cushions, ornaments and Fisher front panel for floating/intersection errors;
-14. verify the new light balance keeps Malo, Ronan and Fisher readable;
-15. if 5.2 passes, retrieve/import the revision-1 `BO_CoffeeTable_Test` GLB into an isolated Godot test path;
-16. compare that GLB against `Set/CoffeeTablePlaceholder` for scale, orientation, materials and mesh complexity;
-17. only after the coffee-table round trip passes, decide whether Higgsfield becomes the preferred prop-production route for Sprint 5.
+4. run `tests/static_validate_asset_pipeline.py`;
+5. run the existing headless Godot suite;
+6. test movement on the available keyboard layout;
+7. verify `E` and left click both take the Fisher Price when in interaction range;
+8. verify hold/release `R` still creates the RonanTest clip;
+9. verify `Space` and `P` both play the latest clip;
+10. open canonical `Christmas1982.tscn` and capture the baseline camera view;
+11. open `Christmas1982_VisualSlice.tscn` and capture the same view;
+12. compare A/B using `docs/SPRINT5_2_VISUAL_REVIEW.md`;
+13. verify the hidden world labels do not make Fisher/Ronan interactions unclear;
+14. inspect skirting, mantel, cushions, ornaments and Fisher front panel for floating/intersection errors;
+15. verify the new light balance keeps Malo, Ronan and Fisher readable;
+16. if 5.2 passes, retrieve/import the revision-1 `BO_CoffeeTable_Test` GLB into `assets/3d/higgsfield/coffee_table_test.glb`;
+17. assign the imported PackedScene only in `CoffeeTableAssetPreview.tscn` first;
+18. compare the candidate against the target envelope for scale, orientation, materials and mesh complexity;
+19. only after the coffee-table round trip passes, decide whether Higgsfield becomes the preferred prop-production route for Sprint 5.
 
 ## Current state
 - Branch: `sprint-5`.
 - Canonical gameplay architecture: preserved.
 - Player Feel 5.1 bindings: implemented, not yet engine-validated.
 - Visual Slice 5.2 implementation: materially expanded, not yet engine-validated.
-- Higgsfield 5.3 pipeline: started with one settled GLB asset-test, not yet imported into Godot.
+- Higgsfield 5.3 pipeline: Godot integration scaffold prepared; GLB still intentionally absent from the repository.
 - Gameplay mechanics added by 5.1/5.2/5.3: none.
 - Visual/input acceptance: pending live Godot/MCP inspection.
