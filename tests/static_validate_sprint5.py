@@ -34,6 +34,8 @@ materials = [
     "materials/period_1982/fireplace_stone_warm.tres",
     "materials/period_1982/painted_trim_cream.tres",
     "materials/period_1982/ornament_muted_red.tres",
+    "materials/period_1982/plastic_fisher_window_dark.tres",
+    "materials/period_1982/plastic_rec_red.tres",
 ]
 for rel in materials:
     ok((root / rel).exists(), f"Sprint 5 material exists: {rel}")
@@ -48,7 +50,19 @@ if visual_scene.exists():
 
 if visual_pass.exists():
     text = visual_pass.read_text(encoding="utf-8")
-    for rel in materials[:8]:
+    visual_materials = [
+        "materials/period_1982/wallpaper_cream.tres",
+        "materials/period_1982/wood_dark_varnished.tres",
+        "materials/period_1982/upholstery_brown_orange.tres",
+        "materials/period_1982/carpet_muted_brown.tres",
+        "materials/period_1982/plastic_fisher_beige.tres",
+        "materials/period_1982/plastic_fisher_burgundy.tres",
+        "materials/period_1982/floor_dark_warm_brown.tres",
+        "materials/period_1982/fireplace_stone_warm.tres",
+        "materials/period_1982/plastic_fisher_window_dark.tres",
+        "materials/period_1982/plastic_rec_red.tres",
+    ]
+    for rel in visual_materials:
         ok(rel in text, f"visual pass references material when expected: {rel}")
     for path in [
         "Set/Floor/Mesh",
@@ -61,11 +75,14 @@ if visual_pass.exists():
         "Set/FireplacePlaceholder/Main",
         "FisherPrice/Visual",
         "Malo/HeldRecorderVisual/Body",
+        "Malo/HeldRecorderVisual/CassetteWindow",
         "Lighting/FireGlow",
         "Lighting/TreeLamp",
         "Lighting/SoftFill",
     ]:
         ok(path in text, f"visual pass contains expected target path: {path}")
+    for detail in ["VisualDetails", "CassettePanel", "CassetteWindow", "Handle", "PlayButton", "RecButton"]:
+        ok(detail in text, f"world Fisher presentation includes detail: {detail}")
     ok("material_override" in text, "visual pass applies MeshInstance3D material overrides")
     ok("CollisionShape3D" not in text, "visual pass does not modify collision shapes")
     for forbidden in ["start_recording(", "stop_recording(", "play_latest(", "RecordingClip", "Recorder.State", "equipped_recorder"]:
