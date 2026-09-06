@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/piste_0/christmas_1982/Christmas1982.tscn" id="1_base"]
+[ext_resource type="Script" path="res://visual/period_1982_visual_pass.gd" id="2_visual"]
+
+[node name="Christmas1982VisualSlice" type="Node3D"]
+
+[node name="Base" parent="." instance=ExtResource("1_base")]
+
+[node name="Period1982VisualPass" type="Node" parent="."]
+script = ExtResource("2_visual")
+root_path = NodePath("../Base")
+apply_on_ready = true
