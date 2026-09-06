@@ -1,0 +1,98 @@
+{
+  "version": 1,
+  "status": "design_only",
+  "purpose": "Map P0 sounds to future temporal behavior without implementing new Sprint 5 gameplay.",
+  "event_types": {
+    "passive": "Continuous or naturally evolving world sound that does not require context interaction.",
+    "triggered": "Discrete world event caused by an interaction or scripted event.",
+    "moving": "World event whose source position/level changes over time.",
+    "device": "Recorder mechanical feedback; diegetic but not a normal collectible world source."
+  },
+  "events": [
+    {
+      "sound_id": "ronan_test",
+      "event_type": "triggered",
+      "interaction_role": "character_event",
+      "recordable": true,
+      "trigger": "tutorial/presentation event while Malo is near Ronan",
+      "temporal_rule": "Only content occurring between REC and STOP should belong to a future temporal capture.",
+      "sprint5_required": true,
+      "future_overlap_examples": ["fireplace_crackle", "family_room_tone"]
+    },
+    {
+      "sound_id": "fisher_button_mechanics",
+      "event_type": "device",
+      "interaction_role": "input_feedback",
+      "recordable": false,
+      "trigger": "REC/STOP/PLAY physical control action",
+      "temporal_rule": "Primary role is immediate diegetic feedback. Any later self-recording bleed is device-profile behavior, not a collectible source.",
+      "sprint5_required": false
+    },
+    {
+      "sound_id": "fisher_transport_click",
+      "event_type": "device",
+      "interaction_role": "state_transition_feedback",
+      "recordable": false,
+      "trigger": "transport engagement/disengagement",
+      "temporal_rule": "Lives outside normal world-source collection. Playback mechanics must never feed the normal capture bus by accident.",
+      "sprint5_required": false
+    },
+    {
+      "sound_id": "fireplace_crackle",
+      "event_type": "passive",
+      "interaction_role": "none_early_piste0",
+      "recordable": true,
+      "trigger": "always/naturally evolving while fireplace is active",
+      "temporal_rule": "Captured segment must correspond to the actual REC interval; no automatic replacement with a full ambience file.",
+      "sprint5_required": false
+    },
+    {
+      "sound_id": "gate_squeak",
+      "event_type": "triggered",
+      "interaction_role": "open_close_gate",
+      "recordable": true,
+      "trigger": "gate state transition",
+      "temporal_rule": "Latch/hinge portions that occur before REC or after STOP are absent from the stored temporal capture.",
+      "sprint5_required": false,
+      "variation_axes": ["open_close", "movement_speed", "distance", "optional_wind_motion"]
+    },
+    {
+      "sound_id": "garden_wind_tree",
+      "event_type": "passive",
+      "interaction_role": "none",
+      "recordable": true,
+      "trigger": "environmental gust evolution",
+      "temporal_rule": "Player waits for and chooses a time window; quiet/rough captures remain valid.",
+      "sprint5_required": false,
+      "future_overlap_examples": ["mother_distant_call", "gate_squeak", "distant_bird"]
+    },
+    {
+      "sound_id": "kitchen_fridge_hum",
+      "event_type": "passive",
+      "interaction_role": "fridge_context",
+      "recordable": true,
+      "trigger": "compressor cycle",
+      "temporal_rule": "Continuous hum can overlap triggered fridge-door events in one recording.",
+      "sprint5_required": false,
+      "future_overlap_examples": ["fridge_door_open", "fridge_door_close", "mother_voice"]
+    },
+    {
+      "sound_id": "street_moped_pass",
+      "event_type": "moving",
+      "interaction_role": "none",
+      "recordable": true,
+      "trigger": "world schedule / narrative event",
+      "temporal_rule": "Late start or early stop creates a partial valid pass-by recording; never substitute the full source event.",
+      "sprint5_required": false,
+      "variation_axes": ["player_position", "start_timing", "stop_timing", "source_trajectory"]
+    }
+  ],
+  "global_rules": {
+    "recording_quality_score": false,
+    "automatic_pristine_replacement": false,
+    "permanent_record_this_markers": false,
+    "partial_recordings_valid": true,
+    "overlapping_recordable_events_desired": true,
+    "playback_feedback_into_capture_default": false
+  }
+}
