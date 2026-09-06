@@ -14,15 +14,28 @@ def ok(condition: bool, message: str) -> None:
         errors.append(message)
 
 profiles_path = root / "data/audio_memory_profiles_1982.json"
+events_path = root / "data/p0_sound_event_design.json"
+catalog_path = root / "data/sound_catalog_1982.json"
 pipeline_doc = root / "docs/AUDIO_MEMORY_PIPELINE_1982.md"
 temporal_doc = root / "docs/FUTURE_TEMPORAL_CAPTURE_ARCHITECTURE.md"
 choreography_doc = root / "docs/P0_INTERACTION_SOUND_CHOREOGRAPHY.md"
+adr_doc = root / "docs/ADR_001_TEMPORAL_AUDIO_CAPTURE.md"
 recorder = root / "recorder/recorder.gd"
 
 ok(profiles_path.exists(), "audio memory profile data exists")
+ok(events_path.exists(), "P0 temporal sound-event map exists")
+ok(catalog_path.exists(), "sound production catalog exists")
 ok(pipeline_doc.exists(), "three-stage audio memory pipeline doc exists")
 ok(temporal_doc.exists(), "future temporal capture architecture doc exists")
 ok(choreography_doc.exists(), "P0 interaction/sound choreography doc exists")
+ok(adr_doc.exists(), "temporal audio capture ADR exists")
+
+catalog_ids = set()
+if catalog_path.exists():
+    catalog = json.loads(catalog_path.read_text(encoding="utf-8"))
+    catalog_ids = {entry.get("id") for entry in catalog.get("entries", [])}
+    required = [entry.get("id") for entry in catalog.get("entries", []) if entry.get("required_in_sprint5")]
+    ok(required == ["ronan_test"], "sound catalog still has only ronan_test as required Sprint 5 recording")
 
 if profiles_path.exists():
     data = json.loads(profiles_path.read_text(encoding="utf-8"))
@@ -45,6 +58,24 @@ if profiles_path.exists():
         "ronan_test",
     ]:
         ok(sound_id in treatments, f"P0 memory treatment exists: {sound_id}")
+        ok(sound_id in catalog_ids, f"P0 memory treatment maps to sound catalog id: {sound_id}")
+
+if events_path.exists():
+    events = json.loads(events_path.read_text(encoding="utf-8"))
+    ok(events.get("status") == "design_only", "P0 event behavior map remains design-only")
+    event_items = events.get("events", [])
+    event_ids = [event.get("sound_id") for event in event_items]
+    ok(len(event_ids) == len(set(event_ids)), "P0 event map has no duplicate sound ids")
+    for sound_id in event_ids:
+        ok(sound_id in catalog_ids, f"P0 event maps to production catalog id: {sound_id}")
+    valid_types = {"passive", "triggered", "moving", "device"}
+    for event in event_items:
+        ok(event.get("event_type") in valid_types, f"valid temporal event type: {event.get('sound_id')}")
+    rules = events.get("global_rules", {})
+    ok(rules.get("recording_quality_score") is False, "recordings are not numerically quality-scored")
+    ok(rules.get("automatic_pristine_replacement") is False, "partial recordings are not replaced by pristine full events")
+    ok(rules.get("partial_recordings_valid") is True, "partial recordings remain valid content")
+    ok(rules.get("playback_feedback_into_capture_default") is False, "playback feedback is disabled by default in future design")
 
 if pipeline_doc.exists():
     text = pipeline_doc.read_text(encoding="utf-8")
@@ -64,6 +95,12 @@ if choreography_doc.exists():
         ok(token in text, f"P0 choreography covers {token}")
     ok("No score for recording quality" in text, "recording quality remains listen-first rather than scored")
     ok("composition" in text.lower(), "interaction + recordability composition rule is documented")
+
+if adr_doc.exists():
+    text = adr_doc.read_text(encoding="utf-8")
+    ok("Status:** Proposed" in text, "temporal capture ADR is proposed rather than accepted/implemented")
+    ok("dedicated recordable-world audio bus" in text.lower(), "ADR identifies bus-based temporal capture candidate")
+    ok("Do not implement ADR-001" in text, "ADR contains explicit Sprint 5 implementation stop gate")
 
 if recorder.exists():
     text = recorder.read_text(encoding="utf-8")
