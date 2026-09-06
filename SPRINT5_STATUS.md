@@ -25,6 +25,22 @@ A player should be able to launch `Christmas1982`, understand the salon as a bel
 - Cyclops evaluation protocol documented in `docs/CYCLOPS_SPRINT5_SPIKE.md`.
 - Open-source adoption rules documented in `docs/OPEN_SOURCE_ADOPTION.md`.
 
+## Sprint 5.1 — Player Feel
+Implemented without changing `MaloController`, `Recorder` or `InteractionContext` domain behaviour:
+
+- movement remains on Godot physical WASD positions, which correspond to WASD on QWERTY and ZQSD on AZERTY;
+- `E` remains interaction;
+- left mouse button is now an alternate context-interaction input;
+- `R` remains hold-to-REC and release-to-STOP;
+- `Space` is now the preferred PLAY-latest input;
+- legacy `P` PLAY remains available during the prototype;
+- the numeric keypad is not required;
+- HUD hints teach the new controls;
+- `docs/PLAYER_FEEL_INPUTS.md` documents the contract;
+- `tests/static_validate_player_feel.py` validates the input architecture.
+
+Left click currently acts on the interactable already selected by `InteractionContext`; it is deliberately not a point-and-click raycast yet. No unrestricted mouse-look has been added.
+
 ## Material targets currently prepared
 - warm cream wallpaper;
 - dark varnished wood;
@@ -42,7 +58,10 @@ A player should be able to launch `Christmas1982`, understand the salon as a bel
 - MK2 mechanics;
 - pitch, Sound-on-Sound or multitrack;
 - combat, vehicles, GTA-style systems;
-- final production character likenesses.
+- final production character likenesses;
+- mouse raycast selection;
+- free 360-degree camera;
+- numeric-keypad dependency.
 
 ## Acceptance contract
 1. The Sprint 4 first-recording beat order remains FIND_FISHER -> RECORD_RONAN -> PLAY_RECORDING -> COMPLETE.
@@ -53,24 +72,30 @@ A player should be able to launch `Christmas1982`, understand the salon as a bel
 6. Any external addon is evaluated on a branch-safe, reversible basis and must not become a hard dependency before validation.
 7. `tests/static_validate.py` must still report `0 failure(s)`.
 8. `tests/static_validate_sprint5.py` must report `0 failure(s)`.
-9. Godot headless acceptance tests must still pass when the runtime is available.
-10. Real editor/MCP visual inspection is required before Sprint 5 can be considered visually accepted.
+9. `tests/static_validate_player_feel.py` must report `0 failure(s)`.
+10. Godot headless acceptance tests must still pass when the runtime is available.
+11. Real editor/MCP visual and input inspection is required before Sprint 5 can be considered accepted.
 
 ## Next live-engine validation
 When Godot / Work is available:
 
 1. run `tests/static_validate.py`;
 2. run `tests/static_validate_sprint5.py`;
-3. run the existing headless Godot suite;
-4. open canonical `Christmas1982.tscn` and capture the baseline camera view;
-5. open `Christmas1982_VisualSlice.tscn` and compare the same view;
-6. verify Malo -> Fisher -> REC Ronan -> STOP -> PLAY unchanged;
-7. verify held Fisher Price receives beige/burgundy presentation overrides after pickup;
-8. only after that begin the Cyclops architectural-shell spike.
+3. run `tests/static_validate_player_feel.py`;
+4. run the existing headless Godot suite;
+5. test movement on the available keyboard layout;
+6. verify `E` and left click both take the Fisher Price when in interaction range;
+7. verify hold/release `R` still creates the RonanTest clip;
+8. verify `Space` and `P` both play the latest clip;
+9. open canonical `Christmas1982.tscn` and capture the baseline camera view;
+10. open `Christmas1982_VisualSlice.tscn` and compare the same view;
+11. verify held Fisher Price receives beige/burgundy presentation overrides after pickup;
+12. only after that begin the Cyclops architectural-shell spike.
 
 ## Current state
-- Branch: `sprint-5`
-- Canonical gameplay scene: unchanged.
+- Branch: `sprint-5`.
+- Canonical gameplay architecture: preserved.
 - Visual wrapper: created, not yet engine-validated.
-- Gameplay changes in Sprint 5: none.
-- Visual acceptance: pending live Godot/MCP inspection.
+- Player Feel 5.1 bindings: implemented, not yet engine-validated.
+- Gameplay mechanics added in Sprint 5.1: none; only alternate input bindings and HUD guidance.
+- Visual/input acceptance: pending live Godot/MCP inspection.
