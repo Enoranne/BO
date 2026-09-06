@@ -61,3 +61,6 @@ jobs:
 
       - name: Cassette memory design contract
         run: python tests/static_validate_cassette_memory_design.py
+
+      - name: PISTE 0 narrative beat contract
+        run: python tests/static_validate_piste0_narrative_design.py
