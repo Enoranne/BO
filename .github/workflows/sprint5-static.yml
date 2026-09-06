@@ -82,3 +82,6 @@ jobs:
 
       - name: Family dialogue design contract
         run: python tests/static_validate_family_dialogue_design.py
+
+      - name: Accessibility design contract
+        run: python tests/static_validate_accessibility_design.py
