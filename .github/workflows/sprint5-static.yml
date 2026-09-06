@@ -46,3 +46,6 @@ jobs:
 
       - name: HUD UX contract
         run: python tests/static_validate_hud_ux.py
+
+      - name: Interaction planning contract
+        run: python tests/static_validate_interaction_planning.py
