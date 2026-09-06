@@ -1,0 +1,76 @@
+{
+  "version": 1,
+  "status": "design_fixture",
+  "examples": [
+    {
+      "recording_id": "rec_example_ronan_001",
+      "raw_clip": {
+        "source_id": "ronan_test",
+        "source_title": "RonanTest",
+        "duration_seconds": 3.4
+      },
+      "annotation": {
+        "display_title": "RONAN",
+        "keep_state": "GOOD",
+        "favourite": true,
+        "child_note": "",
+        "box_id": "good",
+        "person_ids": ["ronan"],
+        "place_id": "salon",
+        "object_ids": ["fisher_price"],
+        "era_id": "christmas_1982",
+        "event_ids": ["first_recording"]
+      },
+      "why_it_matters": "Clear first success; favourite because it is Ronan, not because the system scored it."
+    },
+    {
+      "recording_id": "rec_example_gate_002",
+      "raw_clip": {
+        "source_id": "gate_squeak",
+        "source_title": "Gate",
+        "duration_seconds": 2.1
+      },
+      "annotation": {
+        "display_title": "ENCORE PORTAIL",
+        "keep_state": "FAILED_KEEP",
+        "favourite": false,
+        "child_note": "MAMAN AU FOND",
+        "box_id": "failed_keep",
+        "person_ids": ["mother"],
+        "place_id": "gate",
+        "object_ids": ["gate", "fisher_price"],
+        "era_id": "childhood",
+        "event_ids": []
+      },
+      "why_it_matters": "The intended squeak was incomplete, but an accidental distant voice makes the take worth keeping."
+    },
+    {
+      "recording_id": "rec_example_wind_003",
+      "raw_clip": {
+        "source_id": "garden_wind_tree",
+        "source_title": "Wind",
+        "duration_seconds": 7.8
+      },
+      "annotation": {
+        "display_title": "VENT FORT",
+        "keep_state": "RETRY",
+        "favourite": false,
+        "child_note": "",
+        "box_id": "retry",
+        "person_ids": [],
+        "place_id": "garden",
+        "object_ids": ["fisher_price"],
+        "era_id": "childhood",
+        "event_ids": []
+      },
+      "why_it_matters": "Malo wants another attempt, but the old take is still preserved rather than deleted."
+    }
+  ],
+  "rules_demonstrated": [
+    "GOOD is not the same as favourite",
+    "FAILED_KEEP preserves accidental value",
+    "RETRY does not imply deletion",
+    "display title is separate from stable id",
+    "memory associations may involve people not intended as the main source"
+  ]
+}
