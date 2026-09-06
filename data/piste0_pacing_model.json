@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "status": "design_only",
+  "rhythm_unit": ["NOTICE", "WANT", "TRY", "RESULT", "REPLAY_OR_REACTION", "RELEASE"],
+  "bands": {
+    "CALM": {"purpose": ["listen", "anticipate", "absorb"]},
+    "PLAYFUL": {"purpose": ["experiment", "laugh", "repeat"]},
+    "FOCUSED": {"purpose": ["short_term_goal", "timing", "positioning"]},
+    "CHAOTIC": {"purpose": ["overlap", "family_interruptions", "accidental_memory"]},
+    "REFLECTIVE": {"purpose": ["replay", "classify", "recontextualise"]}
+  },
+  "target_lengths_seconds": {
+    "micro": [20, 60],
+    "short": [60, 180],
+    "developed": [180, 420],
+    "major": [300, 600]
+  },
+  "rules": {
+    "max_similar_beats_in_row": 2,
+    "calm_requires_new_detail_or_intention": true,
+    "explicit_objective_follow_with_freedom_or_reflection": true,
+    "repetition_changes_context": true,
+    "surprise_required_periodically": true,
+    "family_interruptions_periodic": true,
+    "classification_after_every_recording": false,
+    "fill_all_silence": false,
+    "stack_timing_challenges": false
+  },
+  "early_sequence": [
+    {"beat": "MB00_first_fisher", "bands": ["PLAYFUL", "FOCUSED", "REFLECTIVE"]},
+    {"beat": "MB01_fisher_mechanics", "bands": ["PLAYFUL"]},
+    {"beat": "house_audible_transition", "bands": ["CALM"]},
+    {"beat": "MB02_gate_bonjour", "bands": ["FOCUSED", "PLAYFUL"]},
+    {"beat": "MB03_wind_mother_call", "bands": ["CALM", "FOCUSED", "CHAOTIC"]},
+    {"beat": "MB04_fridge_mother", "bands": ["PLAYFUL", "CHAOTIC"]},
+    {"beat": "cassette_review_transition", "bands": ["REFLECTIVE"]}
+  ],
+  "invariants": {
+    "guidance_changes_clarity_not_authored_rhythm": true,
+    "archive_mode_can_relax_pacing": true,
+    "recorder_owns_pacing": false,
+    "interaction_context_owns_pacing": false
+  }
+}
