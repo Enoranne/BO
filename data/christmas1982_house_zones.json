@@ -1,0 +1,109 @@
+{
+  "schema_version": 1,
+  "status": "planning_contract_not_runtime_authoritative",
+  "units": "metres",
+  "canonical_anchor": {
+    "scene": "res://scenes/piste_0/christmas_1982/Christmas1982.tscn",
+    "room": "salon",
+    "preserve_existing_blocking": true
+  },
+  "zones": [
+    {
+      "id": "salon",
+      "phase": "canonical",
+      "playable": true,
+      "target_size": [12.0, 3.6, 8.0],
+      "adjacent_to": ["corridor", "kitchen_glimpse"],
+      "purpose": "Christmas1982 first-recording gameplay and visual anchor",
+      "locked": true
+    },
+    {
+      "id": "corridor",
+      "phase": "5.4",
+      "playable": false,
+      "target_size": [1.35, 2.65, 4.6],
+      "adjacent_to": ["salon", "bedroom_zone", "bathroom", "kitchen"],
+      "purpose": "depth, circulation logic and future sound bleed",
+      "locked": false
+    },
+    {
+      "id": "kitchen_glimpse",
+      "phase": "5.4",
+      "playable": false,
+      "target_size": [3.8, 2.65, 3.4],
+      "adjacent_to": ["salon", "kitchen"],
+      "purpose": "non-traversable period kitchen read from salon/corridor",
+      "locked": false
+    },
+    {
+      "id": "kitchen",
+      "phase": "future_domestic_hub",
+      "playable": true,
+      "target_size": [4.6, 2.65, 4.0],
+      "adjacent_to": ["corridor", "kitchen_glimpse", "garden"],
+      "purpose": "family routines, domestic sound capture and garden access",
+      "locked": false
+    },
+    {
+      "id": "bedroom_zone",
+      "phase": "future_domestic_hub",
+      "playable": true,
+      "target_size": [5.2, 2.65, 4.2],
+      "adjacent_to": ["corridor"],
+      "purpose": "Malo/Ronan private space, toys, records, cassette culture and creative work",
+      "locked": false
+    },
+    {
+      "id": "bathroom",
+      "phase": "future_domestic_hub",
+      "playable": true,
+      "target_size": [2.7, 2.65, 3.0],
+      "adjacent_to": ["corridor"],
+      "purpose": "small resonant domestic sound space",
+      "locked": false
+    },
+    {
+      "id": "garden",
+      "phase": "future_exterior_hub",
+      "playable": true,
+      "target_size": [18.0, 0.0, 16.0],
+      "adjacent_to": ["kitchen", "gate", "tree_cabin"],
+      "purpose": "swing, tree, cabin, wind and outdoor recording playground",
+      "locked": false
+    },
+    {
+      "id": "tree_cabin",
+      "phase": "future_exterior_hub",
+      "playable": true,
+      "target_size": [3.2, 2.3, 2.8],
+      "adjacent_to": ["garden"],
+      "purpose": "Malo creative refuge and elevated sonic viewpoint",
+      "locked": false
+    },
+    {
+      "id": "gate",
+      "phase": "future_exterior_hub",
+      "playable": true,
+      "target_size": [2.0, 1.6, 0.25],
+      "adjacent_to": ["garden", "street_edge"],
+      "purpose": "iconic gate sound and threshold to neighbour/street world",
+      "locked": false
+    },
+    {
+      "id": "street_edge",
+      "phase": "future_exterior_hub",
+      "playable": true,
+      "target_size": [22.0, 0.0, 7.0],
+      "adjacent_to": ["gate"],
+      "purpose": "small readable slice for moped, voices, wind and wider-world ambience",
+      "locked": false
+    }
+  ],
+  "rules": [
+    "Do not move canonical Christmas1982 blocking markers during Sprint 5.4.",
+    "Corridor and kitchen_glimpse are visual-depth additions first, traversal later.",
+    "No new gameplay objective is introduced by the 5.4 shell.",
+    "All dimensions outside salon are indicative and may be tuned after camera validation.",
+    "Prefer dense authored spaces over large empty floor area."
+  ]
+}
