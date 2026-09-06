@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "status": "design_only",
+  "default_profile": "NATURAL",
+  "same_campaign_content": true,
+  "changeable_during_play": true,
+  "profiles": {
+    "GUIDED": {
+      "explicit_objectives": true,
+      "context_prompts": "frequent",
+      "sound_emphasis": "strong",
+      "visual_emphasis": "optional",
+      "hint_escalation": "early",
+      "timing_tolerance": "generous"
+    },
+    "NATURAL": {
+      "explicit_objectives": "fallback_only",
+      "context_prompts": "contextual",
+      "sound_emphasis": "natural_plus_readability",
+      "visual_emphasis": "subtle",
+      "hint_escalation": "moderate",
+      "timing_tolerance": "forgiving"
+    },
+    "FREE": {
+      "explicit_objectives": false,
+      "context_prompts": "controls_only_or_nearby",
+      "sound_emphasis": "natural",
+      "visual_emphasis": false,
+      "hint_escalation": "on_request_or_profile_change",
+      "timing_tolerance": "natural"
+    }
+  },
+  "invariants": {
+    "same_story": true,
+    "same_memory_beats": true,
+    "same_recordings": true,
+    "same_endings": true,
+    "same_rewards": true,
+    "no_separate_easy_medium_hard_campaigns": true,
+    "no_progress_penalty_for_guidance": true
+  },
+  "modes": {
+    "STORY": {
+      "canonical": true,
+      "uses_guidance_profile": true
+    },
+    "ARCHIVE": {
+      "canonical": false,
+      "future_candidate": true,
+      "purpose": "revisit, replay, re-record and experiment without replacing story mode"
+    }
+  }
+}
