@@ -7,6 +7,7 @@ class_name ExternalAssetSlot
 @export var asset_scene: PackedScene
 @export var target_size := Vector3(2.15, 0.65, 1.08)
 @export var show_envelope_when_empty := true
+@export var envelope_floor_aligned := true
 
 var _asset_instance: Node3D
 var _envelope: MeshInstance3D
@@ -45,4 +46,6 @@ func _build_envelope() -> void:
     _envelope.name = "TargetEnvelope"
     _envelope.mesh = mesh
     _envelope.material_override = material
+    if envelope_floor_aligned:
+        _envelope.position.y = target_size.y * 0.5
     add_child(_envelope)
