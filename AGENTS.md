@@ -61,3 +61,14 @@ No visual improvement is more important than preserving this loop.
 - `Christmas1982Director` is presentation-only; do not move Recorder logic into it.
 - `FisherPriceVisual` observes Recorder state; it must not become a second recorder implementation.
 - Do not add inventory, dialogue, save/load, Radio Malo or MK2 mechanics while validating Sprint 4.
+
+## Sprint 5 visual vertical-slice lock
+- Sprint 5 improves environment, lighting, materials, character readability and cinematography; it does not broaden the gameplay loop.
+- Preserve the spatial contracts in `docs/CHRISTMAS1982_LAYOUT.md` and `docs/CHRISTMAS1982_BLOCKING.md` unless a task explicitly revises and documents them.
+- Treat `docs/VISUAL_VERTICAL_SLICE.md` as the visual acceptance target.
+- Follow `docs/OPEN_SOURCE_ADOPTION.md` before introducing an external addon or imported asset.
+- Introduce at most one runtime addon at a time and keep its integration isolated and reversible.
+- Do not replace `Recorder`, `InteractionContext`, `MaloController` or the Sprint 4 presentation ownership model with addon-specific logic.
+- `Cyclops Level Builder` should be evaluated first as an editor productivity tool, not as a gameplay dependency.
+- `Phantom Camera` may be evaluated only behind the existing cinematic-camera contract; gameplay code must not depend directly on it.
+- Do not integrate Dialogue Manager, Godot State Charts, inventory, NPC navigation, Radio Malo, MK2, pitch, Sound-on-Sound or multitrack during Sprint 5 unless the sprint scope is explicitly changed.
