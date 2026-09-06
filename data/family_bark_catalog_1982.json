@@ -1,0 +1,155 @@
+{
+  "version": 1,
+  "status": "design_only",
+  "source_language": "fr",
+  "design_rules": {
+    "dialogue_tree_default": false,
+    "localized_text_is_identifier": false,
+    "recorder_owns_barks": false,
+    "interaction_context_owns_barks": false,
+    "free_guidance_removes_subtitles": false,
+    "ordinary_barks_interruptible": true,
+    "constant_chatter": false,
+    "signature_phrases_repeat_freely": false
+  },
+  "families": ["AMBIENT", "REACTIVE", "INTERRUPTIVE", "COLLABORATIVE", "CALLBACK"],
+  "intensities": ["R0", "R1", "R2", "R3"],
+  "entries": [
+    {
+      "key": "family.ronan.rec_notice.nonverbal.01",
+      "speaker": "Ronan",
+      "family": "REACTIVE",
+      "intensity": "R0",
+      "fr": "",
+      "vocalization": "small amused breath / glance",
+      "trigger": "Ronan notices Malo actively recording him",
+      "recording_relation": "capturable_if_rec_active",
+      "repeat_policy": "cooldown_and_variation",
+      "implementation_phase": "first_living_family_proof"
+    },
+    {
+      "key": "family.ronan.rec_notice.01",
+      "speaker": "Ronan",
+      "family": "REACTIVE",
+      "intensity": "R1",
+      "fr": "Tu m'enregistres, là ?",
+      "trigger": "Ronan notices Malo actively recording him",
+      "recording_relation": "capturable_if_rec_active",
+      "repeat_policy": "not_consecutive",
+      "implementation_phase": "first_living_family_proof"
+    },
+    {
+      "key": "family.ronan.rec_notice.02",
+      "speaker": "Ronan",
+      "family": "REACTIVE",
+      "intensity": "R1",
+      "fr": "Qu'est-ce que tu fais avec ça ?",
+      "trigger": "Ronan notices recorder attention after prior reaction",
+      "recording_relation": "capturable_if_rec_active",
+      "repeat_policy": "not_consecutive",
+      "implementation_phase": "later_variant"
+    },
+    {
+      "key": "family.mother.wind_call.01",
+      "speaker": "Mother",
+      "family": "INTERRUPTIVE",
+      "intensity": "R2",
+      "fr": "MALO, TU FAIS QUOI ?",
+      "trigger": "Malo is outside / near garden during wind beat",
+      "recording_relation": "signature_accidental_capture_candidate",
+      "repeat_policy": "signature_rare",
+      "implementation_phase": "wind_beat"
+    },
+    {
+      "key": "family.mother.fridge.glance.01",
+      "speaker": "Mother",
+      "family": "REACTIVE",
+      "intensity": "R0",
+      "fr": "",
+      "vocalization": "small sigh / look from kitchen task",
+      "trigger": "Malo repeats fridge interaction",
+      "recording_relation": "capturable_if_rec_active",
+      "repeat_policy": "escalation_step",
+      "implementation_phase": "fridge_beat"
+    },
+    {
+      "key": "family.mother.fridge.01",
+      "speaker": "Mother",
+      "family": "REACTIVE",
+      "intensity": "R1",
+      "fr": "Tu cherches quelque chose ?",
+      "trigger": "Malo repeatedly opens fridge",
+      "recording_relation": "capturable_if_rec_active",
+      "repeat_policy": "escalation_step",
+      "implementation_phase": "fridge_beat"
+    },
+    {
+      "key": "family.mother.fridge.02",
+      "speaker": "Mother",
+      "family": "INTERRUPTIVE",
+      "intensity": "R2",
+      "fr": "Malo, laisse ce frigo tranquille.",
+      "trigger": "continued fridge repetition after prior acknowledgement",
+      "recording_relation": "capturable_if_rec_active",
+      "repeat_policy": "cooldown_after",
+      "implementation_phase": "fridge_beat"
+    },
+    {
+      "key": "family.father.fireplace.nonverbal.01",
+      "speaker": "Father",
+      "family": "AMBIENT",
+      "intensity": "R0",
+      "fr": "",
+      "vocalization": "quiet effort breath while tending fire",
+      "trigger": "Father fireplace routine",
+      "recording_relation": "capturable_if_rec_active",
+      "repeat_policy": "low_frequency",
+      "implementation_phase": "ambient_family_proof"
+    },
+    {
+      "key": "family.father.fireplace.01",
+      "speaker": "Father",
+      "family": "AMBIENT",
+      "intensity": "R1",
+      "fr": "Ça va repartir.",
+      "trigger": "Father adjusts fireplace after a quiet moment",
+      "recording_relation": "capturable_if_rec_active",
+      "repeat_policy": "rare",
+      "implementation_phase": "ambient_family_proof"
+    },
+    {
+      "key": "radio_malo.ronan.praise.01",
+      "speaker": "Ronan",
+      "family": "COLLABORATIVE",
+      "intensity": "R2",
+      "fr": "Radio Malo est complètement génial.",
+      "trigger": "later Radio Malo authored beat",
+      "recording_relation": "intended_recording_candidate",
+      "repeat_policy": "signature_once_or_rare",
+      "implementation_phase": "radio_malo_later"
+    },
+    {
+      "key": "family.ronan.laugh.01",
+      "speaker": "Ronan",
+      "family": "REACTIVE",
+      "intensity": "R0",
+      "fr": "",
+      "vocalization": "genuine short laugh",
+      "trigger": "contextual comic beat or failed experiment",
+      "recording_relation": "valuable_accidental_capture",
+      "repeat_policy": "variant_pool_required",
+      "implementation_phase": "later_family_variation"
+    },
+    {
+      "key": "family.mother.callback.fridge.01",
+      "speaker": "Mother",
+      "family": "CALLBACK",
+      "intensity": "R1",
+      "fr": "Tu n'enregistres pas encore le frigo ?",
+      "trigger": "later domestic callback after fridge beat",
+      "recording_relation": "capturable_if_rec_active",
+      "repeat_policy": "once_per_context",
+      "implementation_phase": "later_callback"
+    }
+  ]
+}
