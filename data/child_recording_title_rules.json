@@ -1,0 +1,75 @@
+{
+  "version": 1,
+  "status": "design_only",
+  "purpose": "Age-sensitive title suggestions for future recordings. Titles are optional and never replace stable recording ids.",
+  "profiles": {
+    "malo_age_6": {
+      "soft_max_words": 4,
+      "capitalisation_style": "uppercase_handwritten",
+      "prefer": [
+        "person_name",
+        "object_name",
+        "place_or_source_name",
+        "simple_adjective",
+        "repeat_marker",
+        "child_observation"
+      ],
+      "avoid": [
+        "technical_timestamp",
+        "perfect_scene_description",
+        "adult_taxonomy",
+        "quality_score",
+        "AI-like summary"
+      ],
+      "patterns": [
+        "{SOURCE}",
+        "{PERSON}",
+        "{SOURCE} {ADJECTIVE}",
+        "{ACTION} {PERSON}",
+        "ENCORE {SOURCE}",
+        "BRUIT {ADJECTIVE}",
+        "{PERSON} {ACTION}"
+      ],
+      "lexicon": {
+        "adjectives": [
+          "FORT",
+          "BIZARRE",
+          "DRÔLE",
+          "PETIT",
+          "GRAND"
+        ],
+        "actions": [
+          "RIRE",
+          "PARLE",
+          "CRIE",
+          "TOMBE"
+        ]
+      }
+    }
+  },
+  "examples": [
+    {
+      "source_id": "ronan_test",
+      "suggestions": ["RONAN", "RIRE RONAN", "RONAN PARLE"]
+    },
+    {
+      "source_id": "gate_squeak",
+      "suggestions": ["PORTAIL", "PORTAIL BIZARRE", "ENCORE PORTAIL"]
+    },
+    {
+      "source_id": "garden_wind_tree",
+      "suggestions": ["VENT", "VENT FORT", "BRUIT BIZARRE"]
+    },
+    {
+      "source_id": "kitchen_fridge_hum",
+      "suggestions": ["FRIGO", "BRUIT FRIGO", "FRIGO BIZARRE"]
+    }
+  ],
+  "rules": {
+    "mandatory_before_playback": false,
+    "player_may_edit": true,
+    "player_may_leave_blank": true,
+    "suggestion_is_authoritative": false,
+    "stable_id_is_separate": true
+  }
+}
