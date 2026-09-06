@@ -1,0 +1,71 @@
+{
+  "version": 1,
+  "status": "design_only",
+  "baseline": {
+    "existing_camera_script": "scenes/piste_0/christmas_1982/cinematic_camera.gd",
+    "free_mouse_look": false,
+    "recorder_owns_camera": false,
+    "malo_controller_owns_camera": false,
+    "camera_is_authored_presentation": true
+  },
+  "camera_modes": {
+    "C0": "ANCHORED_TABLEAU",
+    "C1": "SOFT_FOLLOW_FRAME",
+    "C2": "THRESHOLD_HANDOFF",
+    "C3": "BEAT_EMPHASIS",
+    "C4": "LISTENING_COMPOSITION",
+    "C5": "EXTERIOR_SPATIAL_FRAME"
+  },
+  "zones": [
+    {
+      "id": "salon",
+      "primary_modes": ["C0", "C1"],
+      "transition_style": "NONE_OR_LOCAL_SOFT_FOLLOW",
+      "must_preserve": ["fireplace", "sofa", "tree_gifts", "fisher_pickup", "ronan_record_position"],
+      "implementation_phase": "existing_baseline"
+    },
+    {
+      "id": "corridor",
+      "primary_modes": ["C2", "C1"],
+      "transition_style": "CUT_OR_SHORT_BLEND",
+      "must_preserve": ["doorway_frame", "screen_direction", "destination_readability"],
+      "implementation_phase": "post_sprint5_house_shell"
+    },
+    {
+      "id": "kitchen",
+      "primary_modes": ["C0", "C1"],
+      "transition_style": "CUT_OR_SHORT_BLEND",
+      "must_preserve": ["fridge_readability", "mother_plane", "garden_relation"],
+      "implementation_phase": "later_house_expansion"
+    },
+    {
+      "id": "garden",
+      "primary_modes": ["C5", "C4"],
+      "transition_style": "SHORT_BLEND_OR_CUT",
+      "must_preserve": ["house_anchor", "tree", "portique", "gate", "sound_negative_space"],
+      "implementation_phase": "later_microhub"
+    },
+    {
+      "id": "gate_street_edge",
+      "primary_modes": ["C4", "C5"],
+      "transition_style": "AUTHORED_STATIC_OR_SOFT_FOLLOW",
+      "must_preserve": ["gate_latch", "street_negative_space", "audio_approach_room"],
+      "implementation_phase": "post_temporal_capture_gate_beat"
+    }
+  ],
+  "transition_rules": {
+    "cut_allowed": true,
+    "short_blend_target_seconds": [0.25, 0.8],
+    "authored_move_is_rare": true,
+    "preserve_player_control": true,
+    "preserve_screen_direction_where_practical": true,
+    "rec_can_continue_through_transition": true,
+    "auto_zoom_on_rec": false,
+    "auto_center_every_interactable": false
+  },
+  "accessibility": {
+    "reduced_camera_motion_independent": true,
+    "prefer_cut_over_long_move_when_enabled": true,
+    "changes_story_content": false
+  }
+}
