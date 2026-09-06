@@ -84,6 +84,16 @@ Decision:
 - `NATURAL` default;
 - future Archive Mode separate.
 
+## Accessibility
+Compact handoff:
+- `docs/WORK_ACCESSIBILITY_HANDOFF.md`
+
+Decision:
+- accessibility and guidance are independent axes;
+- FREE may retain subtitles, speaker labels, text scaling and hearing-support cues;
+- accessibility never changes story, endings or recording value;
+- do not redesign Recorder inputs until accessibility implementation is explicitly scoped.
+
 ## Physical affordances
 Compact handoff:
 - `docs/WORK_AFFORDANCE_HANDOFF.md`
@@ -164,6 +174,10 @@ Design thesis:
 - `docs/FAMILY_LIVING_WORLD_DESIGN.md`
 - `docs/FAMILY_DIALOGUE_BARKS_DESIGN.md`
 - `docs/FAMILY_DIALOGUE_EVENT_ARCHITECTURE.md`
+
+## Accessibility
+- `docs/ACCESSIBILITY_AND_GUIDANCE_SEPARATION.md`
+- `data/accessibility_settings_contract.json`
 
 ## Affordances
 - `docs/PHYSICAL_AFFORDANCE_LANGUAGE.md`
