@@ -31,6 +31,8 @@ func apply_hud_pass() -> void:
     hud.set("objective_prefix", "")
     hud.set("compact_hints", true)
     hud.set("teach_legacy_play_key", false)
+    hud.set("minimal_context_hints", true)
+    hud.set("state_color_emphasis", true)
 
     var objective := root.get_node_or_null("HUD/Margin/VBox/Objective") as Label
     var state := root.get_node_or_null("HUD/Margin/VBox/State") as Label
@@ -44,7 +46,7 @@ func apply_hud_pass() -> void:
             objective.text = objective.text.substr(OBJECTIVE_PREFIX.length())
         _style_label(objective, 15, WARM_SOFT)
     if state != null:
-        _style_label(state, 24, WARM_CREAM)
+        _style_label(state, 24, WARM_MUTED)
     if timer != null:
         _style_label(timer, 16, WARM_SOFT)
     if source != null:
@@ -53,6 +55,10 @@ func apply_hud_pass() -> void:
         _style_label(hint, 16, WARM_HINT)
     if vbox != null:
         vbox.add_theme_constant_override("separation", 4)
+
+    # Re-apply the current HUD state after the presentation preferences are active.
+    if hud.has_method("refresh_presentation"):
+        hud.call("refresh_presentation")
 
 func _style_label(label: Label, size: int, color: Color) -> void:
     label.add_theme_font_size_override("font_size", size)
