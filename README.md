@@ -8,7 +8,7 @@ The only implemented gameplay loop remains:
 
 `Malo → Fisher Price → REC → capture RonanTest → STOP → PLAY`
 
-Sprint 5 improves **player feel, visual presentation, external-asset integration scaffolding and house-architecture planning** without broadening the gameplay loop.
+Sprint 5 improves **player feel, visual presentation, HUD/interaction UX, external-asset integration scaffolding and house-architecture planning** without broadening the gameplay loop.
 
 No inventory, save system, dialogue tree, NPC navigation, Radio Malo, MK2 mechanics, pitch, Sound-on-Sound or multitrack is implemented.
 
@@ -55,12 +55,15 @@ It instances the canonical scene and adds presentation-only changes:
 
 - period 1982 material overrides;
 - warmer wall/floor/furniture palette;
-- Fisher Price beige/burgundy visual language;
+- Fisher Price beige/burgundy/dark-cassette visual language with visual-only controls/handle detail;
 - restrained fireplace/tree/fill-light balance;
 - visual-only skirting, mantel, sofa cushions and tree ornaments;
-- removal of large floating debug labels in the Visual Slice while retaining contextual HUD guidance.
+- removal of large floating debug labels in the Visual Slice;
+- wrapper-only cinematic HUD treatment with context-first hints.
 
 The Visual Slice has **not yet received live Godot/MCP visual acceptance**. Compare canonical A versus Visual Slice B using `docs/SPRINT5_2_VISUAL_REVIEW.md`.
+
+HUD/interaction presentation contract: `docs/HUD_UX_SPRINT5.md`.
 
 ## Sprint 5.3 — Higgsfield 3D pipeline
 
@@ -75,7 +78,14 @@ Current proof-of-pipeline:
 - isolated preview: `scenes/piste_0/christmas_1982/CoffeeTableAssetPreview.tscn`;
 - intended repository import path: `assets/3d/higgsfield/coffee_table_test.glb`.
 
-The GLB is intentionally not referenced by the canonical scene until isolated Godot validation passes. See `docs/HIGGSFIELD_3D_PIPELINE.md`.
+The GLB is intentionally not referenced by the canonical scene until isolated Godot validation passes.
+
+Pipeline rules:
+- `docs/HIGGSFIELD_3D_PIPELINE.md`
+- `docs/HIGGSFIELD_CREDIT_POLICY.md`
+- `assets/3d/asset_manifest.json`
+
+No batch asset generation should occur before the first coffee-table round trip is judged.
 
 ## Sprint 5.4 — compact house / Cyclops preparation
 
@@ -90,6 +100,25 @@ Planning assets:
 - `docs/SPRINT5_4_ARCHITECTURE_EXECUTION.md` — exact live-engine build order and stop conditions.
 
 The salon remains the canonical anchor. The first Cyclops pass may add only architectural shell, one doorway, corridor depth and a shallow kitchen glimpse. It must not add new objectives or move existing blocking markers.
+
+## Offline preparation pack
+
+While live Work/Godot-MCP is unavailable, Sprint 5 has also been hardened with production-facing specifications that do **not** expand gameplay:
+
+- `docs/SPRINT5_OFFLINE_HARDENING.md` — complete record of offline work;
+- `docs/WORK_LIVE_VALIDATION_CHECKLIST.md` — exact live-engine validation order;
+- `docs/SPRINT5_DEFINITION_OF_DONE.md` — 100-point completion scorecard / stop rule;
+- `docs/CHARACTER_ART_DIRECTION_1982.md` — Malo/Ronan production-facing art direction;
+- `docs/CHARACTER_READABILITY_REVIEW.md` — side-by-side character review protocol;
+- `docs/ASSET_BACKLOG_1982.md` — prop priorities;
+- `docs/P0_ASSET_BRIEFS_1982.md` — Fisher/sofa/fireplace/tree/table/gift briefs;
+- `docs/TECHNICAL_BUDGET_SPRINT5.md` — provisional geometry/texture/material/light/audio guardrails;
+- `docs/SOUND_BIBLE_1982.md` — sonic identity;
+- `data/sound_catalog_1982.json` — production sound catalog;
+- `docs/INTERACTION_TAXONOMY.md` — future gate/fridge/tap interaction architecture;
+- `docs/PHANTOM_CAMERA_SPRINT5_SPIKE.md` — camera addon decision protocol.
+
+These documents prepare later work; they do not authorise new mechanics during Sprint 5.
 
 ## Christmas1982 canonical blocking
 
@@ -118,14 +147,19 @@ Preferred Sprint 5 validation command:
 bash tests/run_sprint5_validation.sh
 ```
 
-It runs:
+It runs the current static contracts for:
 
-- original static contract;
-- Sprint 5 visual contract;
-- Player Feel input contract;
-- external-asset pipeline contract;
-- house-planning contract;
-- Godot headless tests automatically when a Godot binary is available.
+- original/core architecture;
+- Sprint 5 visual layer;
+- Player Feel inputs;
+- external-asset pipeline;
+- house planning;
+- character preview;
+- Sprint 5 TSCN/resource references;
+- sound production catalog;
+- HUD UX;
+- future interaction-planning separation;
+- plus Godot headless contracts automatically when a Godot binary is available.
 
 Individual Godot headless suite:
 
@@ -139,7 +173,7 @@ Open the prototype:
 godot --path . --editor
 ```
 
-See [`SPRINT5_STATUS.md`](SPRINT5_STATUS.md) for the authoritative current acceptance state.
+See [`SPRINT5_STATUS.md`](SPRINT5_STATUS.md) for the main sprint acceptance state and `docs/SPRINT5_OFFLINE_HARDENING.md` for the detailed pre-Work handoff record.
 
 ## Codex / Astra + yanhuifair Godot-MCP
 
