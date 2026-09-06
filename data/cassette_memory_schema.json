@@ -1,0 +1,101 @@
+{
+  "version": 1,
+  "status": "design_only",
+  "purpose": "Future Sprint 6 cassette/memory metadata model. Does not change Sprint 5 gameplay.",
+  "raw_recording_model": {
+    "backing_type": "RecordingClip",
+    "preserve_existing_fields": [
+      "clip_name",
+      "source_id",
+      "source_title",
+      "duration_seconds",
+      "created_unix_time",
+      "metadata",
+      "stream"
+    ],
+    "rule": "Do not require RecordingClip to own player editorial state."
+  },
+  "memory_annotation": {
+    "recording_id": "string",
+    "display_title": "string_optional",
+    "keep_state": [
+      "UNREVIEWED",
+      "KEEP",
+      "GOOD",
+      "FAILED_KEEP",
+      "RETRY",
+      "IMPORTANT",
+      "ARCHIVED"
+    ],
+    "favourite": "bool",
+    "child_note": "string_optional",
+    "box_id": "string_optional",
+    "person_ids": "array_optional",
+    "place_id": "string_optional",
+    "object_ids": "array_optional",
+    "era_id": "string_optional",
+    "event_ids": "array_optional",
+    "transformation_history": "array_optional"
+  },
+  "early_childhood_boxes": [
+    {
+      "id": "cassettes",
+      "label_fr": "CASSETTES",
+      "role": "default physical storage"
+    },
+    {
+      "id": "good",
+      "label_fr": "BIEN",
+      "role": "takes Malo actively likes"
+    },
+    {
+      "id": "failed_keep",
+      "label_fr": "RATÉS MAIS GARDER",
+      "role": "failed intention but worth preserving"
+    },
+    {
+      "id": "retry",
+      "label_fr": "À REFAIRE",
+      "role": "temporary working pile; optional in earliest implementation"
+    }
+  ],
+  "title_style": {
+    "age_6": {
+      "max_words_soft_target": 4,
+      "preferred_language": "concrete child observation",
+      "examples": [
+        "RONAN",
+        "PORTAIL",
+        "VENT",
+        "PORTE",
+        "RIRE RONAN",
+        "BRUIT BIZARRE",
+        "ENCORE PORTAIL",
+        "VENT FORT"
+      ],
+      "avoid": [
+        "perfect semantic auto-labeling",
+        "technical filenames",
+        "adult archival terminology"
+      ]
+    }
+  },
+  "review_flow": [
+    "record",
+    "stop",
+    "unreviewed",
+    "playback",
+    "optional title",
+    "optional keep judgement",
+    "optional box placement"
+  ],
+  "design_rules": {
+    "recording_quality_score": false,
+    "mandatory_title_before_playback": false,
+    "destructive_delete_default": false,
+    "favourite_equals_good": false,
+    "physical_metaphor_first": true,
+    "full_screen_media_library_default": false,
+    "sprint5_implementation": false
+  }
+}
