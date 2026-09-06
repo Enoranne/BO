@@ -81,3 +81,13 @@ No visual improvement is more important than preserving this loop.
 - `Space` is the preferred PLAY-latest input while legacy `P` remains accepted during the prototype.
 - Do not add unrestricted mouse-look or a GTA-style free camera during Sprint 5.1.
 - Input changes must continue to route through Godot actions; do not hard-code keyboard or mouse events into `Recorder` or interaction domain logic.
+
+## Sprint 5.4 architecture lock
+- Treat `data/christmas1982_house_zones.json` as a planning contract, not runtime truth.
+- The salon remains the canonical anchor and its current blocking markers are not moved during the Cyclops spike.
+- Build only architectural context first: wall thickness, one doorway, corridor suggestion and shallow kitchen glimpse.
+- Corridor and `kitchen_glimpse` begin as non-playable visual depth; do not create new objectives there.
+- Use `docs/SPRINT5_4_ARCHITECTURE_EXECUTION.md` as the execution order and stop conditions.
+- Use `docs/CHRISTMAS1982_SOUND_MAP.md` only to justify future room value; do not implement those future sound sources during the 5.4 shell spike.
+- Cyclops must remain an authoring accelerator only. Do not create gameplay logic that depends on Cyclops nodes or classes.
+- If Cyclops cannot be cleanly converted/exported to ordinary Godot-friendly geometry, discard the addon experiment rather than coupling the project to it.
