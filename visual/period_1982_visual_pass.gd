@@ -17,6 +17,8 @@ const FLOOR_DARK_WARM_BROWN: Material = preload("res://materials/period_1982/flo
 const FIREPLACE_STONE_WARM: Material = preload("res://materials/period_1982/fireplace_stone_warm.tres")
 const FISHER_BEIGE: Material = preload("res://materials/period_1982/plastic_fisher_beige.tres")
 const FISHER_BURGUNDY: Material = preload("res://materials/period_1982/plastic_fisher_burgundy.tres")
+const FISHER_WINDOW_DARK: Material = preload("res://materials/period_1982/plastic_fisher_window_dark.tres")
+const REC_BUTTON_RED: Material = preload("res://materials/period_1982/plastic_rec_red.tres")
 
 func _ready() -> void:
     if apply_on_ready:
@@ -49,14 +51,15 @@ func apply_visual_pass() -> void:
     _override(root, "Set/FireplacePlaceholder/Main", FIREPLACE_STONE_WARM)
     _override(root, "Set/FireplacePlaceholder/Hearth", FIREPLACE_STONE_WARM)
 
-    # World Fisher Price placeholder.
+    # World Fisher Price placeholder: presentation-only detail layer.
     _override(root, "FisherPrice/Visual", FISHER_BEIGE)
-    _ensure_world_fisher_panel(root)
+    _ensure_world_fisher_details(root)
 
     # Sprint 4 carried Fisher Price builds its mesh children procedurally.
     _override(root, "Malo/HeldRecorderVisual/Body", FISHER_BEIGE)
     _override(root, "Malo/HeldRecorderVisual/Handle", FISHER_BEIGE)
     _override(root, "Malo/HeldRecorderVisual/CassettePanel", FISHER_BURGUNDY)
+    _override(root, "Malo/HeldRecorderVisual/CassetteWindow", FISHER_WINDOW_DARK)
 
     if tune_lighting:
         _tune_lighting(root)
@@ -82,18 +85,30 @@ func _tune_lighting(root: Node) -> void:
         fill.light_energy = 0.38
         fill.light_color = Color(1.0, 0.76, 0.58, 1.0)
 
-func _ensure_world_fisher_panel(root: Node) -> void:
-    var fisher := root.get_node_or_null("FisherPrice")
-    if fisher == null or fisher.get_node_or_null("VisualPanel") != null:
+func _ensure_world_fisher_details(root: Node) -> void:
+    var fisher := root.get_node_or_null("FisherPrice") as Node3D
+    if fisher == null or fisher.get_node_or_null("VisualDetails") != null:
         return
-    var panel_mesh := BoxMesh.new()
-    panel_mesh.size = Vector3(0.46, 0.27, 0.025)
-    var panel := MeshInstance3D.new()
-    panel.name = "VisualPanel"
-    panel.mesh = panel_mesh
-    panel.material_override = FISHER_BURGUNDY
-    panel.position = Vector3(0.0, 0.0, 0.202)
-    fisher.add_child(panel)
+
+    var details := Node3D.new()
+    details.name = "VisualDetails"
+    fisher.add_child(details)
+
+    _add_visual_box(details, "CassettePanel", Vector3(0.50, 0.31, 0.025), Vector3(0.0, 0.0, 0.202), FISHER_BURGUNDY)
+    _add_visual_box(details, "CassetteWindow", Vector3(0.28, 0.17, 0.012), Vector3(0.0, 0.0, 0.221), FISHER_WINDOW_DARK)
+    _add_visual_box(details, "Handle", Vector3(0.54, 0.07, 0.08), Vector3(0.0, 0.30, 0.0), FISHER_BEIGE)
+    _add_visual_box(details, "PlayButton", Vector3(0.10, 0.045, 0.085), Vector3(0.11, 0.265, 0.08), FISHER_BURGUNDY)
+    _add_visual_box(details, "RecButton", Vector3(0.10, 0.045, 0.085), Vector3(0.25, 0.265, 0.08), REC_BUTTON_RED)
+
+func _add_visual_box(parent: Node3D, node_name: String, size: Vector3, position: Vector3, material: Material) -> void:
+    var mesh := BoxMesh.new()
+    mesh.size = size
+    var instance := MeshInstance3D.new()
+    instance.name = node_name
+    instance.mesh = mesh
+    instance.material_override = material
+    instance.position = position
+    parent.add_child(instance)
 
 func _override(root: Node, relative_path: NodePath, material: Material) -> void:
     var node := root.get_node_or_null(relative_path)
