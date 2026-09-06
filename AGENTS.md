@@ -91,3 +91,13 @@ No visual improvement is more important than preserving this loop.
 - Use `docs/CHRISTMAS1982_SOUND_MAP.md` only to justify future room value; do not implement those future sound sources during the 5.4 shell spike.
 - Cyclops must remain an authoring accelerator only. Do not create gameplay logic that depends on Cyclops nodes or classes.
 - If Cyclops cannot be cleanly converted/exported to ordinary Godot-friendly geometry, discard the addon experiment rather than coupling the project to it.
+
+## Sprint 5 HUD UX lock
+- The canonical `Christmas1982.tscn` development HUD keeps its existing defaults; the cinematic treatment is opt-in through `Christmas1982_VisualSlice.tscn`.
+- `RecorderHUD` remains presentation-only. Do not move Recorder state ownership, clip storage, interaction selection or input handling into the HUD.
+- Visual Slice hints are context-first: take → record → release to stop → play. Do not show every available command simultaneously.
+- Teach `Space` as the player-facing PLAY command; legacy `P` may remain supported internally during Sprint 5.1 but should not dominate the production-facing HUD.
+- Do not add a permanent crosshair or reticle while interaction remains proximity/context based.
+- REC may receive stronger visual emphasis; STOP should remain neutral and subordinate.
+- Prefer warm cream / analogue-compatible UI colours. Do not introduce cyan/teal or modern neon-gaming UI language.
+- Treat `docs/HUD_UX_SPRINT5.md` as the presentation contract and validate with `tests/static_validate_hud_ux.py`.
