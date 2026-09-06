@@ -1,0 +1,107 @@
+{
+  "version": 1,
+  "status": "design_only",
+  "purpose": "Creative targets for future WORLD -> FISHER_CAPTURE -> CASSETTE_PLAYBACK processing. Not runtime truth and not a Sprint 5 gameplay expansion.",
+  "units_note": "Frequency and dynamic values are starting-point design targets, not measured Fisher Price hardware specifications.",
+  "profiles": {
+    "world": {
+      "channels": "source_native",
+      "high_pass_hz": null,
+      "low_pass_hz": null,
+      "hiss_db": null,
+      "wow_flutter": "none",
+      "saturation": "none_by_default",
+      "spatial": true,
+      "design_role": "Physical truth of the environment."
+    },
+    "fisher_capture": {
+      "channels": "mono",
+      "high_pass_hz_range": [120, 180],
+      "low_pass_hz_range": [5500, 6500],
+      "compression": {
+        "style": "gentle_agc_feel",
+        "ratio_starting_point": 2.5,
+        "threshold_db_starting_point": -18,
+        "attack_ms_starting_point": 15,
+        "release_ms_starting_point": 180
+      },
+      "saturation": "mild_level_dependent",
+      "transient_softening": "mild",
+      "self_noise": "restrained_audible",
+      "wow_flutter": "very_subtle_or_none_at_capture_stage",
+      "spatial": false,
+      "distance_model": {
+        "too_close_m": [0.0, 0.35],
+        "sweet_spot_m": [0.35, 1.2],
+        "room_dominant_from_m": 2.5
+      },
+      "design_role": "Imperfect acoustic photograph made by a child."
+    },
+    "cassette_playback": {
+      "channels": "mono",
+      "additional_low_pass_hz_range": [4800, 5800],
+      "additional_saturation": "small",
+      "hiss": "consistent_low_level",
+      "wow_flutter": "subtle_non_caricature",
+      "speaker_character": "limited_low_end_midrange_forward_soft_highs",
+      "transport_punctuation": true,
+      "spatial": "physical_recorder_in_room",
+      "design_role": "Memory heard through the recorder rather than a clean digital replay."
+    }
+  },
+  "p0_treatments": {
+    "gate_squeak": {
+      "world_focus": ["metal_hinge_tone", "speed_variation", "optional_latch_impulse"],
+      "capture_focus": ["midrange_signature", "reduced_deep_resonance", "close_range_edge_saturation"],
+      "playback_focus": ["recognisable_squeal", "softened_metal_edge", "hiss_between_events", "subtle_pitch_instability"],
+      "identity": "signature_landmark"
+    },
+    "garden_wind_tree": {
+      "world_focus": ["broad_wind", "leaves", "branches", "natural_gust_envelopes"],
+      "capture_focus": ["controlled_turbulence", "midrange_leaf_wash", "reduced_low_frequency_energy", "difficulty_of_capture"],
+      "playback_focus": ["hiss_wind_blend", "preserved_gust_shape", "reduced_fine_leaf_detail"],
+      "identity": "interpretive_capture"
+    },
+    "kitchen_fridge_hum": {
+      "world_focus": ["compressor_body", "mechanical_cycle", "cabinet_resonance"],
+      "capture_focus": ["harmonic_buzz", "reduced_fundamental", "found_drone_character"],
+      "playback_focus": ["midrange_drone", "reduced_low_end", "hiss_density", "tiny_instability"],
+      "identity": "domestic_found_music"
+    },
+    "fisher_button_mechanics": {
+      "world_focus": ["firm_plastic_mechanical_clack", "state_specific_signatures"],
+      "capture_focus": ["normally_not_a_collectible_source_in_sprint5"],
+      "playback_focus": ["later_self_recording_can_make_handling_intimate_and_oversized"],
+      "identity": "diegetic_gameplay_verb"
+    },
+    "fisher_transport_click": {
+      "world_focus": ["engage", "disengage", "short_mechanism_response"],
+      "capture_focus": ["normally_device_punctuation"],
+      "playback_focus": ["brief_transport_tail_or_hiss_gap_if_useful"],
+      "identity": "diegetic_state_confirmation"
+    },
+    "fireplace_crackle": {
+      "world_focus": ["restrained_bed", "small_crackles", "rare_pop"],
+      "capture_focus": ["clear_small_crackles", "reduced_low_rumble", "brief_pop_saturation", "room_memory"],
+      "playback_focus": ["thin_warmth", "surviving_crackles", "hiss_blending_with_microtexture"],
+      "identity": "christmas_acoustic_glue"
+    },
+    "street_moped_pass": {
+      "world_focus": ["two_stroke_character", "approach_closest_departure", "natural_spatial_motion"],
+      "capture_focus": ["mono_trajectory", "upper_mid_engine_character", "reduced_low_end", "noise_floor_at_extremes"],
+      "playback_focus": ["temporal_memory_of_motion", "hiss_before_and_after", "no_exaggerated_flutter"],
+      "identity": "wider_world_through_sound"
+    },
+    "ronan_test": {
+      "world_focus": ["room_anchored_child_voice", "emotional_readability"],
+      "capture_focus": ["mono", "narrower_band", "slight_compression", "embedded_room_distance"],
+      "playback_focus": ["recognisable_ronan", "clear_recent_recording_transformation", "restrained_hiss"],
+      "identity": "first_themed_reveal"
+    }
+  },
+  "sprint5_rule": {
+    "required_recording": "ronan_test",
+    "implement_dsp_now": false,
+    "new_required_recordings": false
+  }
+}
