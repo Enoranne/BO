@@ -58,3 +58,6 @@ jobs:
 
       - name: P0 sound acquisition order contract
         run: python tests/static_validate_p0_sound_acquisition.py
+
+      - name: Cassette memory design contract
+        run: python tests/static_validate_cassette_memory_design.py
