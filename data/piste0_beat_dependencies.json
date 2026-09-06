@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "status": "design_only",
+  "purpose": "Implementation dependency map for PISTE 0 narrative beats.",
+  "systems": {
+    "existing_recorder": "Sprint 4/5 Recorder + RecordingClip loop",
+    "temporal_capture": "Future real-time audio capture backend",
+    "cassette_memory": "Future stable-id + annotation + physical archive layer",
+    "living_family": "Future lightweight character/dialogue/presentation layer",
+    "garden_playable": "Future garden traversal and acoustic ecology",
+    "kitchen_playable": "Future kitchen traversal/interactions",
+    "street_edge_events": "Future non-playable/edge world event timing",
+    "radio_malo": "Future performative broadcast grammar",
+    "mk2": "Future Philips D6920 MK2 device capabilities",
+    "physical_tape": "Future tape fragility/repair presentation"
+  },
+  "beats": [
+    {"id": "MB00_first_fisher", "requires": ["existing_recorder"], "earliest_phase": "current", "safe_to_implement_now": true},
+    {"id": "MB01_fisher_mechanics", "requires": ["existing_recorder"], "earliest_phase": "post_sprint5_visual_acceptance", "safe_to_implement_now": false},
+    {"id": "MB02_gate_bonjour", "requires": ["temporal_capture", "garden_playable"], "optional_additions": ["living_family", "cassette_memory"], "earliest_phase": "sprint6_4_plus", "safe_to_implement_now": false},
+    {"id": "MB03_wind_mother_call", "requires": ["temporal_capture", "garden_playable"], "optional_additions": ["living_family", "cassette_memory"], "earliest_phase": "garden_phase", "safe_to_implement_now": false},
+    {"id": "MB04_fridge_mother", "requires": ["temporal_capture", "kitchen_playable"], "optional_additions": ["living_family", "cassette_memory"], "earliest_phase": "kitchen_phase", "safe_to_implement_now": false},
+    {"id": "MB05_ronan_suspect", "requires": ["living_family"], "optional_additions": ["temporal_capture", "cassette_memory"], "earliest_phase": "family_life_phase", "safe_to_implement_now": false},
+    {"id": "MB06_moped_pass", "requires": ["temporal_capture", "street_edge_events"], "optional_additions": ["cassette_memory"], "earliest_phase": "street_edge_phase", "safe_to_implement_now": false},
+    {"id": "MB07_radio_malo_genesis", "requires": ["cassette_memory", "radio_malo"], "optional_additions": ["living_family"], "earliest_phase": "post_basic_archive", "safe_to_implement_now": false},
+    {"id": "MB08_biscuit_special", "requires": ["radio_malo", "kitchen_playable"], "optional_additions": ["living_family", "temporal_capture"], "earliest_phase": "radio_malo_early", "safe_to_implement_now": false},
+    {"id": "MB09_child_studio_boxes", "requires": ["cassette_memory"], "earliest_phase": "sprint6_archive", "safe_to_implement_now": false},
+    {"id": "MB10_always_take_laugh", "requires": ["temporal_capture", "cassette_memory"], "optional_additions": ["living_family"], "earliest_phase": "post_temporal_capture", "safe_to_implement_now": false},
+    {"id": "MB11_horse_persistence", "requires": ["temporal_capture", "cassette_memory"], "earliest_phase": "chronology_dependent", "safe_to_implement_now": false},
+    {"id": "MB12_tv_bricolage", "requires": ["cassette_memory"], "optional_additions": ["mk2"], "earliest_phase": "creative_tools_phase", "safe_to_implement_now": false},
+    {"id": "MB13_gull_patience", "requires": ["temporal_capture", "garden_playable"], "optional_additions": ["cassette_memory"], "earliest_phase": "outdoor_ecology", "safe_to_implement_now": false},
+    {"id": "MB14_tape_repair", "requires": ["cassette_memory", "physical_tape"], "optional_additions": ["mk2"], "earliest_phase": "later_cassette_phase", "safe_to_implement_now": false}
+  ],
+  "rollout_rule": "Implement one new systemic dependency at a time and prove it with one or two beats before broad rollout."
+}
