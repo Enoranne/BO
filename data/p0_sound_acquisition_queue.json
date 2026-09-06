@@ -1,0 +1,110 @@
+{
+  "version": 1,
+  "status": "planning_only",
+  "rule": "Do not acquire/generate the next batch merely because the previous one exists. Each batch advances only after in-context review and provenance checks.",
+  "batches": [
+    {
+      "id": "A_existing_salon",
+      "gate": "Sprint 5 live visual/gameplay validation passes",
+      "purpose": "Improve the already playable Christmas1982 salon and recorder feel without expanding the map.",
+      "items": [
+        {
+          "family": "fisher_button_mechanics",
+          "order": 1,
+          "reason": "Directly reinforces REC/STOP/PLAY tactile identity in the existing loop.",
+          "preferred_method": "original_foley",
+          "generation_fallback_allowed": true,
+          "credits_preapproval_required": true
+        },
+        {
+          "family": "fisher_transport_click",
+          "order": 2,
+          "reason": "Makes the cassette machine physically legible and frames recordings/playback.",
+          "preferred_method": "original_foley_or_mechanical_library",
+          "generation_fallback_allowed": true,
+          "credits_preapproval_required": true
+        },
+        {
+          "family": "ronan_test",
+          "order": 3,
+          "reason": "Adds natural variation while preserving the canonical onboarding source.",
+          "preferred_method": "controlled_voice_recording",
+          "generation_fallback_allowed": false,
+          "credits_preapproval_required": false
+        },
+        {
+          "family": "fireplace_crackle",
+          "order": 4,
+          "reason": "Provides the restrained sonic bed for the current room.",
+          "preferred_method": "field_recording_or_licensed_library",
+          "generation_fallback_allowed": true,
+          "credits_preapproval_required": true
+        }
+      ],
+      "exit_criteria": [
+        "families heard in context with Ronan onboarding",
+        "REC/STOP/PLAY distinguishable by ear",
+        "fireplace does not mask voice or recorder mechanics",
+        "provenance recorded"
+      ]
+    },
+    {
+      "id": "B_microhub_expansion",
+      "gate": "Architecture/garden expansion has a validated playable or reviewable context",
+      "purpose": "Support the first meaningful sound-hunting spaces beyond the salon.",
+      "items": [
+        {
+          "family": "gate_squeak",
+          "order": 1,
+          "reason": "Iconic interactive sonic landmark and strong temporal-capture test.",
+          "preferred_method": "original_field_recording",
+          "generation_fallback_allowed": true,
+          "credits_preapproval_required": true
+        },
+        {
+          "family": "garden_wind_tree",
+          "order": 2,
+          "reason": "Core outdoor recording identity and future Mother-call scene support.",
+          "preferred_method": "field_recording_or_high_quality_library",
+          "generation_fallback_allowed": true,
+          "credits_preapproval_required": true
+        },
+        {
+          "family": "kitchen_fridge_hum",
+          "order": 3,
+          "reason": "Dense domestic listening target and future fridge/Mother comic beat.",
+          "preferred_method": "period_appliance_recording_or_library",
+          "generation_fallback_allowed": true,
+          "credits_preapproval_required": true
+        }
+      ],
+      "exit_criteria": [
+        "gate recognisable from sound alone",
+        "wind has natural state variation and silence",
+        "fridge uses coherent compressor-state logic",
+        "WORLD/CAPTURE/PLAYBACK difference survives in-context review"
+      ]
+    },
+    {
+      "id": "C_wider_world",
+      "gate": "Street edge is visually established and temporal recording prototype exists",
+      "purpose": "Suggest a wider world and test timing-sensitive moving sound capture.",
+      "items": [
+        {
+          "family": "street_moped_pass",
+          "order": 1,
+          "reason": "Strong moving-event test where REC timing changes what is captured.",
+          "preferred_method": "field_recording_or_licensed_period_vehicle_library",
+          "generation_fallback_allowed": true,
+          "credits_preapproval_required": true
+        }
+      ],
+      "exit_criteria": [
+        "approach/pass/recede motion reads naturally",
+        "late REC can capture only the tail",
+        "period engine identity is plausible",
+        "no implication of controllable vehicle gameplay"
+      ]
+    }
+  ]
+}
