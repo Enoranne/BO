@@ -16,6 +16,7 @@ printf '\n=== BO Sprint 5 static validation ===\n'
 "$PYTHON_BIN" tests/static_validate_hud_ux.py
 "$PYTHON_BIN" tests/static_validate_interaction_planning.py
 "$PYTHON_BIN" tests/static_validate_audio_memory_design.py
+"$PYTHON_BIN" tests/static_validate_p0_sound_matrix.py
 
 printf '\n=== BO Sprint 5 Godot headless contracts ===\n'
 if command -v "$GODOT_BIN" >/dev/null 2>&1; then
