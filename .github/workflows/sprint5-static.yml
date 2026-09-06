@@ -70,3 +70,6 @@ jobs:
 
       - name: PISTE 0 pacing design contract
         run: python tests/static_validate_piste0_pacing_design.py
+
+      - name: Family living-world design contract
+        run: python tests/static_validate_family_living_world_design.py
