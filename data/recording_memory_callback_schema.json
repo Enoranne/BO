@@ -1,0 +1,60 @@
+{
+  "version": 1,
+  "status": "design_only",
+  "purpose": "Future narrative associations that can add meaning to a recording without mutating its original child annotation.",
+  "association_types": [
+    "person",
+    "place",
+    "object",
+    "accidental",
+    "creative",
+    "story_event"
+  ],
+  "discovery_states": [
+    "DORMANT",
+    "AVAILABLE",
+    "DISCOVERED",
+    "REVISITED"
+  ],
+  "association_record": {
+    "association_id": "string",
+    "recording_id": "string",
+    "association_type": "enum",
+    "introduced_era": "string",
+    "discovery_state": "enum",
+    "linked_person_ids": "array_optional",
+    "linked_place_id": "string_optional",
+    "linked_object_ids": "array_optional",
+    "linked_event_ids": "array_optional",
+    "creative_use_id": "string_optional",
+    "story_forced": "bool",
+    "player_discoverable": "bool",
+    "note": "string_optional"
+  },
+  "rules": {
+    "mutate_original_child_annotation": false,
+    "show_as_collectible_rarity": false,
+    "completion_percentage_required": false,
+    "auto_popup_on_every_association": false,
+    "allow_multiple_meanings_over_time": true
+  },
+  "example": {
+    "recording_id": "rec_example_gate_002",
+    "associations": [
+      {
+        "association_id": "assoc_gate_mother_voice",
+        "association_type": "accidental",
+        "introduced_era": "later_childhood",
+        "discovery_state": "AVAILABLE",
+        "linked_person_ids": ["mother"],
+        "linked_place_id": "gate",
+        "linked_object_ids": ["gate"],
+        "linked_event_ids": [],
+        "creative_use_id": null,
+        "story_forced": false,
+        "player_discoverable": true,
+        "note": "The distant voice becomes more important than the intended gate squeak."
+      }
+    ]
+  }
+}
