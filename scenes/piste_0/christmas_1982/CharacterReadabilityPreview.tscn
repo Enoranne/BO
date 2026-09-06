@@ -1,0 +1,71 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://characters/common/placeholder_humanoid.gd" id="1_humanoid"]
+[ext_resource type="Script" path="res://visual/asset_preview_camera.gd" id="2_camera"]
+
+[sub_resource type="StandardMaterial3D" id="Mat_floor"]
+albedo_color = Color(0.34, 0.29, 0.23, 1)
+roughness = 0.96
+
+[sub_resource type="PlaneMesh" id="Plane_floor"]
+material = SubResource("Mat_floor")
+size = Vector2(6, 5)
+
+[node name="CharacterReadabilityPreview" type="Node3D"]
+
+[node name="Floor" type="MeshInstance3D" parent="."]
+mesh = SubResource("Plane_floor")
+
+[node name="MaloPreview" type="Node3D" parent="."]
+position = Vector3(-0.75, 0, 0)
+script = ExtResource("1_humanoid")
+stature = 1.45
+shirt_color = Color(0.56, 0.31, 0.12, 1)
+trousers_color = Color(0.24, 0.17, 0.11, 1)
+skin_color = Color(0.74, 0.56, 0.40, 1)
+hair_color = Color(0.20, 0.11, 0.055, 1)
+idle_sway_degrees = 0.8
+gait_amplitude_degrees = 0.0
+
+[node name="Label" type="Label3D" parent="MaloPreview"]
+position = Vector3(0, 1.72, 0)
+text = "MALO"
+font_size = 32
+billboard = 1
+
+[node name="RonanPreview" type="Node3D" parent="."]
+position = Vector3(0.75, 0, 0)
+script = ExtResource("1_humanoid")
+stature = 1.68
+shirt_color = Color(0.19, 0.29, 0.36, 1)
+trousers_color = Color(0.13, 0.16, 0.19, 1)
+skin_color = Color(0.74, 0.56, 0.40, 1)
+hair_color = Color(0.16, 0.09, 0.05, 1)
+facing_offset_degrees = -8.0
+idle_sway_degrees = 0.7
+gait_amplitude_degrees = 0.0
+
+[node name="Label" type="Label3D" parent="RonanPreview"]
+position = Vector3(0, 1.95, 0)
+text = "RONAN"
+font_size = 32
+billboard = 1
+
+[node name="KeyLight" type="DirectionalLight3D" parent="."]
+rotation_degrees = Vector3(-48, -28, 0)
+light_energy = 0.95
+shadow_enabled = true
+
+[node name="WarmFill" type="OmniLight3D" parent="."]
+position = Vector3(2.0, 2.5, 2.2)
+omni_range = 7.0
+light_energy = 1.5
+light_color = Color(1, 0.78, 0.60, 1)
+
+[node name="Camera" type="Camera3D" parent="."]
+position = Vector3(3.4, 2.25, 4.8)
+current = true
+fov = 38.0
+script = ExtResource("2_camera")
+target_path = NodePath("..")
+target_height = 0.82
