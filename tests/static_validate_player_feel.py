@@ -28,9 +28,18 @@ ok('event.is_action_pressed("play_recording")' in malo,
 ok('event.is_action_pressed("record")' in malo and 'event.is_action_released("record")' in malo,
    "REC remains hold-to-record / release-to-stop")
 
-# Physical movement cluster: W/A/S/D physical positions map naturally to Z/Q/S/D on AZERTY.
+# Physical movement cluster: W/A/S/D positions map naturally to Z/Q/S/D on AZERTY.
 for code, name in [(87, "forward physical key"), (83, "back physical key"), (65, "left physical key"), (68, "right physical key")]:
     ok(f'physical_keycode":{code}' in project, f"{name} remains declared")
+
+# Live macOS AZERTY validation showed that users may also expect the literal W/A
+# letters to work. Keep physical Z/Q support and add logical W/A fallbacks.
+move_forward_match = re.search(r'move_forward=\{(.*?)\n\}', project, re.S)
+move_left_match = re.search(r'move_left=\{(.*?)\n\}', project, re.S)
+ok(move_forward_match is not None and 'keycode":87,"physical_keycode":0' in move_forward_match.group(1),
+   "literal W remains available as a logical forward fallback")
+ok(move_left_match is not None and 'keycode":65,"physical_keycode":0' in move_left_match.group(1),
+   "literal A remains available as a logical left fallback")
 
 # Sprint 5.1 alternates.
 interact_match = re.search(r'interact=\{(.*?)\n\}', project, re.S)
