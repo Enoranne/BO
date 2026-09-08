@@ -1,8 +1,17 @@
 extends Node3D
 
 const ASSET_PATH := "res://assets/3d/experimental/childrens_bedroom_3d_jutsu.glb"
+const CUTAWAY_NODE_NAMES := [
+    "ROOM_ceil",
+    "WALL_F1",
+    "WALL_F2",
+    "WALL_F3",
+    "WALL_F4",
+    "WALL_F5",
+]
 
-@export var camera_target := Vector3(3.0, 1.0, -1.0)
+@export var camera_target := Vector3(4.0, 1.3, -3.5)
+@export var cutaway_mode := true
 
 @onready var asset_root: Node3D = $AssetRoot
 @onready var preview_camera: Camera3D = $PreviewCamera
@@ -29,4 +38,13 @@ func _load_candidate() -> void:
         return
 
     asset_root.add_child(instance)
-    status_label.text = "3D Jutsu bedroom — DIRECT GLB → GODOT\nInspect scale, materials, hierarchy, pivots and camera framing"
+    if cutaway_mode:
+        _apply_cutaway(instance)
+
+    status_label.text = "3D Jutsu bedroom — DIRECT GLB → GODOT\nCutaway review: scale, materials, hierarchy and misplaced transforms"
+
+func _apply_cutaway(root_node: Node) -> void:
+    for node_name in CUTAWAY_NODE_NAMES:
+        var node := root_node.find_child(node_name, true, false)
+        if node is Node3D:
+            (node as Node3D).visible = false
