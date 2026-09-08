@@ -30,6 +30,14 @@ func _key(physical: Key, pressed: bool) -> void:
     Input.parse_input_event(event)
 
 
+func _logical_key(logical: Key, physical: Key, pressed: bool) -> void:
+    var event := InputEventKey.new()
+    event.keycode = logical
+    event.physical_keycode = physical
+    event.pressed = pressed
+    Input.parse_input_event(event)
+
+
 func _click(pressed: bool) -> void:
     var event := InputEventMouseButton.new()
     event.button_index = MOUSE_BUTTON_LEFT
@@ -114,6 +122,25 @@ func _run_case(scene_path: String, mouse_pickup: bool) -> void:
             KEY_A: expected = Vector3.LEFT
             KEY_D: expected = Vector3.RIGHT
         _check(movement.dot(expected) > 0.05, "Physical movement key works: %s (AZERTY=%s)" % [physical, _azerty])
+
+    # Manual macOS AZERTY validation found that players may also press the literal
+    # W/A letters. Verify those logical fallbacks while preserving Z/Q physical keys.
+    if _azerty:
+        var before_w := malo.position
+        _logical_key(KEY_W, KEY_Z, true)
+        await _frames(10)
+        _logical_key(KEY_W, KEY_Z, false)
+        await _frames(16)
+        _check((malo.position - before_w).dot(Vector3.FORWARD) > 0.05,
+            "Literal W fallback works on AZERTY")
+
+        var before_a := malo.position
+        _logical_key(KEY_A, KEY_Q, true)
+        await _frames(10)
+        _logical_key(KEY_A, KEY_Q, false)
+        await _frames(16)
+        _check((malo.position - before_a).dot(Vector3.LEFT) > 0.05,
+            "Literal A fallback works on AZERTY")
 
     await _walk_axis(malo, 0, 2.45, KEY_D)
     await _walk_axis(malo, 2, 0.35, KEY_W)
