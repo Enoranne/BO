@@ -32,7 +32,7 @@ light_energy = 2.0
 shadow_enabled = false
 
 [node name="PreviewCamera" type="Camera3D" parent="."]
-position = Vector3(4.9, 4.4, 14.7)
+position = Vector3(4.0, 4.2, 8.0)
 current = true
 fov = 52.0
 near = 0.05
@@ -43,7 +43,7 @@ far = 100.0
 [node name="Margin" type="MarginContainer" parent="HUD"]
 offset_left = 24.0
 offset_top = 22.0
-offset_right = 640.0
+offset_right = 700.0
 offset_bottom = 108.0
 
 [node name="Status" type="Label" parent="HUD/Margin"]
