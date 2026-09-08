@@ -4,12 +4,14 @@
 Make the first playable seconds of BO understandable without adding gameplay complexity or changing the cinematic camera contract.
 
 ## Keyboard layout policy
-Movement uses Godot physical-key bindings rather than letter semantics.
+Movement remains action-based and keeps Godot physical-key bindings as the primary layout strategy.
 
 That means the same physical four-key cluster works across common layouts:
 
 - QWERTY: `W A S D`
 - AZERTY: `Z Q S D`
+
+Live macOS AZERTY validation on 2026-09-08 also showed that the user may reasonably try the literal `W` and `A` letters. Sprint 5 therefore keeps the physical layout behaviour and adds logical `W` / `A` fallbacks, so both `ZQSD` and literal `WASD` expectations are accepted on the tested French keyboard without hard-coding movement in `MaloController`.
 
 The numeric keypad is deliberately not part of the core control scheme.
 
@@ -17,7 +19,7 @@ The numeric keypad is deliberately not part of the core control scheme.
 
 | Action | Primary | Alternate | Behaviour |
 |---|---|---|---|
-| Move | WASD / ZQSD physical cluster | — | Move Malo |
+| Move | WASD / ZQSD physical cluster | logical `W` / `A` fallbacks on AZERTY | Move Malo |
 | Interact | `E` | Left mouse button | Use the currently selected nearby interactable |
 | Record | Hold `R` | — | Begin recording the currently selected nearby recordable source |
 | Stop recording | Release `R` | — | Stop REC and create the RecordingClip |
