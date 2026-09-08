@@ -1,6 +1,7 @@
 extends SceneTree
 
 var failures := 0
+var playback_time_observed := 0.0
 
 func _initialize() -> void:
     call_deferred("_run")
@@ -12,12 +13,16 @@ func _check(condition: bool, message: String) -> void:
         failures += 1
         push_error("FAIL: " + message)
 
+func _on_playback_time_changed(seconds: float) -> void:
+    playback_time_observed = maxf(playback_time_observed, seconds)
+
 func _run() -> void:
     var recorder_scene := Recorder.new()
     var player := AudioStreamPlayer.new()
     player.name = "PlaybackPlayer"
     recorder_scene.add_child(player)
     root.add_child(recorder_scene)
+    recorder_scene.playback_time_changed.connect(_on_playback_time_changed)
 
     var source := RecordableSource.new()
     source.source_id = &"ronan_test"
@@ -44,9 +49,12 @@ func _run() -> void:
     _check(clip.metadata.get("role") == "brother", "RecordingClip preserves source metadata")
     _check(clip.is_playable(), "RecordingClip reports itself playable")
 
+    playback_time_observed = -1.0
     _check(recorder_scene.play_latest(), "Latest RecordingClip can enter PLAY")
     _check(not recorder_scene.play_latest(), "PLAY cannot start twice simultaneously")
     await create_timer(0.05).timeout
+    _check(playback_time_observed > 0.0, "PLAY emits elapsed playback time for presentation")
+    _check(recorder_scene.get_playback_seconds() > 0.0, "Recorder exposes current playback elapsed time")
     recorder_scene.stop()
     _check(recorder_scene.state == Recorder.State.STOP, "Recorder returns to STOP")
 
