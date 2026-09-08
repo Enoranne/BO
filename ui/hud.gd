@@ -56,6 +56,7 @@ func _on_recorder_equipped(new_recorder: Recorder) -> void:
     recorder = new_recorder
     recorder.state_changed.connect(_render_state)
     recorder.recording_time_changed.connect(_render_time)
+    recorder.playback_time_changed.connect(_render_time)
     recorder.clip_created.connect(_on_clip_created)
     _render_state(recorder.state)
     _refresh_hint()
