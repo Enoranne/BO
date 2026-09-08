@@ -46,6 +46,10 @@ if hud.exists():
     ok("_has_clip" in text, "HUD tracks presentation-only clip availability for hint priority")
     ok("_current_state" in text, "HUD tracks presentation-only Recorder state for hint priority")
     ok("refresh_presentation" in text, "HUD exposes presentation refresh without gameplay ownership")
+    ok("recorder.recording_time_changed.connect(_render_time)" in text,
+       "HUD renders elapsed REC time from Recorder presentation signal")
+    ok("recorder.playback_time_changed.connect(_render_time)" in text,
+       "HUD renders elapsed PLAY time from Recorder presentation signal")
 
 if hud_pass.exists():
     text = hud_pass.read_text(encoding="utf-8")
