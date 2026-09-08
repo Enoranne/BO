@@ -5,6 +5,7 @@ enum State { STOP, REC, PLAY }
 
 signal state_changed(state: State)
 signal recording_time_changed(seconds: float)
+signal playback_time_changed(seconds: float)
 signal clip_created(clip: RecordingClip)
 signal action_rejected(reason: String)
 
@@ -29,8 +30,12 @@ func _process(delta: float) -> void:
             _recording_elapsed += delta
             recording_time_changed.emit(_recording_elapsed)
         State.PLAY:
-            _playback_elapsed += delta
-            if _playing_clip != null and _playback_elapsed >= _playing_clip.duration_seconds:
+            if _playing_clip == null:
+                stop()
+                return
+            _playback_elapsed = minf(_playback_elapsed + delta, _playing_clip.duration_seconds)
+            playback_time_changed.emit(_playback_elapsed)
+            if _playback_elapsed >= _playing_clip.duration_seconds:
                 stop()
 
 func start_recording(source: RecordableSource) -> bool:
@@ -90,6 +95,7 @@ func play_clip(clip: RecordingClip) -> bool:
     playback_player.stream = clip.stream
     playback_player.play()
     _set_state(State.PLAY)
+    playback_time_changed.emit(_playback_elapsed)
     return true
 
 func stop() -> void:
@@ -107,6 +113,9 @@ func get_latest_clip() -> RecordingClip:
 
 func get_recording_seconds() -> float:
     return _recording_elapsed
+
+func get_playback_seconds() -> float:
+    return _playback_elapsed
 
 func _set_state(new_state: State) -> void:
     if state == new_state:
