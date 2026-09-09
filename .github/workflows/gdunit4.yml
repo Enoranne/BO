@@ -3,7 +3,7 @@ name: GdUnit4 Runtime Tests
 on:
   push:
     branches:
-      - spike/gdunit4-sprint5
+      - sprint-5
   pull_request:
     branches:
       - sprint-5
