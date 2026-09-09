@@ -19,6 +19,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Materialize GdUnit4 test source
+        run: cp tests/gdunit4/test_recorder_gdunit.gd.template tests/gdunit4/test_recorder_gdunit.gd
+
       - name: Run GdUnit4 recorder contract
         uses: godot-gdunit-labs/gdUnit4-action@v1
         with:
