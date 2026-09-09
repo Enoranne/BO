@@ -1,0 +1,33 @@
+name: GdUnit4 Runtime Tests
+
+on:
+  push:
+    branches:
+      - spike/gdunit4-sprint5
+  pull_request:
+    branches:
+      - sprint-5
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  gdunit4:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run GdUnit4 recorder contract
+        uses: godot-gdunit-labs/gdUnit4-action@v1
+        with:
+          godot-version: '4.7.0'
+          godot-status: stable
+          version: 'v6.2.1'
+          paths: 'res://tests/gdunit4'
+          timeout: 10
+          retries: 0
+          warnings-as-errors: false
+          publish-report: false
+          upload-report: true
