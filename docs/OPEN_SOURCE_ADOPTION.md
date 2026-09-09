@@ -61,6 +61,20 @@ Adoption rule:
 - audit code and asset licenses separately;
 - prefer BO's existing interaction/recorder architecture when the concepts overlap.
 
+### 7. Beckett MCP
+Purpose: alternative Godot MCP stack with an embedded, zero-sidecar editor server.
+
+Sprint 5 decision:
+- reviewed as Beckett Lite v1.15.0;
+- technically credible and compatible with Godot 4.7;
+- do not install alongside the canonical `@yanhuifair/godot-mcp` stack;
+- current feature overlap is too high to justify a second editor/runtime MCP integration;
+- retain Beckett as a fallback if the canonical MCP proves materially unstable or Node.js/sidecar management becomes recurring friction;
+- if reconsidered, compare one concrete Christmas1982 task end-to-end and replace rather than stack MCP integrations by default.
+
+Decision gate:
+**REJECT active Sprint 5 integration / KEEP AS FALLBACK.** See `docs/BECKETT_SPIKE.md`.
+
 ## Licensing rule
 Before importing code, textures, meshes, audio or other assets:
 1. identify the exact license;
